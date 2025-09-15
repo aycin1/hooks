@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import axios from "../api/axios";
 import useAuth from "../hooks/useAuth";
 
@@ -8,12 +8,13 @@ const LOGIN_ENDPOINT = "/login";
 export default function Login() {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const prevLocation = location.state?.from?.pathname || "/";
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const [errorMsg, setErrorMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     setErrorMsg("");
@@ -37,7 +38,7 @@ export default function Login() {
       setAuth({ username, password, accessToken });
       setUsername("");
       setPassword("");
-      setSuccess(true);
+      navigate(prevLocation, { replace: true });
     } catch (err) {
       if (!err?.response) {
         setErrorMsg("No response from the server");
@@ -50,58 +51,52 @@ export default function Login() {
   }
 
   return (
-    <>
-      {success ? (
-        navigate("/")
-      ) : (
-        <div className="login-form-wrapper">
-          <div className="login-form-container">
-            <h1>Log in</h1>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="username">Username: </label>
-              <input
-                id="username"
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-
-              {/*  */}
-
-              <label htmlFor="password">Password: </label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-
-              {/*  */}
-
-              <button>Log in</button>
-            </form>
-          </div>
+    <div className="login-form-wrapper">
+      <div className="login-form-container">
+        <h1>Log in</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username">Username: </label>
+          <input
+            id="username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
 
           {/*  */}
 
-          <p
-            //   ref={errorRef}
-            className={errorMsg ? "error-msg" : "offscreen"}
-          >
-            {errorMsg}
-          </p>
+          <label htmlFor="password">Password: </label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
           {/*  */}
 
-          <div className="registration_link">
-            Need an account?
-            <br />
-            <NavLink to="/register">Click here to register</NavLink>
-          </div>
-        </div>
-      )}
-    </>
+          <button>Log in</button>
+        </form>
+      </div>
+
+      {/*  */}
+
+      <p
+        //   ref={errorRef}
+        className={errorMsg ? "error-msg" : "offscreen"}
+      >
+        {errorMsg}
+      </p>
+
+      {/*  */}
+
+      <div className="registration_link">
+        Need an account?
+        <br />
+        <NavLink to="/register">Click here to register</NavLink>
+      </div>
+    </div>
   );
 }
