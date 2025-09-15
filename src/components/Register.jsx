@@ -6,12 +6,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router";
-import axios from "./api/axios";
+import axios from "../api/axios";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{4,22}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[*^!%$@&]).{8,24}$/;
-const REGISTER_URL = "/register";
+const REGISTER_ENDPOINT = "/register";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -62,7 +62,7 @@ export default function Register() {
     e.preventDefault();
     try {
       await axios.post(
-        REGISTER_URL,
+        REGISTER_ENDPOINT,
         JSON.stringify({
           email,
           username,
@@ -96,7 +96,6 @@ export default function Register() {
   return (
     <>
       {success ? (
-        <p>Registration successful, navigating to log in page!</p> >
         navigate("/login")
       ) : (
         <div onSubmit={handleSubmit}>
