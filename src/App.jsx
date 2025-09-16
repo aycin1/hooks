@@ -1,10 +1,13 @@
 import { Route, Routes } from "react-router";
 import "./App.css";
+import Feed from "./components/Feed";
 import Home from "./components/Home";
 import Layout from "./components/Layout";
 import Login from "./components/Login";
+import Profile from "./components/Profile";
 import Register from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
+import Search from "./components/Search";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
 
           <Route element={<RequireAuth />}>
             <Route path="/" element={<Home />} />
+            <Route path="/feed" element={<Feed />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/search" element={<Search />} />
           </Route>
 
           <Route

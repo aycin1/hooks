@@ -1,4 +1,5 @@
 import { Navigate, Outlet, useLocation } from "react-router";
+import { ListsProvider } from "../context/ListsProvider";
 import useAuth from "../hooks/useAuth";
 
 export default function RequireAuth() {
@@ -6,7 +7,9 @@ export default function RequireAuth() {
   const location = useLocation();
 
   return auth?.username ? (
-    <Outlet />
+    <ListsProvider>
+      <Outlet />
+    </ListsProvider>
   ) : (
     <Navigate to="/login" state={{ from: location }} replace />
   );
