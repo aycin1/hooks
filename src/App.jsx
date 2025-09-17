@@ -3,6 +3,7 @@ import "./App.css";
 import Feed from "./components/Feed";
 import Home from "./components/Home";
 import Layout from "./components/Layout";
+import Lists from "./components/Lists/Lists";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
 import Register from "./components/Register";
@@ -19,9 +20,12 @@ function App() {
 
           <Route element={<RequireAuth />}>
             <Route path="/" element={<Home />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/lists" element={<Lists />} />
+            {/* <Route path="/pattern/:id" element={<Pattern />} /> */}
             <Route path="/feed" element={<Feed />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/search" element={<Search />} />
+            {/* <Route path="/user" element={<User />} /> */}
           </Route>
 
           <Route

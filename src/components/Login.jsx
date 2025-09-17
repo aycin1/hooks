@@ -92,7 +92,7 @@ export default function Login() {
 
       {/*  */}
 
-      <div className="registration_link">
+      <div className="registrationLink">
         Need an account?
         <br />
         <NavLink to="/register">Click here to register</NavLink>

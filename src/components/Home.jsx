@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useLists from "../hooks/useLists";
+import Dashboard from "./Dashboard/Dashboard";
 
 export default function Home() {
-  const { lists, setLists } = useLists();
+  const { setLists } = useLists();
   const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
@@ -15,7 +16,6 @@ export default function Home() {
         const response = await axiosPrivate.get("/lists", {
           signal: controller.signal,
         });
-        console.log(response.data);
 
         isMounted && setLists(response.data);
       } catch (err) {
@@ -31,5 +31,5 @@ export default function Home() {
     };
   }, []);
 
-  return <div>{lists ? JSON.stringify(lists) : "hi"}</div>;
+  return <Dashboard />;
 }
