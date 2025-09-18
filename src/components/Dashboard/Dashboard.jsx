@@ -11,14 +11,14 @@ export default function Dashboard() {
   return (
     <div className="dashboardContainer">
       <DisplayListButtons setChosenList={setChosenList} />
-      {chosenList && lists[chosenList].length ? (
+      {lists?.[chosenList]?.length ? (
         <DisplayPatterns chosenList={chosenList} />
       ) : chosenList ? (
         <Link to="/search">
           this list is empty, click here to search patterns!
         </Link>
       ) : (
-        "Please select a list"
+        "please select a list"
       )}
     </div>
   );
