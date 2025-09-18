@@ -1,7 +1,9 @@
 import { Link } from "react-router";
+import useLists from "../../hooks/useLists";
 import CreatePatterns from "./../CreatePatterns";
 
 export default function DisplayPatterns({ chosenList }) {
+  const { lists } = useLists();
   const thumbnailOptions = {
     url: "medium_url",
     style: {
@@ -20,7 +22,7 @@ export default function DisplayPatterns({ chosenList }) {
       <Link to="/search">add more patterns here</Link>
       <div className="patternCards">
         <CreatePatterns
-          chosenList={chosenList}
+          list={lists[chosenList]}
           thumbnailOptions={thumbnailOptions}
         />
       </div>

@@ -3,14 +3,11 @@ import CreateList from "./CreateList";
 
 export default function Lists() {
   const { lists } = useLists();
+  const listTitles = Object.keys(lists).map((listTitle) => listTitle);
 
   function mapLists() {
-    const listTitles = Object.keys(lists).map((title) => title);
-    const listsArr = Object.values(lists).map((list) => list);
-    return listsArr.map((list, index) => {
-      return (
-        <CreateList list={list} index={index} chosenList={listTitles[index]} />
-      );
+    return Object.values(lists).map((listArr, index) => {
+      return <CreateList list={listArr} listTitle={listTitles[index]} />;
     });
   }
 

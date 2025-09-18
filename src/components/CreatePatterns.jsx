@@ -1,17 +1,14 @@
-import useLists from "../hooks/useLists";
 import PatternCard from "./PatternCard";
 
-export default function CreatePatterns({ chosenList, thumbnailOptions }) {
-  const { lists } = useLists();
-
+export default function CreatePatterns({ list, thumbnailOptions }) {
+  console.log(list);
   function mapLists() {
-    return lists[chosenList].map((pattern) => {
+    return list.map((pattern) => {
       const patternID = pattern.pattern_id || pattern.id;
       return (
         <div key={patternID} className="patternCardContainer">
           <PatternCard
             patternID={patternID}
-            list={chosenList}
             thumbnailOptions={thumbnailOptions}
           />
         </div>
@@ -19,5 +16,5 @@ export default function CreatePatterns({ chosenList, thumbnailOptions }) {
     });
   }
 
-  return lists?.[chosenList] ? mapLists() : <p>Uh Oh</p>;
+  return list ? mapLists() : <p>Uh Oh</p>;
 }

@@ -3,7 +3,7 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import RenderDropdown from "./RenderDropdown/RenderDropdown";
 import Thumbnail from "./Thumbnail";
 
-export default function PatternCard({ patternID, list, thumbnailOptions }) {
+export default function PatternCard({ patternID, thumbnailOptions }) {
   const [patternInfo, setPatternInfo] = useState();
   const axiosPrivate = useAxiosPrivate();
 
@@ -19,8 +19,8 @@ export default function PatternCard({ patternID, list, thumbnailOptions }) {
             signal: controller.signal,
           }
         );
-        console.log(response.data.pattern);
-        isMounted && setPatternInfo(response?.data?.pattern);
+
+        isMounted && setPatternInfo(response?.data?.pattern || response?.data);
       } catch (err) {
         console.log(err);
       }
@@ -49,7 +49,7 @@ export default function PatternCard({ patternID, list, thumbnailOptions }) {
         </div>
       </div>
       <div className="dropdownContainer">
-        <RenderDropdown patternID={patternID} list={list} />
+        <RenderDropdown patternID={patternID} />
       </div>
     </div>
   );

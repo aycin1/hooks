@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import CreatePatterns from "../CreatePatterns";
 
-export default function CreateList({ list, index, chosenList }) {
+export default function CreateList({ list, listTitle }) {
   const thumbnailOptions = {
     url: "medium_url",
     style: {
@@ -16,13 +16,10 @@ export default function CreateList({ list, index, chosenList }) {
   };
 
   return (
-    <div key={index} className="listCardContainer">
-      <h3>{chosenList}</h3>
+    <div className="listCardContainer">
+      <h3>{listTitle}</h3>
       {list.length ? (
-        <CreatePatterns
-          chosenList={chosenList}
-          thumbnailOptions={thumbnailOptions}
-        />
+        <CreatePatterns list={list} thumbnailOptions={thumbnailOptions} />
       ) : (
         <Link to="/search">
           this list is empty, click here to search patterns!
