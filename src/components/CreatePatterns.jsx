@@ -1,7 +1,6 @@
 import PatternCard from "./PatternCard";
 
 export default function CreatePatterns({ list, thumbnailOptions }) {
-  console.log(list);
   function mapLists() {
     return list.map((pattern) => {
       const patternID = pattern.pattern_id || pattern.id;
