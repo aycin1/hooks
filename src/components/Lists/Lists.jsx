@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import useLists from "../../hooks/useLists";
 import CreateList from "./CreateList";
 
@@ -15,10 +14,5 @@ export default function Lists() {
     });
   }
 
-  return (
-    <div>
-      {mapLists()}
-      <Link to="/">Home</Link>
-    </div>
-  );
+  return <div>{mapLists()}</div>;
 }
