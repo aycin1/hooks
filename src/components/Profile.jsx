@@ -40,7 +40,6 @@ export default function Profile() {
   return (
     <>
       <Posts posts={posts} />
-
       <UserSearch />
       <Follows />
     </>

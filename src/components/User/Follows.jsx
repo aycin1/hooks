@@ -16,6 +16,7 @@ export default function Follows() {
     }
     getFollowers();
   }, []);
+
   useEffect(() => {
     async function getFollowings() {
       const response = await axiosPrivate.get("/users/user/following");
