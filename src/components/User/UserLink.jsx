@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-export default function UserFollow({ foundUser }) {
+export default function UserLink({ foundUser }) {
   const [buttonText, setButtonText] = useState();
   const [message, setMessage] = useState("");
   const [isFollowing, setIsFollowing] = useState();

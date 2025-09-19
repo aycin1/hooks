@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import UserFollow from "./UserFollow";
+import UserLink from "./UserLink";
 
 export default function UserSearch() {
   const [searchField, setSearchField] = useState();
@@ -27,7 +27,7 @@ export default function UserSearch() {
         </div>
       </form>
       <div className="userComponent">
-        {foundUser ? <UserFollow foundUser={foundUser} /> : ""}
+        {foundUser ? <UserLink foundUser={foundUser} /> : ""}
       </div>
     </div>
   );
