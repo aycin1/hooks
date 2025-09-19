@@ -67,7 +67,7 @@ export default function Posts({ posts }) {
         </div>
       ));
     } else {
-      // return "No posts"
+      // return "No posts";
     }
   }
   return <div className="posts">{mapPosts()}</div>;

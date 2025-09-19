@@ -53,8 +53,11 @@
 .headerLinks {
   display: flex;
   padding-left: 40vh;
+  gap: 5vh;
 }
 
-.links {
-  padding-right: 25px;
+.posts {
+  width: 85vh;
+  display: inline-flex;
+  flex-wrap: wrap;
 }
