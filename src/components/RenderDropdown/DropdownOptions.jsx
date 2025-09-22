@@ -6,7 +6,6 @@ export default function DropdownOptions({ listForPattern, handleChange }) {
       const currentListIndex = options.indexOf(listForPattern);
       options.splice(currentListIndex, 1);
       options.push("remove");
-      console.log(options);
       return options;
     } else {
       return options;
@@ -16,8 +15,8 @@ export default function DropdownOptions({ listForPattern, handleChange }) {
   const text = listForPattern ? "edit list" : "add to list";
 
   return (
-    <select name="dropdown" onChange={(e) => handleChange(e.target.value)}>
-      <option value="" disabled selected>
+    <select name="dropdown" onChange={(e) => handleChange(e)}>
+      <option disabled selected>
         {text}
       </option>
       {refinedOptions.map((option) => (

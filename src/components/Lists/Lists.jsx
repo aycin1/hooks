@@ -7,7 +7,9 @@ export default function Lists() {
 
   function mapLists() {
     return Object.values(lists).map((listArr, index) => {
-      return <CreateList list={listArr} listTitle={listTitles[index]} />;
+      return (
+        <CreateList key={index} list={listArr} listTitle={listTitles[index]} />
+      );
     });
   }
 
