@@ -35,8 +35,8 @@ export default function PatternCard({ patternID, thumbnailOptions }) {
   }, []);
 
   return (
-    <div className="patternCardWrapper">
-      <div className="patternCardContainer">
+    <div>
+      <div>
         <h5>{patternInfo?.name}</h5>
         <div className="thumbnailContainer">
           <Thumbnail

@@ -56,8 +56,15 @@
   gap: 5vh;
 }
 
-.posts {
-  width: 85vh;
-  display: inline-flex;
-  flex-wrap: wrap;
+.patternCardWrapper {
+  width: 150vh;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  align-items: end;
+}
+
+.patternCard {
+  padding-left: 2vh;
+  padding-right: 2vh;
 }

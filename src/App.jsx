@@ -20,8 +20,9 @@ function App() {
 
           <Route element={<RequireAuth />}>
             <Route path="/" element={<Home />} />
-            <Route path="/search" element={<Search />} />
             <Route path="/lists" element={<Lists />} />
+            <Route path="/search" element={<Search />} />
+
             {/* <Route path="/pattern/:id" element={<Pattern />} /> */}
             <Route path="/feed" element={<Feed />} />
             <Route path="/profile" element={<Profile />} />

@@ -1,0 +1,40 @@
+import { useEffect, useState } from "react";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+
+export default function Likes({ postID }) {
+  const axiosPrivate = useAxiosPrivate();
+  const [likes, setLikes] = useState([]);
+  const [alreadyLiked, setAlreadyLiked] = useState();
+
+  useEffect(() => {
+    async function checkLikes() {
+      const response = await axiosPrivate.get(`/likes/user/${postID}`);
+      setAlreadyLiked(response?.data ? true : false);
+    }
+    checkLikes();
+  }, [postID]);
+
+  useEffect(() => {
+    async function fetchLikes() {
+      const response = await axiosPrivate.get(`/likes/${postID}`);
+      setLikes(response?.data?.likedUsers);
+    }
+    fetchLikes();
+  }, [alreadyLiked, postID]);
+
+  async function handleClick() {
+    const data = { post_id: postID };
+    if (!alreadyLiked) {
+      await axiosPrivate.post("/likes", data);
+    } else {
+      await axiosPrivate.delete("/likes", { data });
+    }
+    setAlreadyLiked((oldValue) => !oldValue);
+  }
+
+  return (
+    <button className="likeButton" onClick={() => handleClick()}>
+      {likes.length ? likes.length : 0}
+    </button>
+  );
+}

@@ -1,16 +1,14 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import PatternCard from "../PatternCard";
+import Comments from "./Comments";
+import Likes from "./Likes";
 // import RenderImage from "";
 
 export default function Post({ post }) {
   const { auth } = useAuth();
-  //   const [showComments, setShowComments] = useState(false);
-
-  //   function handleShowComments() {
-  //     setShowComments((oldValue) => !oldValue);
-  //   }
+  const [showComments, setShowComments] = useState(false);
 
   return (
     <div className="postContainer">
@@ -39,20 +37,14 @@ export default function Post({ post }) {
         )}
       </div>
 
-      {/* <div className="likesAndComments">
-        <div className="buttonsContainer">
-          <Likes postID={post.post_id} />
-          <button
-            className="toggleButton"
-            onClick={(e) => handleShowComments(e)}
-          >
-            Comments
-          </button>
-        </div>
-        <div className="comments">
-          {showComments ? <Comments postID={post.post_id} /> : ""}
-        </div>
-      </div> */}
+      <Likes postID={post.post_id} />
+      <button
+        className="commentsButton"
+        onClick={() => setShowComments((oldValue) => !oldValue)}
+      >
+        Comments
+      </button>
+      {showComments ? <Comments postID={post.post_id} /> : ""}
     </div>
   );
 }
