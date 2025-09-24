@@ -22,7 +22,7 @@ export default function Post({ post }) {
 
   return (
     <div className="postContainer">
-      <RenderImage postID={post.post_id} updatedAt={post.timestamp} />
+      <RenderImage postID={post.post_id} />
       <div className="patternCardContainer">
         <PatternCard
           patternID={post.pattern_id}

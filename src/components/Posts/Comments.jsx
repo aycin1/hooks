@@ -12,16 +12,24 @@ export default function Comments({ postID }) {
 
   useEffect(() => {
     async function fetchComments() {
-      const response = await axiosPrivate.get(`/comments/${postID}`);
-      setComments(response?.data);
+      try {
+        const response = await axiosPrivate.get(`/comments/${postID}`);
+        setComments(response?.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
     fetchComments();
   }, [postID, message]);
 
   async function handleCommentDeletion(e) {
     const data = { post_id: postID, message: e.target.value };
-    const response = await axiosPrivate.delete("/comments/", { data });
-    setMessage(response?.data?.message);
+    try {
+      const response = await axiosPrivate.delete("/comments/", { data });
+      setMessage(response?.data?.message);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function mapComments() {

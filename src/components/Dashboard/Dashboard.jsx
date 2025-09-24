@@ -6,7 +6,7 @@ import DisplayPatterns from "./DisplayPatterns";
 
 export default function Dashboard() {
   const [chosenList, setChosenList] = useState();
-  const { lists } = useLists();
+  const lists = useLists();
 
   return (
     <div className="dashboardContainer">

@@ -9,10 +9,13 @@ export default function RenderDropdown({ patternID }) {
 
   useEffect(() => {
     async function fetchList() {
-      setListForPattern(
-        (await axiosPrivate.get(`lists/pattern/${patternID}`))?.data
-          ?.listForPattern?.list
-      );
+      try {
+        const response = (await axiosPrivate.get(`lists/pattern/${patternID}`))
+          ?.data?.listForPattern?.list;
+        setListForPattern(response);
+      } catch (error) {
+        console.log(error);
+      }
     }
     fetchList();
   }, [patternID]);
@@ -25,14 +28,18 @@ export default function RenderDropdown({ patternID }) {
         ? { pattern_id: patternID }
         : { pattern_id: patternID, list: desiredList };
 
-    const response =
-      desiredList === "remove"
-        ? await axiosPrivate.delete("/lists/", { data })
-        : listForPattern
-        ? await axiosPrivate.patch("/lists/", data)
-        : await axiosPrivate.post("/lists/", data);
+    try {
+      const response =
+        desiredList === "remove"
+          ? await axiosPrivate.delete("/lists/", { data })
+          : listForPattern
+          ? await axiosPrivate.patch("/lists/", data)
+          : await axiosPrivate.post("/lists/", data);
 
-    if (response?.data?.message) setMessage(response.data.message);
+      if (response?.data?.message) setMessage(response.data.message);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

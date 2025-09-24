@@ -19,13 +19,21 @@ export default function Posts({ posts }) {
       post_id: e.target.name,
       caption: caption,
     };
-    await axiosPrivate.put("/feed", data);
+    try {
+      await axiosPrivate.put("/feed", data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async function handleClick(e) {
     e.preventDefault();
     const data = { post_id: e.target.value };
-    await axiosPrivate.delete("/feed", { data });
+    try {
+      await axiosPrivate.delete("/feed", { data });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function mapPosts() {

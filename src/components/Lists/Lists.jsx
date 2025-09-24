@@ -2,7 +2,7 @@ import useLists from "../../hooks/useLists";
 import CreateList from "./CreateList";
 
 export default function Lists() {
-  const { lists } = useLists();
+  const lists = useLists();
   const listTitles = Object.keys(lists).map((listTitle) => listTitle);
 
   function mapLists() {

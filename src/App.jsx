@@ -9,6 +9,7 @@ import Profile from "./components/Profile";
 import Register from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
 import Search from "./components/Search/Search";
+import User from "./components/User/User";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
             {/* <Route path="/pattern/:id" element={<Pattern />} /> */}
             <Route path="/feed" element={<Feed />} />
             <Route path="/profile" element={<Profile />} />
-            {/* <Route path="/user" element={<User />} /> */}
+            <Route path="/user/:username" element={<User />} />
           </Route>
 
           <Route

@@ -11,7 +11,6 @@ export default function Follows() {
   useEffect(() => {
     async function getFollowers() {
       const response = await axiosPrivate.get("/users/user/followers");
-
       setFollowers(response.data.followers);
     }
     getFollowers();
@@ -41,7 +40,7 @@ export default function Follows() {
 
   function mapUsers() {
     return Object.values(users).map((user) => {
-      return <UserLink foundUser={user} />;
+      return <UserLink key={user} foundUser={user} />;
     });
   }
 

@@ -3,7 +3,7 @@ import useLists from "../../hooks/useLists";
 import CreatePatterns from "./../CreatePatterns";
 
 export default function DisplayPatterns({ chosenList }) {
-  const { lists } = useLists();
+  const lists = useLists();
   const thumbnailOptions = {
     urlSize: "medium_url",
     style: {

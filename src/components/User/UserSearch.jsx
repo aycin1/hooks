@@ -9,8 +9,12 @@ export default function UserSearch() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await axiosPrivate.get(`/users/${searchField}`);
-    setFoundUser(response.data.username);
+    try {
+      const response = await axiosPrivate.get(`/users/search/${searchField}`);
+      setFoundUser(response.data.username);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -27,7 +31,11 @@ export default function UserSearch() {
         </div>
       </form>
       <div className="userComponent">
-        {foundUser ? <UserLink foundUser={foundUser} /> : ""}
+        {foundUser ? (
+          <UserLink foundUser={foundUser} />
+        ) : searchField ? (
+          "No users found"
+        ) : null}
       </div>
     </div>
   );

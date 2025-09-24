@@ -8,8 +8,12 @@ export default function AddComment({ postID, setMessage }) {
   async function handleSubmit(e) {
     e.preventDefault();
     const data = { post_id: postID, message: comment };
-    const response = await axiosPrivate.post("/comments", data);
-    setMessage(response?.data?.message);
+    try {
+      const response = await axiosPrivate.post("/comments", data);
+      setMessage(response?.data?.message);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

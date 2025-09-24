@@ -18,10 +18,14 @@ export default function Search() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await axiosPrivate.get(
-      `/patterns/refine/query=${searchField}`
-    );
-    setSearchResults(response.data);
+    try {
+      const response = await axiosPrivate.get(
+        `/patterns/refine/query=${searchField}`
+      );
+      setSearchResults(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const thumbnailOptions = {
