@@ -9,6 +9,7 @@ export default function CreatePatterns({ list, thumbnailOptions }) {
           <PatternCard
             patternID={patternID}
             thumbnailOptions={thumbnailOptions}
+            thumbnailOnly={false}
           />
         </div>
       );

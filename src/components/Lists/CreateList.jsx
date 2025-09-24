@@ -3,7 +3,7 @@ import CreatePatterns from "../CreatePatterns";
 
 export default function CreateList({ list, listTitle }) {
   const thumbnailOptions = {
-    url: "medium_url",
+    urlSize: "medium_url",
     style: {
       width: "100%",
       height: "auto",
@@ -19,7 +19,11 @@ export default function CreateList({ list, listTitle }) {
     <div className="listCardContainer">
       <h3>{listTitle}</h3>
       {list.length ? (
-        <CreatePatterns list={list} thumbnailOptions={thumbnailOptions} />
+        <CreatePatterns
+          list={list}
+          thumbnailOptions={thumbnailOptions}
+          thumbnailOnly={false}
+        />
       ) : (
         <Link to="/search">
           this list is empty, click here to search patterns!

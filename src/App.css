@@ -57,7 +57,7 @@
 }
 
 .patternCardWrapper {
-  width: 150vh;
+  width: 80cap;
   display: flex;
   flex-direction: row;
   overflow-x: scroll;

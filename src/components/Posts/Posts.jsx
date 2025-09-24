@@ -15,17 +15,17 @@ export default function Posts({ posts }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const body = {
+    const data = {
       post_id: e.target.name,
       caption: caption,
     };
-    await axiosPrivate.put("/feed", body);
+    await axiosPrivate.put("/feed", data);
   }
 
   async function handleClick(e) {
     e.preventDefault();
-    const body = { post_id: e.target.value };
-    axiosPrivate.delete("/feed", body);
+    const data = { post_id: e.target.value };
+    await axiosPrivate.delete("/feed", { data });
   }
 
   function mapPosts() {

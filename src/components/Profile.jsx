@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import CreatePost from "./CreatePost/CreatePost";
 import Posts from "./Posts/Posts";
 import Follows from "./User/Follows";
 import UserSearch from "./User/UserSearch";
@@ -39,6 +40,7 @@ export default function Profile() {
 
   return (
     <>
+      <CreatePost />
       <Posts posts={posts} />
       <UserSearch />
       <Follows />

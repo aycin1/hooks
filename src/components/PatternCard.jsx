@@ -1,56 +1,29 @@
-import { useEffect, useState } from "react";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import useFetchPattern from "../hooks/useFetchPattern";
 import RenderDropdown from "./RenderDropdown/RenderDropdown";
 import Thumbnail from "./Thumbnail";
 
-export default function PatternCard({ patternID, thumbnailOptions }) {
-  const [patternInfo, setPatternInfo] = useState();
-  const axiosPrivate = useAxiosPrivate();
-
-  useEffect(() => {
-    let isMounted = true;
-    const controller = new AbortController();
-
-    async function getPattern() {
-      try {
-        const response = await axiosPrivate.get(
-          `/patterns/filter/${patternID}`,
-          {
-            signal: controller.signal,
-          }
-        );
-
-        isMounted && setPatternInfo(response?.data?.pattern || response?.data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
-    getPattern();
-
-    return () => {
-      isMounted = false;
-      controller.abort();
-    };
-  }, []);
+export default function PatternCard({
+  patternID,
+  thumbnailOptions,
+  thumbnailOnly,
+}) {
+  const pattern = useFetchPattern(patternID);
 
   return (
     <div>
       <div>
-        <h5>{patternInfo?.name}</h5>
+        {thumbnailOnly ? "" : <h5>{pattern?.name}</h5>}
         <div className="thumbnailContainer">
-          <Thumbnail
-            pattern={patternInfo}
-            urlSize={thumbnailOptions.url}
-            style={thumbnailOptions.style}
-            maxHeight={thumbnailOptions.maxHeight}
-            withLink={thumbnailOptions.withLink}
-          />
+          <Thumbnail pattern={pattern} thumbnailOptions={thumbnailOptions} />
         </div>
       </div>
-      <div className="dropdownContainer">
-        <RenderDropdown patternID={patternID} />
-      </div>
+      {thumbnailOnly ? (
+        ""
+      ) : (
+        <div className="dropdownContainer">
+          <RenderDropdown patternID={patternID} />
+        </div>
+      )}
     </div>
   );
 }

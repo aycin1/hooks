@@ -4,28 +4,30 @@ import useAuth from "../../hooks/useAuth";
 import PatternCard from "../PatternCard";
 import Comments from "./Comments";
 import Likes from "./Likes";
-// import RenderImage from "";
+import RenderImage from "./RenderImage";
 
 export default function Post({ post }) {
   const { auth } = useAuth();
   const [showComments, setShowComments] = useState(false);
+  const thumbnailOptions = {
+    urlSize: "thumbnail_url",
+    style: {
+      width: "100%",
+      height: "auto",
+      maxWidth: "70px",
+    },
+    maxHeight: "70px",
+    withLink: true,
+  };
 
   return (
     <div className="postContainer">
-      {/* <RenderImage postID={post.post_id} /> */}
+      <RenderImage postID={post.post_id} updatedAt={post.timestamp} />
       <div className="patternCardContainer">
         <PatternCard
           patternID={post.pattern_id}
-          thumbnailOptions={{
-            url: "thumbnail_url",
-            style: {
-              width: "100%",
-              height: "auto",
-              maxWidth: "70px",
-            },
-            maxHeight: "70px",
-            withLink: true,
-          }}
+          thumbnailOptions={thumbnailOptions}
+          thumbnailOnly={false}
         />
       </div>
       <p className="caption">{post.caption}</p>

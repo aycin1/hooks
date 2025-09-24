@@ -5,7 +5,7 @@ import CreatePatterns from "./../CreatePatterns";
 export default function DisplayPatterns({ chosenList }) {
   const { lists } = useLists();
   const thumbnailOptions = {
-    url: "medium_url",
+    urlSize: "medium_url",
     style: {
       width: "100%",
       height: "auto",
@@ -24,6 +24,7 @@ export default function DisplayPatterns({ chosenList }) {
         <CreatePatterns
           list={lists[chosenList]}
           thumbnailOptions={thumbnailOptions}
+          thumbnailOnly={false}
         />
       </div>
     </div>

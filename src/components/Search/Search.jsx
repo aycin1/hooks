@@ -25,7 +25,7 @@ export default function Search() {
   }
 
   const thumbnailOptions = {
-    url: "medium_url",
+    urlSize: "medium_url",
     style: {
       width: "100%",
       height: "auto",
@@ -55,11 +55,13 @@ export default function Search() {
           <CreatePatterns
             list={searchResults}
             thumbnailOptions={thumbnailOptions}
+            thumbnailOnly={false}
           />
         ) : randomiser ? (
           <CreatePatterns
             list={randomiser}
             thumbnailOptions={thumbnailOptions}
+            thumbnailOnly={false}
           />
         ) : (
           "Fetching patterns"
