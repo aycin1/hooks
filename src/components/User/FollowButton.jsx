@@ -37,12 +37,10 @@ export default function FollowButton({ username }) {
           "/users/",
           JSON.stringify({ following_user: username })
         );
-        return response;
       } else if (isFollowing) {
         response = await axiosPrivate.delete("/users/", {
           data: JSON.stringify({ unfollowing_user: username }),
         });
-        return response;
       }
       if (response?.data?.message) {
         setMessage(response.data.message);

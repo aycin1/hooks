@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Layout from "./components/Layout";
 import Lists from "./components/Lists/Lists";
 import Login from "./components/Login";
+import PatternPage from "./components/PatternPage";
 import Profile from "./components/Profile";
 import Register from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
@@ -23,8 +24,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/lists" element={<Lists />} />
             <Route path="/search" element={<Search />} />
-
-            {/* <Route path="/pattern/:id" element={<Pattern />} /> */}
+            <Route path="/pattern/:id" element={<PatternPage />} />
             <Route path="/feed" element={<Feed />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/user/:username" element={<User />} />

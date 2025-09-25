@@ -11,8 +11,6 @@ export default function Thumbnail({ pattern, thumbnailOptions }) {
         src={photoUrl}
         key={pattern.id}
         style={style}
-        width={0}
-        height={0}
         sizes="100vw"
         alt={`Image of pattern ${pattern.id}`}
       />

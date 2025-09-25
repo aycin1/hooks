@@ -19,11 +19,14 @@ export default function CreateList({ list, listTitle }) {
     <div className="listCardContainer">
       <h3>{listTitle}</h3>
       {list.length ? (
-        <CreatePatterns
-          list={list}
-          thumbnailOptions={thumbnailOptions}
-          thumbnailOnly={false}
-        />
+        <>
+          <CreatePatterns
+            list={list}
+            thumbnailOptions={thumbnailOptions}
+            thumbnailOnly={false}
+          />
+          <Link to="/search">Add more patterns!</Link>
+        </>
       ) : (
         <Link to="/search">
           this list is empty, click here to search patterns!
