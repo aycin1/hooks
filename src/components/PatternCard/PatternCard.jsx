@@ -1,6 +1,6 @@
-import useFetchPattern from "../hooks/useFetchPattern";
-import RenderDropdown from "./RenderDropdown/RenderDropdown";
-import Thumbnail from "./Thumbnail";
+import useFetchPattern from "../../hooks/useFetchPattern";
+import RenderDropdown from "../RenderDropdown/RenderDropdown";
+import Thumbnail from "../Thumbnail/Thumbnail";
 
 export default function PatternCard({
   patternID,

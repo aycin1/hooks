@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import useAuth from "../../hooks/useAuth";
-import PatternCard from "../PatternCard";
+import PatternCard from "../PatternCard/PatternCard";
 import Comments from "./Comments";
 import Likes from "./Likes";
 import RenderImage from "./RenderImage";

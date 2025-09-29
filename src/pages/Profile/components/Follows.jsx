@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import UserLink from "./UserLink";
+import UserLink from "../../../components/UserLink/UserLink";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
 export default function Follows() {
   const axiosPrivate = useAxiosPrivate();

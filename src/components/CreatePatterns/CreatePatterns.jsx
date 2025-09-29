@@ -1,4 +1,4 @@
-import PatternCard from "../PatternCard";
+import PatternCard from "../PatternCard/PatternCard";
 
 export default function CreatePatterns({ list, thumbnailOptions }) {
   function mapLists() {

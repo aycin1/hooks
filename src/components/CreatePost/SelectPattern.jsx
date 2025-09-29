@@ -1,5 +1,5 @@
-import PatternCard from "../PatternCard";
-import useLists from "./../../hooks/useLists";
+import useLists from "../../hooks/useLists";
+import PatternCard from "../PatternCard/PatternCard";
 
 export default function SelectPattern({ setChosenPatternID }) {
   const lists = useLists();

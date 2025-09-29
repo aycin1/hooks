@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import CreatePost from "../../components/CreatePost/CreatePost";
 import Posts from "../../components/Posts/Posts";
-import Follows from "../../components/UserSearch/Follows";
 import UserSearch from "../../components/UserSearch/UserSearch";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import Follows from "./components/Follows";
 
 export default function Profile() {
   const [posts, setPosts] = useState();

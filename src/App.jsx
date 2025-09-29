@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router";
 import "./App.css";
 import Layout from "./components/Layout";
-import Register from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
 import Feed from "./pages/Feed/Feed";
 import Home from "./pages/Home/Home";
@@ -9,6 +8,7 @@ import Lists from "./pages/Lists/Lists";
 import Login from "./pages/Login/Login";
 import Pattern from "./pages/Pattern/Pattern";
 import Profile from "./pages/Profile/Profile";
+import Register from "./pages/Register/Register";
 import Search from "./pages/Search/Search";
 import User from "./pages/User/User";
 

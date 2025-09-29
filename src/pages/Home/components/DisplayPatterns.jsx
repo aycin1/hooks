@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import CreatePatterns from "../../../components/CreatePatterns";
+import CreatePatterns from "../../../components/CreatePatterns/CreatePatterns";
 import useLists from "../../../hooks/useLists";
 
 export default function DisplayPatterns({ chosenList }) {

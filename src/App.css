@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: rgba(200, 233, 209, 0.815);
 }
 
 .App {
@@ -10,8 +11,8 @@
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  min-height: 100vh;
-  padding: 1rem 0.5rem;
+  padding: 1rem 7rem;
+  color: #114e09;
 }
 
 .instructions > svg {
@@ -39,21 +40,6 @@
 
 .card {
   padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-.headerContainer {
-  display: flex;
-  align-items: center;
-}
-
-.headerLinks {
-  display: flex;
-  padding-left: 40vh;
-  gap: 5vh;
 }
 
 .patternCardWrapper {
