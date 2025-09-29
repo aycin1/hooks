@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { axiosPrivate } from "../../api/axios";
-import CreatePatterns from "../CreatePatterns";
+import CreatePatterns from "../../components/CreatePatterns/CreatePatterns";
 
 export default function Search() {
   const [randomiser, setRandomiser] = useState();

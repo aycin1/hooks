@@ -1,8 +1,9 @@
 import { useParams } from "react-router";
-import useFetchPattern from "../hooks/useFetchPattern";
-import Thumbnail from "./Thumbnail";
+import RenderDropdown from "../../components/RenderDropdown/RenderDropdown";
+import Thumbnail from "../../components/Thumbnail/Thumbnail";
+import useFetchPattern from "../../hooks/useFetchPattern";
 
-export default function PatternPage() {
+export default function Pattern() {
   const { id } = useParams();
   const pattern = useFetchPattern(id);
 
@@ -74,6 +75,7 @@ export default function PatternPage() {
     <div>
       <h3>{properties?.name}</h3>
       {linkToPattern()}
+      <RenderDropdown patternID={id} />
       <Thumbnail pattern={pattern} thumbnailOptions={thumbnailOptions} />
       <div dangerouslySetInnerHTML={{ __html: properties?.notes }} />
     </div>

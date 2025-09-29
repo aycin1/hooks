@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router";
-import axios from "../api/axios";
-import useAuth from "../hooks/useAuth";
-
-const LOGIN_ENDPOINT = "/login";
+import axios from "../../api/axios";
+import useAuth from "../../hooks/useAuth";
 
 export default function Login() {
   const { setAuth } = useAuth();
@@ -24,7 +22,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        LOGIN_ENDPOINT,
+        "/login",
         JSON.stringify({ username, password }),
         {
           headers: {

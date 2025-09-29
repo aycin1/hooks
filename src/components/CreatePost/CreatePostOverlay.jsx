@@ -46,7 +46,8 @@ export default function CreatePostOverlay({ isClicked }) {
             Select a pattern (from your lists) to link your post to
           </p>
 
-          <SelectPattern
+          <SelectPatte
+            rn
             isClicked={isClicked}
             setChosenPatternID={setChosenPatternID}
           />

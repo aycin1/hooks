@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import UserLink from "./UserLink";
+import UserLink from "../UserLink/UserLink";
 
 export default function UserSearch() {
   const [searchField, setSearchField] = useState();

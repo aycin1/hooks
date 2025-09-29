@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import useAuth from "../../hooks/useAuth";
-import FollowButton from "./FollowButton";
+import FollowButton from "../FollowButton/FollowButton";
 
 export default function UserLink({ foundUser }) {
   const { auth } = useAuth();

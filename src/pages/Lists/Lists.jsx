@@ -1,5 +1,5 @@
 import useLists from "../../hooks/useLists";
-import CreateList from "./CreateList";
+import CreateList from "./components/CreateList";
 
 export default function Lists() {
   const lists = useLists();

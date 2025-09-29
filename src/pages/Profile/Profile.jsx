@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import CreatePost from "../../components/CreatePost/CreatePost";
+import Posts from "../../components/Posts/Posts";
+import Follows from "../../components/UserSearch/Follows";
+import UserSearch from "../../components/UserSearch/UserSearch";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import Posts from "../Posts/Posts";
-import FollowButton from "./FollowButton";
-import UserSearch from "./UserSearch";
 
-export default function User() {
-  const { username } = useParams();
+export default function Profile() {
   const [posts, setPosts] = useState();
   const axiosPrivate = useAxiosPrivate();
 
@@ -16,9 +15,10 @@ export default function User() {
 
     async function getPosts() {
       try {
-        const response = await axiosPrivate.get(`/users/posts/${username}`, {
+        const response = await axiosPrivate.get(`/users`, {
           signal: controller.signal,
         });
+
         isMounted && setPosts(response?.data?.posts);
       } catch (err) {
         console.log(err);
@@ -31,14 +31,14 @@ export default function User() {
       isMounted = false;
       controller.abort();
     };
-  }, [username]);
+  }, []);
 
   return (
     <>
-      <UserSearch />
-      {username}
-      <FollowButton username={username} />
+      <CreatePost />
       <Posts posts={posts} />
+      <UserSearch />
+      <Follows />
     </>
   );
 }

@@ -18,7 +18,7 @@ export function ListsProvider({ children }) {
     }
 
     getLists();
-  }, []);
+  }, [axiosPrivate, children]);
 
   return (
     <ListsContext.Provider value={lists}>{children}</ListsContext.Provider>

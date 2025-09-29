@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import CreatePatterns from "../CreatePatterns";
+import CreatePatterns from "../../../components/CreatePatterns/CreatePatterns";
 
 export default function CreateList({ list, listTitle }) {
   const thumbnailOptions = {

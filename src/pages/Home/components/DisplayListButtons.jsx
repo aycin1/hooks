@@ -1,4 +1,4 @@
-import useLists from "../../hooks/useLists";
+import useLists from "../../../hooks/useLists";
 import ListButtons from "./ListButtons";
 
 export default function DisplayListButtons({ setChosenList }) {

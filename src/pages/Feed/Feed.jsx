@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import CreatePost from "./CreatePost/CreatePost";
-import Posts from "./Posts/Posts";
-import Follows from "./User/Follows";
-import UserSearch from "./User/UserSearch";
+import CreatePost from "../../components/CreatePost/CreatePost";
+import Posts from "../../components/Posts/Posts";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-export default function Profile() {
-  const [posts, setPosts] = useState();
+export default function Feed() {
   const axiosPrivate = useAxiosPrivate();
+  const [posts, setPosts] = useState();
 
   useEffect(() => {
     let isMounted = true;
@@ -15,11 +13,10 @@ export default function Profile() {
 
     async function getPosts() {
       try {
-        const response = await axiosPrivate.get(`/users`, {
+        const response = await axiosPrivate.get("/feed", {
           signal: controller.signal,
         });
-
-        isMounted && setPosts(response?.data?.posts);
+        isMounted && setPosts(response?.data?.searchPosts);
       } catch (err) {
         console.log(err);
       }
@@ -37,8 +34,6 @@ export default function Profile() {
     <>
       <CreatePost />
       <Posts posts={posts} />
-      <UserSearch />
-      <Follows />
     </>
   );
 }

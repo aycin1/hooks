@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import useLists from "../../hooks/useLists";
+import useLists from "../../../hooks/useLists";
 import DisplayListButtons from "./DisplayListButtons";
 import DisplayPatterns from "./DisplayPatterns";
 
