@@ -18,5 +18,5 @@ export default function DisplayListButtons({ setChosenList }) {
     );
   });
 
-  return <div className="listButtonsContainer">{getListButtons}</div>;
+  return <div>{getListButtons}</div>;
 }

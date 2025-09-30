@@ -14,7 +14,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #4e774c;
+  color: #6dad69;
 }
 
 body {
@@ -56,5 +56,4 @@ input {
   border-radius: 5px;
   border-color: rgb(59, 129, 68);
   border-width: 0.02em;
-  width: 40vh;
 }

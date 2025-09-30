@@ -11,12 +11,8 @@ export default function PatternCard({
 
   return (
     <div>
-      <div>
-        {thumbnailOnly ? "" : <h5>{pattern?.name}</h5>}
-        <div className="thumbnailContainer">
-          <Thumbnail pattern={pattern} thumbnailOptions={thumbnailOptions} />
-        </div>
-      </div>
+      {thumbnailOnly ? "" : <h5>{pattern?.name}</h5>}
+      <Thumbnail pattern={pattern} thumbnailOptions={thumbnailOptions} />
       {thumbnailOnly ? (
         ""
       ) : (

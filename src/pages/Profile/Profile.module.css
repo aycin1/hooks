@@ -1,0 +1,57 @@
+.profile {
+  width: 100cap;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2vh;
+  /* justify-content: space-between; */
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.topContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15vh;
+  padding-right: 15vh;
+  background-color: rgba(228, 245, 220, 0.486);
+  border-radius: 8px;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+}
+
+.posts {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(224, 245, 212, 0.644);
+  border-radius: 8px;
+  margin-right: 5vh;
+  padding: 2vh;
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(165, 216, 186);
+  min-height: max-content;
+  padding: 2vh;
+  border-radius: 8px;
+  min-width: fit-content;
+}
+
+.follows {
+  display: flex;
+}
+
+.followers {
+  margin-right: 5px;
+  font-size: medium;
+}
+
+.following {
+  font-size: medium;
+}

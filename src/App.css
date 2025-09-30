@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   background-color: rgba(200, 233, 209, 0.815);
 }
@@ -9,7 +9,7 @@
 .App {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   padding: 1rem 7rem;
   color: #114e09;
@@ -40,17 +40,4 @@
 
 .card {
   padding: 2em;
-}
-
-.patternCardWrapper {
-  width: 80cap;
-  display: flex;
-  flex-direction: row;
-  overflow-x: scroll;
-  align-items: end;
-}
-
-.patternCard {
-  padding-left: 2vh;
-  padding-right: 2vh;
 }

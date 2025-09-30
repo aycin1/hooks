@@ -1,5 +1,6 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import CreatePatterns from "../../../components/CreatePatterns/CreatePatterns";
+import styles from "../Lists.module.css";
 
 export default function CreateList({ list, listTitle }) {
   const thumbnailOptions = {
@@ -16,21 +17,25 @@ export default function CreateList({ list, listTitle }) {
   };
 
   return (
-    <div className="listCardContainer">
-      <h3>{listTitle}</h3>
+    <div className={styles.listCards}>
+      <h2 className={styles.listTitle}>{listTitle}</h2>
       {list.length ? (
-        <>
-          <CreatePatterns
-            list={list}
-            thumbnailOptions={thumbnailOptions}
-            thumbnailOnly={false}
-          />
-          <Link to="/search">Add more patterns!</Link>
-        </>
+        <div className={styles.listCard}>
+          <div className={styles.patternCards}>
+            <CreatePatterns
+              list={list}
+              thumbnailOptions={thumbnailOptions}
+              thumbnailOnly={false}
+            />
+          </div>
+          <NavLink to="/search" className={styles.searchLink}>
+            add more patterns!
+          </NavLink>
+        </div>
       ) : (
-        <Link to="/search">
+        <NavLink to="/search">
           this list is empty, click here to search patterns!
-        </Link>
+        </NavLink>
       )}
     </div>
   );

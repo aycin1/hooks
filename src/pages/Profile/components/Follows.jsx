@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import UserLink from "../../../components/UserLink/UserLink";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
+import styles from "../Profile.module.css";
 
 export default function Follows() {
   const axiosPrivate = useAxiosPrivate();
@@ -46,19 +47,19 @@ export default function Follows() {
 
   return (
     <div>
-      <div className="followsContainer">
+      <div className={styles.follows}>
         <form name="followers" onSubmit={handleSubmit}>
-          <button className="" type="submit">
+          <button className={styles.followers} type="submit">
             {JSON.stringify(followerCount) + " followers"}
           </button>
         </form>
         <form name="following" onSubmit={handleSubmit}>
-          <button className="" type="submit">
+          <button className={styles.following} type="submit">
             {JSON.stringify(followingCount) + " following"}
           </button>
         </form>
       </div>
-      <div className="users">{users ? mapUsers() : ""}</div>
+      <div className={styles.users}>{users ? mapUsers() : ""}</div>
     </div>
   );
 }

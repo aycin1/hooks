@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import styles from "./Posts.module.css";
 
 export default function Likes({ postID }) {
   const axiosPrivate = useAxiosPrivate();
@@ -45,7 +46,7 @@ export default function Likes({ postID }) {
   }
 
   return (
-    <button className="likeButton" onClick={() => handleClick()}>
+    <button className={styles.likeButton} onClick={() => handleClick()}>
       {likes.length ? likes.length : 0}
     </button>
   );

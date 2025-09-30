@@ -1,0 +1,31 @@
+.listCards {
+  padding-top: 5vh;
+}
+
+.listCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.patternCards {
+  width: 85cap;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  align-items: end;
+  padding-bottom: 2vh;
+}
+
+.searchLink {
+  margin-top: 2vh;
+  align-self: end;
+  padding: 1vh 4vh;
+  border: 2px double #6ec090;
+  border-radius: 8px;
+}
+
+.listTitle {
+  background-color: rgba(245, 245, 220, 0.486);
+  border-radius: 8px;
+  padding: 2vh;
+}

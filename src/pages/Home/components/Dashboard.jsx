@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import useLists from "../../../hooks/useLists";
+import styles from "../Home.module.css";
 import DisplayListButtons from "./DisplayListButtons";
 import DisplayPatterns from "./DisplayPatterns";
 
@@ -9,7 +10,7 @@ export default function Dashboard() {
   const lists = useLists();
 
   return (
-    <div className="dashboardContainer">
+    <div className={styles.dashboard}>
       <DisplayListButtons setChosenList={setChosenList} />
       {lists?.[chosenList]?.length ? (
         <DisplayPatterns chosenList={chosenList} />

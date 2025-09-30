@@ -6,13 +6,11 @@
 
 .linksContainer {
   padding-left: 30vh;
-  flex-grow: 1;
 }
 
 .name {
   font-weight: 800;
   font-size: larger;
-  flex-grow: 3;
 }
 
 .links {

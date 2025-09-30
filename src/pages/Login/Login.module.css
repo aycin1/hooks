@@ -19,3 +19,7 @@
 .button {
   margin: 2em;
 }
+
+input {
+  width: 30vh;
+}

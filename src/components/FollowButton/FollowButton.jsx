@@ -52,10 +52,12 @@ export default function FollowButton({ username }) {
 
   return (
     <>
-      <button className="followButton" onClick={(e) => handleClick(e)}>
+      <button
+        style={{ fontSize: "smaller", marginLeft: "10px" }}
+        onClick={(e) => handleClick(e)}
+      >
         {buttonText}
       </button>
-      {message}
     </>
   );
 }

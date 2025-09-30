@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { axiosPrivate } from "../../api/axios";
 import CreatePatterns from "../../components/CreatePatterns/CreatePatterns";
+import PatternSearch from "./components/PatternSearch";
+import styles from "./Search.module.css";
 
 export default function Search() {
   const [randomiser, setRandomiser] = useState();
   const [searchResults, setSearchResults] = useState();
-  const [searchField, setSearchField] = useState();
 
   useEffect(() => {
     async function fetchRandoms() {
@@ -16,61 +17,45 @@ export default function Search() {
     fetchRandoms();
   }, []);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    try {
-      const response = await axiosPrivate.get(
-        `/patterns/refine/query=${searchField}`
-      );
-      setSearchResults(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   const thumbnailOptions = {
     urlSize: "medium_url",
     style: {
       width: "100%",
       height: "auto",
-      maxWidth: "250px",
-      minWidth: "250px",
+      maxWidth: "200px",
+      minHeight: "200px",
+      minWidth: "200px",
       overflow: "hidden",
-      margin: "-30px -10px -20px -20px",
+      padding: "10px",
     },
-    maxHeight: "250px",
+    maxHeight: "200px",
     withLink: true,
   };
 
   return (
-    <div>
-      <div className="formContainer">
-        <form onSubmit={handleSubmit}>
-          <input
-            className="input"
-            placeholder="Search for patterns!"
-            onChange={(e) => setSearchField(e.target.value)}
-          ></input>
-          <button className="searchButton">Search</button>
-        </form>
-      </div>
-      <div className="resultsContainer">
+    <>
+      <PatternSearch setSearchResults={setSearchResults} />
+      <div className={styles.searchResults}>
         {searchResults ? (
-          <CreatePatterns
-            list={searchResults}
-            thumbnailOptions={thumbnailOptions}
-            thumbnailOnly={false}
-          />
+          <div className={styles.patterns}>
+            <CreatePatterns
+              list={searchResults}
+              thumbnailOptions={thumbnailOptions}
+              thumbnailOnly={false}
+            />
+          </div>
         ) : randomiser ? (
-          <CreatePatterns
-            list={randomiser}
-            thumbnailOptions={thumbnailOptions}
-            thumbnailOnly={false}
-          />
+          <div className={styles.patterns}>
+            <CreatePatterns
+              list={randomiser}
+              thumbnailOptions={thumbnailOptions}
+              thumbnailOnly={false}
+            />
+          </div>
         ) : (
           "Fetching patterns"
         )}
       </div>
-    </div>
+    </>
   );
 }

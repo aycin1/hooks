@@ -1,0 +1,20 @@
+.userSearch {
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: fit-content;
+  margin-right: 5px;
+}
+
+.button {
+  padding: 1px 8px;
+  font-size: small;
+}
+
+.form {
+  display: flex;
+  padding-bottom: 10px;
+}

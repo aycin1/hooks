@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import PatternCard from "../PatternCard/PatternCard";
 import Comments from "./Comments";
+import EditAndDeleteButtons from "./EditAndDeleteButtons";
 import Likes from "./Likes";
+import styles from "./Posts.module.css";
 import RenderImage from "./RenderImage";
 
 export default function Post({ post }) {
@@ -21,32 +23,42 @@ export default function Post({ post }) {
   };
 
   return (
-    <div className="postContainer">
-      <RenderImage postID={post.post_id} />
-      <div className="patternCardContainer">
-        <PatternCard
-          patternID={post.pattern_id}
-          thumbnailOptions={thumbnailOptions}
-          thumbnailOnly={false}
-        />
-      </div>
-      <p className="caption">{post.caption}</p>
-      <div className="username">
-        {post.username === auth.username ? (
-          <Link to={"/profile"}>{post.username}</Link>
-        ) : (
-          <Link to={`/user/${post.username}`}>{post.username}</Link>
-        )}
+    <>
+      <div className={styles.topContainer}>
+        <RenderImage postID={post.post_id} />
+        <div className={styles.side}>
+          <EditAndDeleteButtons
+            username={post.username}
+            postID={post.post_id}
+          />
+          <PatternCard
+            patternID={post.pattern_id}
+            thumbnailOptions={thumbnailOptions}
+            thumbnailOnly={false}
+          />
+          {post.username === auth.username ? (
+            <NavLink to={"/profile"} className={styles.username}>
+              {post.username}
+            </NavLink>
+          ) : (
+            <NavLink to={`/user/${post.username}`} className={styles.username}>
+              {post.username}
+            </NavLink>
+          )}
+        </div>
+        <p className={styles.caption}>{post.caption}</p>{" "}
       </div>
 
-      <Likes postID={post.post_id} />
-      <button
-        className="commentsButton"
-        onClick={() => setShowComments((oldValue) => !oldValue)}
-      >
-        Comments
-      </button>
-      {showComments ? <Comments postID={post.post_id} /> : ""}
-    </div>
+      <div>
+        <Likes postID={post.post_id} />
+        <button
+          className={styles.toggleCommentButton}
+          onClick={() => setShowComments((oldValue) => !oldValue)}
+        >
+          Comments
+        </button>
+        {showComments ? <Comments postID={post.post_id} /> : ""}
+      </div>
+    </>
   );
 }
