@@ -98,15 +98,16 @@ export default function RegistrationForm() {
         Email address:
         <FontAwesomeIcon
           icon={faCheck}
-          className={validEmail ? "valid" : "hide"}
+          className={validEmail ? styles.valid : styles.hide}
         />
         <FontAwesomeIcon
           icon={faTimes}
-          className={validEmail || !email ? "hide" : "invalid"}
+          className={validEmail || !email ? styles.hide : styles.invalid}
         />
       </label>
       <input
         id="email"
+        className={styles.input}
         type="text"
         value={email}
         ref={userRef}
@@ -118,7 +119,9 @@ export default function RegistrationForm() {
       />
       <p
         className={
-          emailFocus && email && !validEmail ? "instructions" : "offscreen"
+          emailFocus && email && !validEmail
+            ? styles.instructions
+            : styles.offscreen
         }
       >
         <FontAwesomeIcon icon={faInfoCircle} />
@@ -131,15 +134,16 @@ export default function RegistrationForm() {
         Username:
         <FontAwesomeIcon
           icon={faCheck}
-          className={validName ? "valid" : "hide"}
+          className={validName ? styles.valid : styles.hide}
         />
         <FontAwesomeIcon
           icon={faTimes}
-          className={validName || !username ? "hide" : "invalid"}
+          className={validName || !username ? styles.hide : styles.invalid}
         />
       </label>
       <input
         id="username"
+        className={styles.input}
         type="text"
         value={username}
         ref={userRef}
@@ -151,13 +155,15 @@ export default function RegistrationForm() {
       />
       <p
         className={
-          userFocus && username && !validName ? "instructions" : "offscreen"
+          userFocus && username && !validName
+            ? styles.instructions
+            : styles.offscreen
         }
       >
         <FontAwesomeIcon icon={faInfoCircle} />
-        Username must be between 5 and 23 characters
+        Username must be between 5 and 23 characters.
         <br />
-        Must begin with a letter
+        Must begin with a letter.
         <br />
         Only letters, numbers, underscores, and hyphens allowed.
       </p>
@@ -168,15 +174,16 @@ export default function RegistrationForm() {
         Password:
         <FontAwesomeIcon
           icon={faCheck}
-          className={validPwd ? "valid" : "hide"}
+          className={validPwd ? styles.valid : styles.hide}
         />
         <FontAwesomeIcon
           icon={faTimes}
-          className={validPwd || !password ? "hide" : "invalid"}
+          className={validPwd || !password ? styles.hide : styles.invalid}
         />
       </label>
       <input
         id="password"
+        className={styles.input}
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
@@ -184,13 +191,16 @@ export default function RegistrationForm() {
         onFocus={() => setPwdFocus(true)}
         onBlur={() => setPwdFocus(false)}
       />
-      <p className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+      <p
+        className={
+          pwdFocus && !validPwd ? styles.instructions : styles.offscreen
+        }
+      >
         <FontAwesomeIcon icon={faInfoCircle} />
-        Password must be between 8 and 24 characters
+        Password must be between 8 and 24 characters.
         <br />
-        Must contain uppercase and lowercase letters, a number,
-        <br />
-        and a special character (*^!%$@&)
+        Must contain uppercase and lowercase letters,
+        <br />a number, and a special character (*^!%$@&).
       </p>
 
       {/*  */}
@@ -199,15 +209,16 @@ export default function RegistrationForm() {
         Confirm password:
         <FontAwesomeIcon
           icon={faCheck}
-          className={validConfirm && pwdConfirm ? "valid" : "hide"}
+          className={validConfirm && pwdConfirm ? styles.valid : styles.hide}
         />
         <FontAwesomeIcon
           icon={faTimes}
-          className={validConfirm || !pwdConfirm ? "hide" : "invalid"}
+          className={validConfirm || !pwdConfirm ? styles.hide : styles.invalid}
         />
       </label>
       <input
         id="password_confirm"
+        className={styles.input}
         type="password"
         value={pwdConfirm}
         onChange={(e) => setPwdConfirm(e.target.value)}
@@ -216,7 +227,9 @@ export default function RegistrationForm() {
         onBlur={() => setConfirmFocus(false)}
       />
       <p
-        className={confirmFocus && !validConfirm ? "instructions" : "offscreen"}
+        className={
+          confirmFocus && !validConfirm ? styles.instructions : styles.offscreen
+        }
       >
         <FontAwesomeIcon icon={faInfoCircle} />
         Passwords must match
@@ -224,7 +237,7 @@ export default function RegistrationForm() {
 
       {/*  */}
 
-      <p ref={errorRef} className={errorMsg ? "error-msg" : "offscreen"}>
+      <p ref={errorRef} className={errorMsg ? "error-msg" : styles.offscreen}>
         {errorMsg}
       </p>
 

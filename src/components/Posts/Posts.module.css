@@ -27,10 +27,6 @@
   align-self: end;
 }
 
-.input {
-  width: fit-content;
-}
-
 .toggleInputButton {
   padding: 0.3vh 1vh;
   font-size: smaller;

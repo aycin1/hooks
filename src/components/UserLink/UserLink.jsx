@@ -1,17 +1,18 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import FollowButton from "../FollowButton/FollowButton";
+import styles from "./UserLink.module.css";
 
 export default function UserLink({ foundUser }) {
   const { auth } = useAuth();
 
   return (
-    <div className="userLinkContainer">
+    <div className={styles.userLink}>
       {foundUser === auth.username ? (
-        <Link to="/profile">{foundUser}</Link>
+        <NavLink to="/profile">{foundUser}</NavLink>
       ) : (
         <>
-          <Link to={`/user/${foundUser}`}>{foundUser}</Link>
+          <NavLink to={`/user/${foundUser}`}>{foundUser}</NavLink>
           <FollowButton username={foundUser} />
         </>
       )}

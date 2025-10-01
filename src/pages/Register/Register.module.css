@@ -1,6 +1,7 @@
 .register {
   display: flex;
   flex-direction: column;
+  width: fit-content;
   justify-content: space-evenly;
 }
 
@@ -20,4 +21,32 @@
 
 .button {
   margin: 1.2em;
+}
+
+.input {
+  width: 22rem;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.instructions {
+  /* margin-right: 0.25rem; */
+  font-size: smaller;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
 }

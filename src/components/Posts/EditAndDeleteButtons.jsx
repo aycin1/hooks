@@ -5,7 +5,11 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import styles from "./Posts.module.css";
 
-export default function EditAndDeleteButtons({ username, postID }) {
+export default function EditAndDeleteButtons({
+  username,
+  postID,
+  currentCaption,
+}) {
   const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const [caption, setCaption] = useState("");
@@ -44,7 +48,7 @@ export default function EditAndDeleteButtons({ username, postID }) {
         {showInput ? (
           <input
             type="text"
-            className={styles.input}
+            placeholder={currentCaption || "edit caption..."}
             onChange={(e) => setCaption(e.target.value)}
           ></input>
         ) : (

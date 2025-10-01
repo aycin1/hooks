@@ -24,13 +24,14 @@ export default function Post({ post }) {
 
   return (
     <>
+      <EditAndDeleteButtons
+        username={post.username}
+        postID={post.post_id}
+        currentCaption={post.caption}
+      />
       <div className={styles.topContainer}>
         <RenderImage postID={post.post_id} />
         <div className={styles.side}>
-          <EditAndDeleteButtons
-            username={post.username}
-            postID={post.post_id}
-          />
           <PatternCard
             patternID={post.pattern_id}
             thumbnailOptions={thumbnailOptions}
@@ -46,9 +47,8 @@ export default function Post({ post }) {
             </NavLink>
           )}
         </div>
-        <p className={styles.caption}>{post.caption}</p>{" "}
       </div>
-
+      <p className={styles.caption}>{post.caption}</p>
       <div>
         <Likes postID={post.post_id} />
         <button

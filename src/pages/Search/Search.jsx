@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { axiosPrivate } from "../../api/axios";
 import CreatePatterns from "../../components/CreatePatterns/CreatePatterns";
 import PatternSearch from "./components/PatternSearch";
+import RefineSearch from "./components/RefineSearch";
 import styles from "./Search.module.css";
 
 export default function Search() {
@@ -34,6 +35,7 @@ export default function Search() {
 
   return (
     <>
+      <RefineSearch />
       <PatternSearch setSearchResults={setSearchResults} />
       <div className={styles.searchResults}>
         {searchResults ? (
