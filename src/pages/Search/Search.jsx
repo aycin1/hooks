@@ -8,6 +8,7 @@ import styles from "./Search.module.css";
 export default function Search() {
   const [randomiser, setRandomiser] = useState();
   const [searchResults, setSearchResults] = useState();
+  const [refineOptions, setRefineOptions] = useState([]);
 
   useEffect(() => {
     async function fetchRandoms() {
@@ -35,8 +36,11 @@ export default function Search() {
 
   return (
     <>
-      <RefineSearch />
-      <PatternSearch setSearchResults={setSearchResults} />
+      <RefineSearch setRefineOptions={setRefineOptions} />
+      <PatternSearch
+        setSearchResults={setSearchResults}
+        refineOptions={refineOptions}
+      />
       <div className={styles.searchResults}>
         {searchResults ? (
           <div className={styles.patterns}>
