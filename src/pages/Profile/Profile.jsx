@@ -34,7 +34,7 @@ export default function Profile() {
       isMounted = false;
       controller.abort();
     };
-  }, []);
+  }, [axiosPrivate]);
 
   return (
     <div className={styles.profile}>

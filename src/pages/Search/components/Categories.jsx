@@ -27,7 +27,9 @@ export default function Categories({ catChecked, setCatChecked }) {
 
     async function fetchCategories() {
       try {
-        const response = await axiosPrivate.get("/patterns/categories");
+        const response = await axiosPrivate.get("/patterns/categories", {
+          signal: controller.signal,
+        });
         isMounted && setCategories(response?.data);
       } catch (error) {
         console.log(error);
@@ -38,7 +40,7 @@ export default function Categories({ catChecked, setCatChecked }) {
       isMounted = false;
       controller.abort();
     };
-  }, []);
+  }, [axiosPrivate]);
 
   function mapCategories(categories) {
     return categories?.map((categoryObj) => {
@@ -59,11 +61,13 @@ export default function Categories({ catChecked, setCatChecked }) {
       {categories && (
         <CheckboxTree
           nodes={mapCategories(categories)}
-          onlyLeafCheckboxes={true}
           checked={catChecked}
           expanded={expanded}
           onCheck={(checked) => setCatChecked(checked)}
           onExpand={(expanded) => setExpanded(expanded)}
+          showExpandAll={true}
+          noCascade={true}
+          checkModel="all"
           icons={{
             check: (
               <FontAwesomeIcon

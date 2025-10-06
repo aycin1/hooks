@@ -1,66 +1,52 @@
 import { useEffect, useState } from "react";
 import { axiosPrivate } from "../../api/axios";
-import CreatePatterns from "../../components/CreatePatterns/CreatePatterns";
 import PatternSearch from "./components/PatternSearch";
 import RefineSearch from "./components/RefineSearch";
+import SearchResults from "./components/SearchResults";
 import styles from "./Search.module.css";
 
 export default function Search() {
-  const [randomiser, setRandomiser] = useState();
-  const [searchResults, setSearchResults] = useState();
+  const [userInput, setUserInput] = useState();
   const [refineOptions, setRefineOptions] = useState([]);
+  const [searchResults, setSearchResults] = useState();
 
   useEffect(() => {
-    async function fetchRandoms() {
-      const response = await axiosPrivate.get("/patterns/randomiser");
-      response.data.splice(30);
-      setRandomiser(response.data);
-    }
-    fetchRandoms();
-  }, []);
+    let isMounted = true;
+    const controller = new AbortController();
 
-  const thumbnailOptions = {
-    urlSize: "medium_url",
-    style: {
-      width: "100%",
-      height: "auto",
-      maxWidth: "200px",
-      minHeight: "200px",
-      minWidth: "200px",
-      overflow: "hidden",
-      padding: "10px",
-    },
-    maxHeight: "200px",
-    withLink: true,
-  };
+    async function fetchResults() {
+      try {
+        const params = [refineOptions, { name: "query", value: userInput }];
+        let searchParams = {};
+        params
+          .flatMap((param) => param)
+          .map((param) =>
+            param.value ? (searchParams[param.name] = param.value) : ""
+          );
+
+        const query = new URLSearchParams(searchParams);
+        const response = await axiosPrivate.get(`/patterns/refine/?${query}`, {
+          signal: controller.signal,
+        });
+
+        isMounted && setSearchResults(response?.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchResults();
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, [refineOptions, userInput]);
 
   return (
     <>
       <RefineSearch setRefineOptions={setRefineOptions} />
-      <PatternSearch
-        setSearchResults={setSearchResults}
-        refineOptions={refineOptions}
-      />
+      <PatternSearch setUserInput={setUserInput} />
       <div className={styles.searchResults}>
-        {searchResults ? (
-          <div className={styles.patterns}>
-            <CreatePatterns
-              list={searchResults}
-              thumbnailOptions={thumbnailOptions}
-              thumbnailOnly={false}
-            />
-          </div>
-        ) : randomiser ? (
-          <div className={styles.patterns}>
-            <CreatePatterns
-              list={randomiser}
-              thumbnailOptions={thumbnailOptions}
-              thumbnailOnly={false}
-            />
-          </div>
-        ) : (
-          "Fetching patterns"
-        )}
+        {searchResults && <SearchResults list={searchResults} />}
       </div>
     </>
   );

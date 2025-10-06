@@ -31,7 +31,7 @@ export default function User() {
       isMounted = false;
       controller.abort();
     };
-  }, [username]);
+  }, [username, axiosPrivate]);
 
   return (
     <>

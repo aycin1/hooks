@@ -15,7 +15,7 @@ export default function Follows() {
       setFollowers(response.data.followers);
     }
     getFollowers();
-  }, []);
+  }, [axiosPrivate]);
 
   useEffect(() => {
     async function getFollowings() {
@@ -24,7 +24,7 @@ export default function Follows() {
       setFollowing(response.data.following);
     }
     getFollowings();
-  }, []);
+  }, [axiosPrivate]);
 
   const followersArr = followers.map((follows) => {
     return follows.username;

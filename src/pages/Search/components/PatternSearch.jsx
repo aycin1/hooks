@@ -1,30 +1,23 @@
 import { useState } from "react";
-import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
-export default function PatternSearch({ setSearchResults }) {
+export default function PatternSearch({ setUserInput }) {
   const [searchField, setSearchField] = useState();
-  const axiosPrivate = useAxiosPrivate();
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const response = await axiosPrivate.get(
-        `/patterns/refine/query=${searchField}`
-      );
-      setSearchResults(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+    setUserInput(searchField.split(" ").join("-"));
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       <input
         className="input"
         placeholder="Search for patterns!"
         onChange={(e) => setSearchField(e.target.value)}
       ></input>
-      <button className="searchButton">Search</button>
-    </form>
+      <button className="searchButton" type="submit" onClick={handleSubmit}>
+        Search
+      </button>
+    </>
   );
 }

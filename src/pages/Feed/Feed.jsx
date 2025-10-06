@@ -28,7 +28,7 @@ export default function Feed() {
       isMounted = false;
       controller.abort();
     };
-  }, []);
+  }, [axiosPrivate]);
 
   return (
     <>

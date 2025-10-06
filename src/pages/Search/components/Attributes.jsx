@@ -27,7 +27,9 @@ export default function Attributes({ attChecked, setAttChecked }) {
 
     async function fetchAttributes() {
       try {
-        const response = await axiosPrivate.get("/patterns/attributes");
+        const response = await axiosPrivate.get("/patterns/attributes", {
+          signal: controller.signal,
+        });
         isMounted && setAttributes(response?.data);
       } catch (error) {
         console.log(error);
@@ -38,7 +40,7 @@ export default function Attributes({ attChecked, setAttChecked }) {
       isMounted = false;
       controller.abort();
     };
-  }, []);
+  }, [axiosPrivate]);
 
   function sortAttributes(attributes) {
     return attributes?.map((attributeObj, index) => {
@@ -81,6 +83,9 @@ export default function Attributes({ attChecked, setAttChecked }) {
           expanded={expanded}
           onCheck={(checked) => setAttChecked(checked)}
           onExpand={(expanded) => setExpanded(expanded)}
+          showExpandAll={true}
+          noCascade={true}
+          checkModel="all"
           icons={{
             check: (
               <FontAwesomeIcon
