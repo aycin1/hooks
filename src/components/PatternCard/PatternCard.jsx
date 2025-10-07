@@ -10,16 +10,10 @@ export default function PatternCard({
   const pattern = useFetchPattern(patternID);
 
   return (
-    <div>
+    <div style={{ margin: "0vh 2vh 3vh" }}>
       {thumbnailOnly ? "" : <h5>{pattern?.name}</h5>}
       <Thumbnail pattern={pattern} thumbnailOptions={thumbnailOptions} />
-      {thumbnailOnly ? (
-        ""
-      ) : (
-        <div className="dropdownContainer">
-          <RenderDropdown patternID={patternID} />
-        </div>
-      )}
+      {thumbnailOnly ? "" : <RenderDropdown patternID={patternID} />}
     </div>
   );
 }

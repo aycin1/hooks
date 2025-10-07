@@ -4,7 +4,45 @@
   justify-content: center;
 }
 
-.categories {
-  display: inline;
+.searchPage {
+  display: flex;
+}
+
+.refine {
+  position: initial;
+  background-color: rgba(241, 236, 191, 0.589);
+  padding: 0px 10px 20px;
+  min-width: 30%;
+  border-radius: 20px;
+  border-style: double;
+  border-color: rgb(64, 94, 55);
+  max-height: fit-content;
+  margin-top: 20px;
+}
+
+.refineOptions {
+  font-size: smaller;
+  display: flex;
   flex-direction: column;
+  justify-self: left;
+}
+
+.widenSearch {
+  cursor: pointer;
+  display: flex;
+  padding-left: 10px;
+  align-items: center;
+  font-weight: 600;
+  color: rgb(74, 92, 69);
+}
+
+.label {
+  /* min-width: fit-content; */
+  padding-right: 10px;
+}
+
+.categories {
+  align-self: left;
+  /* display: flex;
+  flex-direction: column;*/
 }

@@ -1,5 +1,5 @@
 .profile {
-  width: 100cap;
+  max-width: 90svw;
   display: flex;
   flex-direction: column;
   padding-top: 2vh;

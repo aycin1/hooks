@@ -18,36 +18,34 @@ export default function Checkbox({ node, checked, setChecked, expandAll }) {
   const style = { color: "#2a5a36" };
 
   return (
-    <div>
-      <CheckboxTree
-        nodes={node}
-        onlyLeafCheckboxes={true}
-        checked={checked}
-        expanded={expanded}
-        onCheck={(checked) => setChecked(checked)}
-        onExpand={(expanded) => setExpanded(expanded)}
-        showExpandAll={expandAll}
-        noCascade={true}
-        checkModel="all"
-        icons={{
-          check: (
-            <FontAwesomeIcon
-              icon={faSquareCheck}
-              style={{ color: "#709c62ff" }}
-            />
-          ),
-          uncheck: (
-            <FontAwesomeIcon icon={faSquare} style={{ color: "#709c62ff" }} />
-          ),
-          expandClose: <FontAwesomeIcon icon={faChevronRight} style={style} />,
-          expandOpen: <FontAwesomeIcon icon={faChevronDown} style={style} />,
-          expandAll: <FontAwesomeIcon icon={faPlusSquare} style={style} />,
-          collapseAll: <FontAwesomeIcon icon={faMinusSquare} style={style} />,
-          parentClose: <FontAwesomeIcon icon={faFolder} style={style} />,
-          parentOpen: <FontAwesomeIcon icon={faFolderOpen} style={style} />,
-          leaf: "",
-        }}
-      />
-    </div>
+    <CheckboxTree
+      nodes={node}
+      onlyLeafCheckboxes={true}
+      checked={checked}
+      expanded={expanded}
+      onCheck={(checked) => setChecked(checked)}
+      onExpand={(expanded) => setExpanded(expanded)}
+      showExpandAll={expandAll}
+      noCascade={true}
+      checkModel="all"
+      icons={{
+        check: (
+          <FontAwesomeIcon
+            icon={faSquareCheck}
+            style={{ color: "#709c62ff" }}
+          />
+        ),
+        uncheck: (
+          <FontAwesomeIcon icon={faSquare} style={{ color: "#709c62ff" }} />
+        ),
+        expandClose: <FontAwesomeIcon icon={faChevronRight} style={style} />,
+        expandOpen: <FontAwesomeIcon icon={faChevronDown} style={style} />,
+        expandAll: <FontAwesomeIcon icon={faPlusSquare} style={style} />,
+        collapseAll: <FontAwesomeIcon icon={faMinusSquare} style={style} />,
+        parentClose: <FontAwesomeIcon icon={faFolder} style={style} />,
+        parentOpen: <FontAwesomeIcon icon={faFolderOpen} style={style} />,
+        leaf: "",
+      }}
+    />
   );
 }

@@ -43,12 +43,16 @@ export default function Search() {
   }, [refineOptions, userInput]);
 
   return (
-    <>
-      <RefineSearch setRefineOptions={setRefineOptions} />
-      <UserInput setUserInput={setUserInput} />
-      <div className={styles.searchResults}>
-        {searchResults && <SearchResults list={searchResults} />}
+    <div className={styles.searchPage}>
+      <div className={styles.refine}>
+        <RefineSearch setRefineOptions={setRefineOptions} />
       </div>
-    </>
+      <div>
+        <UserInput setUserInput={setUserInput} />
+        <div className={styles.searchResults}>
+          {searchResults && <SearchResults list={searchResults} />}
+        </div>
+      </div>
+    </div>
   );
 }

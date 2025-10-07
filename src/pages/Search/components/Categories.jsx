@@ -44,7 +44,7 @@ export default function Categories({ checked, setChecked }) {
 
   return (
     <div className={styles.categories}>
-      <h2>Categories</h2>
+      <h4>Categories</h4>
       {categories && (
         <Checkbox
           node={mapCategories(categories)}

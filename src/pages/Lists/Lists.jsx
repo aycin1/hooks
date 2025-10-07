@@ -1,5 +1,6 @@
 import useLists from "../../hooks/useLists";
 import CreateList from "./components/CreateList";
+import styles from "./Lists.module.css";
 
 export default function Lists() {
   const lists = useLists();
@@ -13,5 +14,5 @@ export default function Lists() {
     });
   }
 
-  return <div>{mapLists()}</div>;
+  return <div className={styles.lists}>{mapLists()}</div>;
 }

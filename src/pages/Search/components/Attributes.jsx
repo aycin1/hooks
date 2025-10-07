@@ -61,7 +61,7 @@ export default function Attributes({ checked, setChecked }) {
 
   return (
     <div className={styles.attributes}>
-      <h2>Attributes</h2>
+      <h4>Attributes</h4>
       {attributes && (
         <Checkbox
           node={sortAttributes(attributes)}

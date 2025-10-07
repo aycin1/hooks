@@ -7,24 +7,19 @@ export default function Header() {
       <NavLink to={"/"} className={styles.name}>
         Fibre fantasies
       </NavLink>
-
-      <div className={styles.linksContainer}>
+      <div>
         <NavLink to={"/profile"} className={styles.links}>
           Profile
         </NavLink>
-
         <NavLink to={"/lists"} className={styles.links}>
           Lists
         </NavLink>
-
         <NavLink to={"/search"} className={styles.links}>
           Search
         </NavLink>
-
         <NavLink to={"/feed"} className={styles.links}>
           Feed
         </NavLink>
-
         <NavLink to={"/logout"} className={styles.links}>
           Logout
         </NavLink>

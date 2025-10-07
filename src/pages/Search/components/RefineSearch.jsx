@@ -1,4 +1,7 @@
+import { faSquare, faSquareCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useEffect, useState } from "react";
+import styles from "../Search.module.css";
 import Attributes from "./Attributes";
 import Categories from "./Categories";
 import CustomFilters from "./CustomFilters";
@@ -8,6 +11,7 @@ export default function RefineSearch({ setRefineOptions }) {
   const [attChecked, setAttChecked] = useState([]);
   const [customChecked, setCustomChecked] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const style = { color: "#709c62ff" };
 
   const joinArrays = useCallback(
     (checkedArr) => {
@@ -29,24 +33,31 @@ export default function RefineSearch({ setRefineOptions }) {
       { name: "pa", value: joinArrays(attChecked) },
       ...customChecked,
     ]);
-  }, [catChecked, attChecked, customChecked, joinArrays, setRefineOptions]);
+  }, [
+    catChecked,
+    attChecked,
+    customChecked,
+    toggle,
+    joinArrays,
+    setRefineOptions,
+  ]);
 
   return (
-    <>
-      <label htmlFor="andOr">
-        check if you'd like <strong>all</strong> filters to apply
-        <br />
-        instead of either/any
-      </label>
-      <input
-        type="checkbox"
-        id="andOr"
-        value={toggle}
+    <div className={styles.refineSearch}>
+      <div
+        className={styles.widenSearch}
         onClick={() => setToggle((oldVal) => !oldVal)}
-      />
+      >
+        <h4 className={styles.label}>Widen search?</h4>
+        {toggle ? (
+          <FontAwesomeIcon icon={faSquare} value={toggle} style={style} />
+        ) : (
+          <FontAwesomeIcon icon={faSquareCheck} value={toggle} style={style} />
+        )}
+      </div>
       <CustomFilters setChecked={setCustomChecked} joinArrays={joinArrays} />
       <Categories checked={catChecked} setChecked={setCatChecked} />
       <Attributes checked={attChecked} setChecked={setAttChecked} />
-    </>
+    </div>
   );
 }

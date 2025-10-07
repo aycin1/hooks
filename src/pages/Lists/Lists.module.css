@@ -1,19 +1,23 @@
 .listCards {
-  padding-top: 5vh;
+  overflow-x: hidden;
+  align-items: center;
 }
 
 .listCard {
   display: flex;
   flex-direction: column;
+  max-width: 75svw;
+
+  justify-self: center;
 }
 
 .patternCards {
-  width: 85cap;
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
   align-items: end;
   padding-bottom: 2vh;
+  max-width: inherit;
 }
 
 .searchLink {
