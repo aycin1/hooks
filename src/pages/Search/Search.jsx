@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { axiosPrivate } from "../../api/axios";
-import PatternSearch from "./components/PatternSearch";
 import RefineSearch from "./components/RefineSearch";
 import SearchResults from "./components/SearchResults";
+import UserInput from "./components/UserInput";
 import styles from "./Search.module.css";
 
 export default function Search() {
@@ -17,6 +17,7 @@ export default function Search() {
     async function fetchResults() {
       try {
         const params = [refineOptions, { name: "query", value: userInput }];
+        console.log(params);
         let searchParams = {};
         params
           .flatMap((param) => param)
@@ -44,7 +45,7 @@ export default function Search() {
   return (
     <>
       <RefineSearch setRefineOptions={setRefineOptions} />
-      <PatternSearch setUserInput={setUserInput} />
+      <UserInput setUserInput={setUserInput} />
       <div className={styles.searchResults}>
         {searchResults && <SearchResults list={searchResults} />}
       </div>

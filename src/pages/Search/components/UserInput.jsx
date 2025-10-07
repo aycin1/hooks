@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-export default function PatternSearch({ setUserInput }) {
+export default function UserInput({ setUserInput }) {
   const [searchField, setSearchField] = useState();
 
   function handleSubmit(e) {
     e.preventDefault();
-    setUserInput(searchField.split(" ").join("-"));
+    setUserInput(searchField.split(" ").join("%20"));
   }
 
   return (

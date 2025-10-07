@@ -1,25 +1,12 @@
-import {
-  faChevronDown,
-  faChevronRight,
-  faFolder,
-  faFolderOpen,
-  faMinusSquare,
-  faPlusSquare,
-  faSquare,
-  faSquareCheck,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import CheckboxTree from "react-checkbox-tree";
 import "react-checkbox-tree/lib/react-checkbox-tree.css";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import styles from "../Search.module.css";
+import Checkbox from "./Checkbox";
 
-export default function Attributes({ attChecked, setAttChecked }) {
+export default function Attributes({ checked, setChecked }) {
   const [attributes, setAttributes] = useState();
   const axiosPrivate = useAxiosPrivate();
-  const [expanded, setExpanded] = useState([]);
-  const style = { color: "#2a5a36" };
 
   useEffect(() => {
     let isMounted = true;
@@ -76,36 +63,11 @@ export default function Attributes({ attChecked, setAttChecked }) {
     <div className={styles.attributes}>
       <h2>Attributes</h2>
       {attributes && (
-        <CheckboxTree
-          nodes={sortAttributes(attributes)}
-          onlyLeafCheckboxes={true}
-          checked={attChecked}
-          expanded={expanded}
-          onCheck={(checked) => setAttChecked(checked)}
-          onExpand={(expanded) => setExpanded(expanded)}
-          showExpandAll={true}
-          noCascade={true}
-          checkModel="all"
-          icons={{
-            check: (
-              <FontAwesomeIcon
-                icon={faSquareCheck}
-                style={{ color: "#709c62ff" }}
-              />
-            ),
-            uncheck: (
-              <FontAwesomeIcon icon={faSquare} style={{ color: "#709c62ff" }} />
-            ),
-            expandClose: (
-              <FontAwesomeIcon icon={faChevronRight} style={style} />
-            ),
-            expandOpen: <FontAwesomeIcon icon={faChevronDown} style={style} />,
-            expandAll: <FontAwesomeIcon icon={faPlusSquare} style={style} />,
-            collapseAll: <FontAwesomeIcon icon={faMinusSquare} style={style} />,
-            parentClose: <FontAwesomeIcon icon={faFolder} style={style} />,
-            parentOpen: <FontAwesomeIcon icon={faFolderOpen} style={style} />,
-            leaf: "",
-          }}
+        <Checkbox
+          node={sortAttributes(attributes)}
+          checked={checked}
+          setChecked={setChecked}
+          expandAll={true}
         />
       )}
     </div>

@@ -1,34 +1,52 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Attributes from "./Attributes";
 import Categories from "./Categories";
+import CustomFilters from "./CustomFilters";
 
 export default function RefineSearch({ setRefineOptions }) {
   const [catChecked, setCatChecked] = useState([]);
   const [attChecked, setAttChecked] = useState([]);
+  const [customChecked, setCustomChecked] = useState([]);
+  const [toggle, setToggle] = useState(false);
 
-  useEffect(() => {
-    function joinArrays(checked, join) {
-      if (checked?.length > 1) {
-        return `${checked.join(join)}`;
-      } else if (checked?.length === 1) {
-        return `${checked[0]}`;
+  const joinArrays = useCallback(
+    (checkedArr) => {
+      const join = toggle ? "%2B" : "%7C";
+      if (checkedArr?.length > 1) {
+        return `${checkedArr.join(join)}`;
+      } else if (checkedArr?.length === 1) {
+        return `${checkedArr[0]}`;
       } else {
         return undefined;
       }
-    }
-    const catStr = joinArrays(catChecked, "%7C");
-    const attStr = joinArrays(attChecked, "%2B");
+    },
+    [toggle]
+  );
 
+  useEffect(() => {
     setRefineOptions([
-      { name: "pc", value: catStr },
-      { name: "pa", value: attStr },
+      { name: "pc", value: joinArrays(catChecked) },
+      { name: "pa", value: joinArrays(attChecked) },
+      ...customChecked,
     ]);
-  }, [catChecked, attChecked, setRefineOptions]);
+  }, [catChecked, attChecked, customChecked, joinArrays, setRefineOptions]);
 
   return (
     <>
-      <Categories catChecked={catChecked} setCatChecked={setCatChecked} />
-      <Attributes attChecked={attChecked} setAttChecked={setAttChecked} />
+      <label htmlFor="andOr">
+        check if you'd like <strong>all</strong> filters to apply
+        <br />
+        instead of either/any
+      </label>
+      <input
+        type="checkbox"
+        id="andOr"
+        value={toggle}
+        onClick={() => setToggle((oldVal) => !oldVal)}
+      />
+      <CustomFilters setChecked={setCustomChecked} joinArrays={joinArrays} />
+      <Categories checked={catChecked} setChecked={setCatChecked} />
+      <Attributes checked={attChecked} setChecked={setAttChecked} />
     </>
   );
 }

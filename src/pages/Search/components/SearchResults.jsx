@@ -18,11 +18,15 @@ export default function SearchResults({ list }) {
 
   return (
     <div className={styles.patterns}>
-      <CreatePatterns
-        list={list}
-        thumbnailOptions={thumbnailOptions}
-        thumbnailOnly={false}
-      />
+      {list?.length ? (
+        <CreatePatterns
+          list={list}
+          thumbnailOptions={thumbnailOptions}
+          thumbnailOnly={false}
+        />
+      ) : (
+        "No patterns found, please try again"
+      )}
     </div>
   );
 }
