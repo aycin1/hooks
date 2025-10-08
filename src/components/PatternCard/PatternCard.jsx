@@ -1,4 +1,4 @@
-import useFetchPattern from "../../hooks/useFetchPattern";
+import usePattern from "../../hooks/usePattern";
 import RenderDropdown from "../RenderDropdown/RenderDropdown";
 import Thumbnail from "../Thumbnail/Thumbnail";
 
@@ -7,7 +7,7 @@ export default function PatternCard({
   thumbnailOptions,
   thumbnailOnly,
 }) {
-  const pattern = useFetchPattern(patternID);
+  const pattern = usePattern(patternID);
 
   return (
     <div style={{ margin: "0vh 2vh 3vh" }}>

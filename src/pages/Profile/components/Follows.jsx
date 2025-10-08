@@ -10,28 +10,25 @@ export default function Follows() {
   const [following, setFollowing] = useState([]);
 
   useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+
     async function getFollowers() {
-      const response = await axiosPrivate.get("/users/user/followers");
-      setFollowers(response.data.followers);
+      const response = await axiosPrivate.get(`/follows/follow-count`, {
+        signal: controller.signal,
+      });
+      isMounted && setFollowers(response.data.followers);
+      isMounted && setFollowing(response.data.following);
     }
     getFollowers();
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
   }, [axiosPrivate]);
 
-  useEffect(() => {
-    async function getFollowings() {
-      const response = await axiosPrivate.get("/users/user/following");
-
-      setFollowing(response.data.following);
-    }
-    getFollowings();
-  }, [axiosPrivate]);
-
-  const followersArr = followers.map((follows) => {
-    return follows.username;
-  });
-  const followingArr = following.map((follows) => follows.following_user);
-  const followerCount = followers.length ? followers.length : 0;
-  const followingCount = following.length ? following.length : 0;
+  const followersArr = followers?.map((follows) => follows.username);
+  const followingArr = following?.map((follows) => follows.following_user);
   const follows = { followers: followersArr, following: followingArr };
 
   async function handleSubmit(e) {
@@ -50,12 +47,12 @@ export default function Follows() {
       <div className={styles.follows}>
         <form name="followers" onSubmit={handleSubmit}>
           <button className={styles.followers} type="submit">
-            {JSON.stringify(followerCount) + " followers"}
+            {followers?.length ? followers.length : 0} followers
           </button>
         </form>
         <form name="following" onSubmit={handleSubmit}>
           <button className={styles.following} type="submit">
-            {JSON.stringify(followingCount) + " following"}
+            {following?.length ? following.length : 0} following
           </button>
         </form>
       </div>

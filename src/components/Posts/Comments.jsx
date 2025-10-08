@@ -11,16 +11,25 @@ export default function Comments({ postID }) {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+
     async function fetchComments() {
       try {
-        const response = await axiosPrivate.get(`/comments/${postID}`);
-        setComments(response?.data);
+        const response = await axiosPrivate.get(`/comments/${postID}`, {
+          signal: controller.signal,
+        });
+        isMounted && setComments(response?.data);
       } catch (error) {
         console.log(error);
       }
     }
     fetchComments();
-  }, [postID, message]);
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, [postID, message, axiosPrivate]);
 
   async function handleCommentDeletion(e) {
     const data = { post_id: postID, message: e.target.value };

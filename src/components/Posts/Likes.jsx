@@ -17,7 +17,7 @@ export default function Likes({ postID }) {
       }
     }
     checkLikes();
-  }, [postID]);
+  }, [postID, axiosPrivate]);
 
   useEffect(() => {
     async function fetchLikes() {
@@ -29,7 +29,7 @@ export default function Likes({ postID }) {
       }
     }
     fetchLikes();
-  }, [alreadyLiked, postID]);
+  }, [alreadyLiked, postID, axiosPrivate]);
 
   async function handleClick() {
     const data = { post_id: postID };

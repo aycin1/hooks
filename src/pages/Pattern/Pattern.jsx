@@ -1,11 +1,11 @@
 import { useParams } from "react-router";
 import RenderDropdown from "../../components/RenderDropdown/RenderDropdown";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
-import useFetchPattern from "../../hooks/useFetchPattern";
+import usePattern from "../../hooks/usePattern";
 
 export default function Pattern() {
   const { id } = useParams();
-  const pattern = useFetchPattern(id);
+  const pattern = usePattern(id);
 
   function setProperties() {
     return {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "./useAxiosPrivate";
 
-export default function useFetchPattern(patternID) {
+export default function usePattern(patternID) {
   const [pattern, setPattern] = useState();
   const axiosPrivate = useAxiosPrivate();
 

@@ -8,17 +8,28 @@ export default function RenderDropdown({ patternID }) {
   const [listForPattern, setListForPattern] = useState();
 
   useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+
     async function fetchList() {
       try {
-        const response = (await axiosPrivate.get(`lists/pattern/${patternID}`))
-          ?.data?.listForPattern?.list;
-        setListForPattern(response);
+        const query = new URLSearchParams({ pattern_id: patternID });
+        const response = (
+          await axiosPrivate.get(`lists/pattern/?${query}`, {
+            signal: controller.signal,
+          })
+        )?.data?.listForPattern?.list;
+        isMounted && setListForPattern(response);
       } catch (error) {
         console.log(error);
       }
     }
     fetchList();
-  }, [patternID]);
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, [patternID, axiosPrivate]);
 
   async function handleChange(e) {
     const desiredList = e.target.value;

@@ -26,7 +26,7 @@ export default function EditAndDeleteButtons({
       caption: caption,
     };
     try {
-      await axiosPrivate.put("/feed", data);
+      await axiosPrivate.put("/feed/", data);
     } catch (error) {
       console.log(error);
     }
@@ -35,8 +35,9 @@ export default function EditAndDeleteButtons({
   async function handleClick(e) {
     e.preventDefault();
     const data = { post_id: e.target.value };
+    console.log(e.target.value);
     try {
-      await axiosPrivate.delete("/feed", { data });
+      await axiosPrivate.delete("/feed/", { data });
     } catch (error) {
       console.log(error);
     }
