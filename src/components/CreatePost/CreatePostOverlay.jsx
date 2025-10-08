@@ -10,6 +10,7 @@ export default function CreatePostOverlay({ isClicked }) {
   const [caption, setCaption] = useState("");
   const [message, setMessage] = useState("");
   const [isPosted, setIsPosted] = useState(false);
+  const [imageUploadSuccess, setImageUploadSuccess] = useState(false);
 
   const uuid = useRef(uuidv4());
 
@@ -21,10 +22,7 @@ export default function CreatePostOverlay({ isClicked }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!chosenPatternID) {
-      setMessage("You must choose a pattern to create a post");
-      return;
-    }
+
     try {
       const response = await axiosPrivate.post("/feed", data);
       response?.status === 201
@@ -56,17 +54,23 @@ export default function CreatePostOverlay({ isClicked }) {
           back to pattern selection
         </button>
       )}
-
-      <UploadImage uuid={data.uuid} />
-
+      <UploadImage
+        uuid={data.uuid}
+        setImageUploadSuccess={setImageUploadSuccess}
+      />
       <input
         type="text"
-        className="captionInput"
         placeholder="  Caption"
         value={caption}
         onChange={(e) => setCaption(e.target.value)}
       ></input>
-      <button className="submitPostButton">Post</button>
+
+      <button
+        type="submit"
+        disabled={!imageUploadSuccess || !chosenPatternID ? true : false}
+      >
+        Post
+      </button>
     </form>
   );
 }

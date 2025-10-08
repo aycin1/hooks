@@ -38,7 +38,7 @@
 
 .label {
   /* min-width: fit-content; */
-  padding-right: 10px;
+  padding: 0px 10px;
 }
 
 .categories {

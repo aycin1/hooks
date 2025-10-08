@@ -17,7 +17,7 @@ export default function Search() {
     async function fetchResults() {
       try {
         const params = [refineOptions, { name: "query", value: userInput }];
-        console.log(params);
+
         let searchParams = {};
         params
           .flatMap((param) => param)

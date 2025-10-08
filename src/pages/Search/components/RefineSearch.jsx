@@ -48,7 +48,7 @@ export default function RefineSearch({ setRefineOptions }) {
         className={styles.widenSearch}
         onClick={() => setToggle((oldVal) => !oldVal)}
       >
-        <h4 className={styles.label}>Widen search?</h4>
+        <h4 className={styles.label}>Broaden search?</h4>
         {toggle ? (
           <FontAwesomeIcon icon={faSquare} value={toggle} style={style} />
         ) : (
