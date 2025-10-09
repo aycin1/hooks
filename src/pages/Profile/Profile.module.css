@@ -47,11 +47,7 @@
   display: flex;
 }
 
-.followers {
+.button {
   margin-right: 5px;
-  font-size: medium;
-}
-
-.following {
-  font-size: medium;
+  font-size: smaller;
 }

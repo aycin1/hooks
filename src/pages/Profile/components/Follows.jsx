@@ -6,8 +6,7 @@ import styles from "../Profile.module.css";
 export default function Follows() {
   const axiosPrivate = useAxiosPrivate();
   const [users, setUsers] = useState([]);
-  const [followers, setFollowers] = useState([]);
-  const [following, setFollowing] = useState([]);
+  const [followCount, setFollowCount] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
@@ -17,24 +16,15 @@ export default function Follows() {
       const response = await axiosPrivate.get(`/follows/follow-count`, {
         signal: controller.signal,
       });
-      isMounted && setFollowers(response.data.followers);
-      isMounted && setFollowing(response.data.following);
+      isMounted && setFollowCount(response.data);
     }
     getFollowers();
+
     return () => {
       isMounted = false;
       controller.abort();
     };
-  }, [axiosPrivate]);
-
-  const followersArr = followers?.map((follows) => follows.username);
-  const followingArr = following?.map((follows) => follows.following_user);
-  const follows = { followers: followersArr, following: followingArr };
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setUsers(follows[e.target.name]);
-  }
+  }, [axiosPrivate, users]);
 
   function mapUsers() {
     return Object.values(users).map((user) => {
@@ -42,21 +32,33 @@ export default function Follows() {
     });
   }
 
+  function handleClick(e) {
+    e.preventDefault();
+    setUsers(followCount[e.target.value][e.target.name]);
+  }
+
+  function mapButtons(arr) {
+    return arr?.map((obj, index) => {
+      const name = Object.keys(obj)[0];
+      const followArr = Object.values(obj)[0];
+      return (
+        <button
+          key={index}
+          name={name}
+          value={index}
+          onClick={handleClick}
+          className={styles.button}
+        >
+          {followArr?.length ? followArr.length : 0} {name}
+        </button>
+      );
+    });
+  }
+
   return (
-    <div>
-      <div className={styles.follows}>
-        <form name="followers" onSubmit={handleSubmit}>
-          <button className={styles.followers} type="submit">
-            {followers?.length ? followers.length : 0} followers
-          </button>
-        </form>
-        <form name="following" onSubmit={handleSubmit}>
-          <button className={styles.following} type="submit">
-            {following?.length ? following.length : 0} following
-          </button>
-        </form>
-      </div>
-      <div className={styles.users}>{users ? mapUsers() : ""}</div>
-    </div>
+    <>
+      <div className={styles.follows}>{mapButtons(followCount)}</div>
+      <div className={styles.users}>{users && mapUsers()}</div>
+    </>
   );
 }
