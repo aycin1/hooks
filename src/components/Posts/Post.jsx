@@ -11,6 +11,8 @@ import RenderImage from "./RenderImage";
 export default function Post({ post }) {
   const { auth } = useAuth();
   const [showComments, setShowComments] = useState(false);
+  const [message, setMessage] = useState(undefined);
+
   const thumbnailOptions = {
     urlSize: "thumbnail_url",
     style: {
@@ -22,12 +24,15 @@ export default function Post({ post }) {
     withLink: true,
   };
 
-  return (
+  return message ? (
+    <h4>{message}</h4>
+  ) : (
     <>
       <EditAndDeleteButtons
         username={post.username}
         postID={post.post_id}
         currentCaption={post.caption}
+        setMessage={setMessage}
       />
       <div className={styles.topContainer}>
         <RenderImage postID={post.post_id} />

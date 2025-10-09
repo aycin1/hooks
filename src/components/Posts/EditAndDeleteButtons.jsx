@@ -9,6 +9,7 @@ export default function EditAndDeleteButtons({
   username,
   postID,
   currentCaption,
+  setMessage,
 }) {
   const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
@@ -19,25 +20,25 @@ export default function EditAndDeleteButtons({
     return setShowInput((oldValue) => !oldValue);
   }
 
-  async function handleSubmit(e) {
+  async function handleCaptionChange(e) {
     e.preventDefault();
     const data = {
-      post_id: e.target.name,
+      post_id: postID,
       caption: caption,
     };
     try {
-      await axiosPrivate.put("/feed/", data);
+      const response = await axiosPrivate.put("/feed/", data);
+      setMessage(response?.data?.message);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function handleClick(e) {
-    e.preventDefault();
-    const data = { post_id: e.target.value };
-    console.log(e.target.value);
+  async function handleDeletion() {
+    const data = { post_id: postID };
     try {
-      await axiosPrivate.delete("/feed/", { data });
+      const response = await axiosPrivate.delete("/feed/", { data });
+      setMessage(response?.data?.message);
     } catch (error) {
       console.log(error);
     }
@@ -45,39 +46,31 @@ export default function EditAndDeleteButtons({
 
   return (
     <div className={styles.editAndDeleteButtons}>
-      <form onSubmit={handleSubmit}>
-        {showInput ? (
+      <form onSubmit={handleCaptionChange}>
+        {showInput && (
           <input
             type="text"
             placeholder={currentCaption || "edit caption..."}
             onChange={(e) => setCaption(e.target.value)}
           ></input>
-        ) : (
-          ""
-        )}
-        {username === auth.username && !showInput ? (
-          <button
-            className={styles.editPostButton}
-            onClick={(e) => toggleInputField(e)}
-          >
-            <FontAwesomeIcon icon={faPencil} size="sm" />
-          </button>
-        ) : (
-          <button
-            className={styles.toggleInputButton}
-            onClick={(e) => toggleInputField(e)}
-          >
-            x
-          </button>
         )}
       </form>
-      {username === auth.username ? (
-        <button
-          value={postID}
-          className={styles.deletePostButton}
-          onClick={(e) => handleClick(e)}
-        >
-          <FontAwesomeIcon icon={faTrash} size="sm" />
+      {username === auth.username && !showInput ? (
+        <>
+          <button className={styles.editPostButton} onClick={toggleInputField}>
+            <FontAwesomeIcon icon={faPencil} size="sm" />
+          </button>{" "}
+          <button
+            value={postID}
+            className={styles.deletePostButton}
+            onClick={handleDeletion}
+          >
+            <FontAwesomeIcon icon={faTrash} size="sm" />
+          </button>
+        </>
+      ) : username === auth.username ? (
+        <button className={styles.toggleInputButton} onClick={toggleInputField}>
+          x
         </button>
       ) : (
         ""

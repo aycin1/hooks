@@ -13,5 +13,5 @@ export default function Posts({ posts }) {
       // return "No posts";
     }
   }
-  return <div className={styles.posts}>{mapPosts()}</div>;
+  return <div>{mapPosts()}</div>;
 }
