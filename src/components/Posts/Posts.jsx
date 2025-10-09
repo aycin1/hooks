@@ -10,8 +10,8 @@ export default function Posts({ posts }) {
         </div>
       ));
     } else {
-      // return "No posts";
+      return <h4>No posts yet!</h4>;
     }
   }
-  return <div>{mapPosts()}</div>;
+  return mapPosts();
 }

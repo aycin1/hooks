@@ -44,12 +44,11 @@ button {
   color: #d9f0d7;
   padding: 0.4em 1.4em;
   font-size: 1.1em;
-  font-weight: 400;
   font-family: inherit;
   cursor: pointer;
 }
 button:hover {
-  font-weight: 600;
+  background-color: rgba(91, 134, 102, 0.815);
 }
 button:disabled {
   border: 1px solid #999999;

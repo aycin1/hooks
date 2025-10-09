@@ -46,11 +46,11 @@ export default function Comments({ postID }) {
       return (
         <div key={index} className="commentContainer">
           <p>{comment.message}</p>
-          <Link to={`/user/${comment.comment_username}`}>
+          <Link to={`/profile/${comment.comment_username}`}>
             {comment.comment_username}
           </Link>
 
-          {comment.comment_username === auth.username ? (
+          {comment.comment_username === auth.username && (
             <button
               value={comment.message}
               className="deleteCommentButton"
@@ -58,8 +58,6 @@ export default function Comments({ postID }) {
             >
               delete
             </button>
-          ) : (
-            ""
           )}
         </div>
       );

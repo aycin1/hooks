@@ -9,7 +9,6 @@ import Pattern from "./pages/Pattern/Pattern";
 import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
 import Search from "./pages/Search/Search";
-import User from "./pages/User/User";
 
 function App() {
   return (
@@ -24,8 +23,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/pattern/:id" element={<Pattern />} />
           <Route path="/feed" element={<Feed />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/user/:username" element={<User />} />
+          <Route path="/profile/:username" element={<Profile />} />
         </Route>
 
         <Route

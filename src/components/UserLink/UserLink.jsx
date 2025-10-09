@@ -8,14 +8,8 @@ export default function UserLink({ foundUser }) {
 
   return (
     <div className={styles.userLink}>
-      {foundUser === auth.username ? (
-        <NavLink to="/profile">{foundUser}</NavLink>
-      ) : (
-        <>
-          <NavLink to={`/user/${foundUser}`}>{foundUser}</NavLink>
-          <FollowButton username={foundUser} />
-        </>
-      )}
+      <NavLink to={`/profile/${foundUser}`}>{foundUser}</NavLink>
+      {foundUser !== auth.username && <FollowButton username={foundUser} />}
     </div>
   );
 }

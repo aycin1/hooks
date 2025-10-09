@@ -1,4 +1,6 @@
+import { useParams } from "react-router";
 import CreatePost from "../../components/CreatePost/CreatePost";
+import FollowButton from "../../components/FollowButton/FollowButton";
 import Posts from "../../components/Posts/Posts";
 import UserSearch from "../../components/UserSearch/UserSearch";
 import useAuth from "../../hooks/useAuth";
@@ -8,14 +10,18 @@ import styles from "./Profile.module.css";
 
 export default function Profile() {
   const { auth } = useAuth();
-
-  const posts = usePosts(auth.username);
+  const { username } = useParams();
+  const posts = usePosts(username);
 
   return (
     <div className={styles.profile}>
       <div className={styles.topContainer}>
-        <CreatePost />
-        <h2>{auth.username}</h2>
+        <h3>{username}</h3>
+        {username === auth.username ? (
+          <CreatePost />
+        ) : (
+          <FollowButton username={username} />
+        )}
       </div>
       <div className={styles.profileContainer}>
         <div className={styles.posts}>
@@ -23,7 +29,7 @@ export default function Profile() {
         </div>
         <div className={styles.users}>
           <UserSearch />
-          <Follows />
+          {username === auth.username && <Follows />}
         </div>
       </div>
     </div>

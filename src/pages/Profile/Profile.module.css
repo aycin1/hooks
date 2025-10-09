@@ -26,6 +26,7 @@
 .posts {
   flex-grow: 2;
   display: flex;
+  flex-direction: column;
   background-color: rgba(224, 245, 212, 0.644);
   border-radius: 8px;
   margin-right: 5vh;

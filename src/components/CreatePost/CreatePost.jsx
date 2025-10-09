@@ -11,7 +11,7 @@ export default function CreatePost() {
   return (
     <div className="createPostContainer">
       <button className="createPostButton" onClick={() => handleClick()}>
-        {isClicked ? "x" : "Add a post"}
+        {isClicked ? "x" : "add a post"}
       </button>
       <div className="">
         {isClicked ? <CreatePostOverlay isClicked={isClicked} /> : ""}
