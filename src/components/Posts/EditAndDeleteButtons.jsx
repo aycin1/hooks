@@ -59,7 +59,7 @@ export default function EditAndDeleteButtons({
         <>
           <button className={styles.editPostButton} onClick={toggleInputField}>
             <FontAwesomeIcon icon={faPencil} size="sm" />
-          </button>{" "}
+          </button>
           <button
             value={postID}
             className={styles.deletePostButton}
@@ -68,12 +68,15 @@ export default function EditAndDeleteButtons({
             <FontAwesomeIcon icon={faTrash} size="sm" />
           </button>
         </>
-      ) : username === auth.username ? (
-        <button className={styles.toggleInputButton} onClick={toggleInputField}>
-          x
-        </button>
       ) : (
-        ""
+        username === auth.username && (
+          <button
+            className={styles.toggleInputButton}
+            onClick={toggleInputField}
+          >
+            x
+          </button>
+        )
       )}
     </div>
   );
