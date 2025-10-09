@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router";
 import Layout from "./components/Layout/Layout";
 import RequireAuth from "./components/RequireAuth";
+import Error from "./pages/Error/Error";
 import Feed from "./pages/Feed/Feed";
 import Home from "./pages/Home/Home";
 import Lists from "./pages/Lists/Lists";
@@ -26,10 +27,7 @@ function App() {
           <Route path="/profile/:username" element={<Profile />} />
         </Route>
 
-        <Route
-          path="*"
-          element //404 page
-        />
+        <Route path="*" element={<Error />} />
       </Route>
     </Routes>
   );
