@@ -10,10 +10,17 @@ export default function usePosts(username) {
 
     async function getPosts() {
       try {
-        const query = new URLSearchParams({ username: username });
-        const response = await axiosPrivate.get(`/users/?${query}`, {
-          signal: controller.signal,
-        });
+        let response;
+        if (username) {
+          const query = new URLSearchParams({ username: username });
+          response = await axiosPrivate.get(`/users/?${query}`, {
+            signal: controller.signal,
+          });
+        } else {
+          response = await axiosPrivate.get("/feed", {
+            signal: controller.signal,
+          });
+        }
         isMounted && setPosts(response?.data?.posts);
       } catch (err) {
         console.log(err);
