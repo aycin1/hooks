@@ -1,35 +1,24 @@
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import useLists from "../../hooks/useLists";
 import DropdownOptions from "./DropdownOptions";
 
 export default function RenderDropdown({ patternID }) {
   const axiosPrivate = useAxiosPrivate();
   const [message, setMessage] = useState();
   const [listForPattern, setListForPattern] = useState();
+  const lists = useLists();
 
   useEffect(() => {
-    let isMounted = true;
-    const controller = new AbortController();
-
-    async function fetchList() {
-      try {
-        const query = new URLSearchParams({ pattern_id: patternID });
-        const response = (
-          await axiosPrivate.get(`lists/pattern/?${query}`, {
-            signal: controller.signal,
-          })
-        )?.data?.listForPattern?.list;
-        isMounted && setListForPattern(response);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchList();
-    return () => {
-      isMounted = false;
-      controller.abort();
-    };
-  }, [patternID, axiosPrivate]);
+    const listTitles = Object.keys(lists).map((list) => list);
+    Object.values(lists).map((list, index) =>
+      list.map(
+        (pattern) =>
+          pattern.pattern_id === patternID &&
+          setListForPattern(listTitles[index])
+      )
+    );
+  }, [lists, patternID]);
 
   async function handleChange(e) {
     const desiredList = e.target.value;
@@ -60,7 +49,7 @@ export default function RenderDropdown({ patternID }) {
         listForPattern={listForPattern}
         handleChange={handleChange}
       />
-      <div>{message ? <p>{message}</p> : null}</div>
+      <div>{message && <p>{message}</p>}</div>
     </>
   );
 }

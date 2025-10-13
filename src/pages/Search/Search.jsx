@@ -21,15 +21,15 @@ export default function Search() {
         let searchParams = {};
         params
           .flatMap((param) => param)
-          .map((param) =>
-            param.value ? (searchParams[param.name] = param.value) : ""
+          .map(
+            (param) => param.value && (searchParams[param.name] = param.value)
           );
 
         const query = new URLSearchParams(searchParams);
         const response = await axiosPrivate.get(`/patterns/refine/?${query}`, {
           signal: controller.signal,
         });
-
+        response?.data.splice(50);
         isMounted && setSearchResults(response?.data);
       } catch (error) {
         console.log(error);

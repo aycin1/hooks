@@ -13,7 +13,6 @@ export default function CreateList({ list, listTitle }) {
       overflow: "hidden",
     },
     maxHeight: "120px",
-    withLink: true,
   };
 
   return (
@@ -25,7 +24,7 @@ export default function CreateList({ list, listTitle }) {
             <CreatePatterns
               list={list}
               thumbnailOptions={thumbnailOptions}
-              thumbnailOnly={false}
+              withDropdown={true}
             />
           </div>
           <NavLink to="/search" className={styles.searchLink}>

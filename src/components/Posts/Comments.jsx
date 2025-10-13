@@ -44,7 +44,7 @@ export default function Comments({ postID }) {
   function mapComments() {
     return comments.map((comment, index) => {
       return (
-        <div key={index} className="commentContainer">
+        <div key={index}>
           <p>{comment.message}</p>
           <Link to={`/profile/${comment.comment_username}`}>
             {comment.comment_username}
@@ -53,7 +53,6 @@ export default function Comments({ postID }) {
           {comment.comment_username === auth.username && (
             <button
               value={comment.message}
-              className="deleteCommentButton"
               onClick={(e) => handleCommentDeletion(e)}
             >
               delete
@@ -66,8 +65,8 @@ export default function Comments({ postID }) {
 
   return (
     <div>
-      <div>{comments?.length ? mapComments() : ""}</div>
-      <div>{message ? message : null}</div>
+      <div>{comments?.length > 0 && mapComments()}</div>
+      <div>{message && message}</div>
       <AddComment postID={postID} setMessage={setMessage} />
     </div>
   );

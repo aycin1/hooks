@@ -13,17 +13,12 @@ export default function SearchResults({ list }) {
       padding: "10px",
     },
     maxHeight: "200px",
-    withLink: true,
   };
 
   return (
     <div className={styles.patterns}>
       {list?.length ? (
-        <CreatePatterns
-          list={list}
-          thumbnailOptions={thumbnailOptions}
-          thumbnailOnly={false}
-        />
+        <CreatePatterns list={list} thumbnailOptions={thumbnailOptions} />
       ) : (
         "No patterns found, please try again"
       )}

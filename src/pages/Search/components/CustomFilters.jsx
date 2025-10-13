@@ -5,7 +5,12 @@ export default function CustomFilters({ setChecked, joinArrays }) {
   const [craftChecked, setCraftChecked] = useState([]);
   const [avaChecked, setAvaChecked] = useState([]);
   const [weightChecked, setWeightChecked] = useState([]);
-
+  const checked = [
+    { name: "", value: craftChecked },
+    { name: avaChecked },
+    { name: weightChecked },
+  ];
+  console.log(checked);
   useEffect(() => {
     setChecked([
       { name: "craft", value: joinArrays(craftChecked) },

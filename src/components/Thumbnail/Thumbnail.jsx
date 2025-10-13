@@ -1,7 +1,9 @@
-import { Link } from "react-router";
+import usePattern from "../../hooks/usePattern";
 
-export default function Thumbnail({ pattern, thumbnailOptions }) {
-  const { urlSize, style, maxHeight, withLink } = thumbnailOptions;
+export default function Thumbnail({ patternID, thumbnailOptions }) {
+  const { urlSize, style, maxHeight } = thumbnailOptions;
+  const pattern = usePattern(patternID);
+
   if (!pattern?.photos || !pattern?.photos[0]) return <p>Image not found</p>;
   const photoUrl = Object.values(pattern.photos)[0][urlSize];
 
@@ -16,17 +18,8 @@ export default function Thumbnail({ pattern, thumbnailOptions }) {
       />
     );
   }
-  if (withLink) {
-    return (
-      <div style={{ maxHeight: maxHeight, overflow: "hidden" }}>
-        <Link to={`/pattern/${pattern.pattern_id || pattern.id}`}>
-          {image()}
-        </Link>
-      </div>
-    );
-  } else {
-    return (
-      <div style={{ maxHeight: maxHeight, overflow: "hidden" }}>{image()}</div>
-    );
-  }
+
+  return (
+    <div style={{ maxHeight: maxHeight, overflow: "hidden" }}>{image()}</div>
+  );
 }

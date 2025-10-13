@@ -55,7 +55,7 @@ export default function RefineSearch({ setRefineOptions }) {
           <FontAwesomeIcon icon={faSquareCheck} value={toggle} style={style} />
         )}
       </div>
-      <CustomFilters setChecked={setCustomChecked} joinArrays={joinArrays} />
+      <CustomFilters joinArrays={joinArrays} setChecked={setCustomChecked} />
       <Categories checked={catChecked} setChecked={setCatChecked} />
       <Attributes checked={attChecked} setChecked={setAttChecked} />
     </div>

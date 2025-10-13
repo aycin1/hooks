@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { NavLink } from "react-router";
 import PatternCard from "../PatternCard/PatternCard";
-import Comments from "./Comments";
+import RenderDropdown from "../RenderDropdown/RenderDropdown";
 import EditAndDeleteButtons from "./EditAndDeleteButtons";
 import Likes from "./Likes";
 import styles from "./Posts.module.css";
 import RenderImage from "./RenderImage";
+import ToggleComments from "./ToggleComments";
 
 export default function Post({ post }) {
-  const [showComments, setShowComments] = useState(false);
   const [message, setMessage] = useState(undefined);
 
   const thumbnailOptions = {
@@ -19,7 +19,6 @@ export default function Post({ post }) {
       maxWidth: "70px",
     },
     maxHeight: "70px",
-    withLink: true,
   };
 
   return message ? (
@@ -38,8 +37,8 @@ export default function Post({ post }) {
           <PatternCard
             patternID={post.pattern_id}
             thumbnailOptions={thumbnailOptions}
-            thumbnailOnly={false}
           />
+          <RenderDropdown patternID={post.pattern_id} />
           <NavLink to={`/profile/${post.username}`} className={styles.username}>
             {post.username}
           </NavLink>
@@ -48,13 +47,7 @@ export default function Post({ post }) {
       <p className={styles.caption}>{post.caption}</p>
       <div>
         <Likes postID={post.post_id} />
-        <button
-          className={styles.toggleCommentButton}
-          onClick={() => setShowComments((oldValue) => !oldValue)}
-        >
-          Comments
-        </button>
-        {showComments ? <Comments postID={post.post_id} /> : ""}
+        <ToggleComments postID={post.post_id} />
       </div>
     </>
   );
