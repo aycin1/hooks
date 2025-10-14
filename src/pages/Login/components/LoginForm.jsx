@@ -5,7 +5,7 @@ import useAuth from "../../../hooks/useAuth";
 import styles from "../Login.module.css";
 
 export default function LoginForm() {
-  const { setAuth } = useAuth();
+  const { setAuth, persist, setPersist } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const prevLocation = location.state?.from?.pathname || "/";
@@ -18,6 +18,14 @@ export default function LoginForm() {
   useEffect(() => {
     setErrorMsg("");
   }, [username, password]);
+
+  function togglePersist() {
+    setPersist((prev) => !prev);
+  }
+
+  useEffect(() => {
+    localStorage.setItem("persist", persist);
+  }, [persist]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -76,6 +84,15 @@ export default function LoginForm() {
       <p className={errorMsg ? "error-msg" : "offscreen"}>{errorMsg}</p>
 
       <button className={styles.button}>Log in</button>
+      <div className={styles.persistCheck}>
+        <input
+          type="checkbox"
+          id="persist"
+          onChange={togglePersist}
+          checked={persist}
+        />
+        <label htmlFor="persist">Trust this device?</label>
+      </div>
     </form>
   );
 }
