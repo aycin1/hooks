@@ -20,3 +20,12 @@
   padding-left: 3vw;
   text-shadow: 2px 2px 2px #d9edc7;
 }
+
+.logout {
+  font-weight: 500;
+  color: #114e09;
+  text-decoration: inherit;
+}
+.logout:hover {
+  color: #6dad69;
+}

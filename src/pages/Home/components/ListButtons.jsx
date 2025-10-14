@@ -1,15 +1,11 @@
 import styles from "../Home.module.css";
 
 export default function ListButtons({ title, handleListSelect }) {
-  function handleClick(e) {
-    handleListSelect(e.target.name);
-  }
-
   return (
     <button
       className={styles.listButton}
       name={title}
-      onClick={(e) => handleClick(e)}
+      onClick={(e) => handleListSelect(e.target.name)}
     >
       {title}
     </button>

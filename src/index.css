@@ -37,7 +37,7 @@ h1 {
   color: rgba(41, 61, 46, 0.815);
 }
 
-button {
+/* button {
   border-radius: 8px;
   border: 1px solid #255735;
   background-color: rgba(68, 107, 78, 0.815);
@@ -55,7 +55,7 @@ button:disabled {
   background-color: #cccccc;
   color: #8b8b8b;
   cursor: auto;
-}
+} */
 
 input {
   padding: 0.2em;

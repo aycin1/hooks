@@ -1,9 +1,17 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
+import useLogout from "../../hooks/useLogout";
 import styles from "./Header.module.css";
 
 export default function Header() {
   const { auth } = useAuth();
+  const navigate = useNavigate();
+  const logout = useLogout();
+
+  async function signOut() {
+    await logout();
+    navigate("/login");
+  }
 
   return (
     <div className={styles.header}>
@@ -23,9 +31,9 @@ export default function Header() {
         <NavLink to={"/feed"} className={styles.links}>
           Feed
         </NavLink>
-        <NavLink to={"/logout"} className={styles.links}>
+        <button onClick={signOut} className={styles.logout}>
           Logout
-        </NavLink>
+        </button>
       </div>
     </div>
   );
