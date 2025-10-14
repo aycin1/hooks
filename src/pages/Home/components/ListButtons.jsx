@@ -1,8 +1,8 @@
 import styles from "../Home.module.css";
 
-export default function ListButtons({ title, setChosenList }) {
+export default function ListButtons({ title, handleListSelect }) {
   function handleClick(e) {
-    setChosenList(e.target.name);
+    handleListSelect(e.target.name);
   }
 
   return (

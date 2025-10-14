@@ -8,7 +8,7 @@ import {
 import { useRef, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-export default function UploadImage({ uuid, setImageUploadSuccess }) {
+export default function UploadImage({ uuid, handleUploadSuccess }) {
   const axiosPrivate = useAxiosPrivate();
   const [progress, setProgress] = useState(0);
   const fileInputRef = useRef(null);
@@ -62,7 +62,7 @@ export default function UploadImage({ uuid, setImageUploadSuccess }) {
         },
         abortSignal: abortController.signal,
       });
-      setImageUploadSuccess((oldVal) => !oldVal);
+      handleUploadSuccess();
       console.log("Upload response:", uploadResponse);
     } catch (error) {
       if (error instanceof ImageKitAbortError) {

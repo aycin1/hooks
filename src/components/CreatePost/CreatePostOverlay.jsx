@@ -19,6 +19,14 @@ export default function CreatePostOverlay() {
     caption: caption,
   };
 
+  function handlePattern(pattern) {
+    setChosenPattern(pattern);
+  }
+
+  function handleUploadSuccess() {
+    setImageUploadSuccess((oldVal) => !oldVal);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -34,12 +42,9 @@ export default function CreatePostOverlay() {
       {message && message}
       <PatternSelect
         chosenPattern={chosenPattern}
-        setChosenPattern={setChosenPattern}
+        handlePattern={handlePattern}
       />
-      <UploadImage
-        uuid={data.uuid}
-        setImageUploadSuccess={setImageUploadSuccess}
-      />
+      <UploadImage uuid={data.uuid} handleUploadSuccess={handleUploadSuccess} />
       <input
         type="text"
         placeholder="  Caption"

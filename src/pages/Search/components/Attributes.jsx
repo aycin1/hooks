@@ -4,7 +4,7 @@ import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import styles from "../Search.module.css";
 import Checkbox from "./Checkbox";
 
-export default function Attributes({ checked, setChecked }) {
+export default function Attributes({ handleChange }) {
   const [attributes, setAttributes] = useState();
   const axiosPrivate = useAxiosPrivate();
 
@@ -65,8 +65,8 @@ export default function Attributes({ checked, setChecked }) {
       {attributes && (
         <Checkbox
           node={sortAttributes(attributes)}
-          checked={checked}
-          setChecked={setChecked}
+          value="pa"
+          handleChange={handleChange}
           expandAll={true}
         />
       )}

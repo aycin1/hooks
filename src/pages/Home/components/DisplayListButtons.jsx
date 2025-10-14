@@ -1,7 +1,7 @@
 import useLists from "../../../hooks/useLists";
 import ListButtons from "./ListButtons";
 
-export default function DisplayListButtons({ setChosenList }) {
+export default function DisplayListButtons({ handleListSelect }) {
   const lists = useLists();
 
   const listTitles = Object.keys(lists).map((list) => {
@@ -13,7 +13,7 @@ export default function DisplayListButtons({ setChosenList }) {
       <ListButtons
         key={listTitles[i]}
         title={listTitles[i]}
-        setChosenList={setChosenList}
+        handleListSelect={handleListSelect}
       />
     );
   });

@@ -9,9 +9,13 @@ export default function Dashboard() {
   const [chosenList, setChosenList] = useState();
   const lists = useLists();
 
+  function handleListSelect(list) {
+    setChosenList(list);
+  }
+
   return (
     <div className={styles.dashboard}>
-      <DisplayListButtons setChosenList={setChosenList} />
+      <DisplayListButtons handleListSelect={handleListSelect} />
       {lists?.[chosenList]?.length ? (
         <DisplayLists chosenList={chosenList} />
       ) : chosenList ? (

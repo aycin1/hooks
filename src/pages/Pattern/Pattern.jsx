@@ -50,19 +50,20 @@ export default function Pattern() {
     setPatternUrl(properties);
     if (properties.url) {
       return (
-        <div className="pattern-link">
+        <div>
           <a href={properties.url}>Pattern</a> by {properties.author}
         </div>
       );
     } else {
       return (
-        <div className="pattern-source-details">
+        <div>
           {properties.source?.name} ({properties.source?.type.toLowerCase()}) by
           {properties.author}
         </div>
       );
     }
   }
+
   const thumbnailOptions = {
     urlSize: "medium2_url",
     style: {

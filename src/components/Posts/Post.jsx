@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { NavLink } from "react-router";
+import useAuth from "../../hooks/useAuth";
 import PatternCard from "../PatternCard/PatternCard";
 import RenderDropdown from "../RenderDropdown/RenderDropdown";
 import EditAndDeleteButtons from "./EditAndDeleteButtons";
@@ -8,9 +8,8 @@ import styles from "./Posts.module.css";
 import RenderImage from "./RenderImage";
 import ToggleComments from "./ToggleComments";
 
-export default function Post({ post }) {
-  const [message, setMessage] = useState(undefined);
-
+export default function Post({ post, msgChange }) {
+  const { auth } = useAuth();
   const thumbnailOptions = {
     urlSize: "thumbnail_url",
     style: {
@@ -21,16 +20,16 @@ export default function Post({ post }) {
     maxHeight: "70px",
   };
 
-  return message ? (
-    <h4>{message}</h4>
-  ) : (
+  return (
     <>
-      <EditAndDeleteButtons
-        username={post.username}
-        postID={post.post_id}
-        currentCaption={post.caption}
-        setMessage={setMessage}
-      />
+      {auth.username === post.username && (
+        <EditAndDeleteButtons
+          username={post.username}
+          postID={post.post_id}
+          currentCaption={post.caption}
+          msgChange={msgChange}
+        />
+      )}
       <div className={styles.topContainer}>
         <RenderImage postID={post.post_id} />
         <div className={styles.side}>

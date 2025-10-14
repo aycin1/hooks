@@ -1,16 +1,24 @@
+import { useState } from "react";
 import Post from "./Post";
 import styles from "./Posts.module.css";
 
 export default function Posts({ posts }) {
-  function mapPosts() {
-    return (
-      posts?.length &&
-      posts.map((post) => (
-        <div key={post.post_id} className={styles.post}>
-          <Post post={post} />
-        </div>
-      ))
-    );
+  const [message, setMessage] = useState(undefined);
+
+  function handleMessageChange(msg) {
+    setMessage(msg);
   }
-  return mapPosts();
+
+  return (
+    posts?.length > 0 &&
+    posts.map((post) => (
+      <div key={post.post_id} className={styles.post}>
+        {message ? (
+          message
+        ) : (
+          <Post post={post} onMsgChange={handleMessageChange} />
+        )}
+      </div>
+    ))
+  );
 }

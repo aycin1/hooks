@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-export default function UserInput({ setUserInput }) {
+export default function UserInput({ handleUserInput }) {
   const [searchField, setSearchField] = useState();
 
   function handleSubmit(e) {
     e.preventDefault();
-    setUserInput(searchField.split(" ").join("%20"));
+    handleUserInput(searchField.split(" ").join("%20"));
   }
 
   return (

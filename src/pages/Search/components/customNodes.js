@@ -1,25 +1,5 @@
-import { useEffect, useState } from "react";
-import Checkbox from "./Checkbox";
-
-export default function CustomFilters({ setChecked, joinArrays }) {
-  const [craftChecked, setCraftChecked] = useState([]);
-  const [avaChecked, setAvaChecked] = useState([]);
-  const [weightChecked, setWeightChecked] = useState([]);
-  const checked = [
-    { name: "", value: craftChecked },
-    { name: avaChecked },
-    { name: weightChecked },
-  ];
-  console.log(checked);
-  useEffect(() => {
-    setChecked([
-      { name: "craft", value: joinArrays(craftChecked) },
-      { name: "availability", value: joinArrays(avaChecked) },
-      { name: "weight", value: joinArrays(weightChecked) },
-    ]);
-  }, [craftChecked, avaChecked, weightChecked, joinArrays, setChecked]);
-
-  const craftNode = [
+const nodes = [
+  [
     {
       value: "craft",
       label: "Craft",
@@ -30,9 +10,8 @@ export default function CustomFilters({ setChecked, joinArrays }) {
         { value: "loom-knitting", label: "Loom Knitting" },
       ],
     },
-  ];
-
-  const availabilityNode = [
+  ],
+  [
     {
       value: "availability",
       label: "Availability",
@@ -43,9 +22,8 @@ export default function CustomFilters({ setChecked, joinArrays }) {
         { value: "ravelry", label: "Ravelry download" },
       ],
     },
-  ];
-
-  const weightNode = [
+  ],
+  [
     {
       value: "weight",
       label: "Weight",
@@ -64,25 +42,7 @@ export default function CustomFilters({ setChecked, joinArrays }) {
         { value: "jumbo", label: "Jumbo" },
       ],
     },
-  ];
+  ],
+];
 
-  return (
-    <>
-      <Checkbox
-        node={craftNode}
-        checked={craftChecked}
-        setChecked={setCraftChecked}
-      />
-      <Checkbox
-        node={availabilityNode}
-        checked={avaChecked}
-        setChecked={setAvaChecked}
-      />
-      <Checkbox
-        node={weightNode}
-        checked={weightChecked}
-        setChecked={setWeightChecked}
-      />
-    </>
-  );
-}
+export default nodes;

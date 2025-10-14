@@ -13,7 +13,8 @@ import { useState } from "react";
 import CheckboxTree from "react-checkbox-tree";
 import "react-checkbox-tree/lib/react-checkbox-tree.css";
 
-export default function Checkbox({ node, checked, setChecked, expandAll }) {
+export default function Checkbox({ node, value, handleChange, expandAll }) {
+  const [checked, setChecked] = useState([]);
   const [expanded, setExpanded] = useState([]);
   const style = { color: "#2a5a36" };
 
@@ -23,7 +24,10 @@ export default function Checkbox({ node, checked, setChecked, expandAll }) {
       onlyLeafCheckboxes={true}
       checked={checked}
       expanded={expanded}
-      onCheck={(checked) => setChecked(checked)}
+      onCheck={(checked) => {
+        setChecked(checked);
+        handleChange(value, checked);
+      }}
       onExpand={(expanded) => setExpanded(expanded)}
       showExpandAll={expandAll}
       noCascade={true}

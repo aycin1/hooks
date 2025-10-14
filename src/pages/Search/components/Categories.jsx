@@ -4,7 +4,7 @@ import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import styles from "../Search.module.css";
 import Checkbox from "./Checkbox";
 
-export default function Categories({ checked, setChecked }) {
+export default function Categories({ handleChange }) {
   const [categories, setCategories] = useState();
   const axiosPrivate = useAxiosPrivate();
 
@@ -48,8 +48,8 @@ export default function Categories({ checked, setChecked }) {
       {categories && (
         <Checkbox
           node={mapCategories(categories)}
-          checked={checked}
-          setChecked={setChecked}
+          value="pc"
+          handleChange={handleChange}
           expandAll={true}
         />
       )}
