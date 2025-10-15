@@ -19,14 +19,6 @@ export default function LoginForm() {
     setErrorMsg("");
   }, [username, password]);
 
-  function togglePersist() {
-    setPersist((prev) => !prev);
-  }
-
-  useEffect(() => {
-    localStorage.setItem("persist", persist);
-  }, [persist]);
-
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -56,6 +48,14 @@ export default function LoginForm() {
       }
     }
   }
+
+  function togglePersist() {
+    setPersist((prev) => !prev);
+  }
+
+  useEffect(() => {
+    localStorage.setItem("persist", persist);
+  }, [persist]);
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>

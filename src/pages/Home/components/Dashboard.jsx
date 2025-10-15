@@ -9,13 +9,13 @@ export default function Dashboard() {
   const [chosenList, setChosenList] = useState();
   const lists = useLists();
 
-  function handleListSelect(list) {
+  function handleClick(list) {
     setChosenList(list);
   }
 
   return (
     <div className={styles.dashboard}>
-      <DisplayListButtons handleListSelect={handleListSelect} />
+      <DisplayListButtons handleClick={handleClick} />
       {lists?.[chosenList]?.length ? (
         <DisplayLists chosenList={chosenList} />
       ) : chosenList ? (
@@ -23,7 +23,7 @@ export default function Dashboard() {
           this list is empty, click here to search patterns!
         </Link>
       ) : (
-        "please select a list"
+        <h4>please select a list</h4>
       )}
     </div>
   );

@@ -8,27 +8,31 @@ export default function Likes({ postID }) {
   const [alreadyLiked, setAlreadyLiked] = useState();
 
   useEffect(() => {
-    async function checkLikes() {
+    let isMounted = true;
+    async function checkIfLiked() {
       try {
         const response = await axiosPrivate.get(`/likes/user/${postID}`);
-        setAlreadyLiked(response?.data ? true : false);
+        isMounted && setAlreadyLiked(response?.data ? true : false);
       } catch (error) {
         console.log(error);
       }
     }
-    checkLikes();
-  }, [postID, axiosPrivate]);
+    checkIfLiked();
+    return () => (isMounted = false);
+  }, []);
 
   useEffect(() => {
+    let isMounted = true;
     async function fetchLikes() {
       try {
         const response = await axiosPrivate.get(`/likes/${postID}`);
-        setLikes(response?.data?.likedUsers);
+        isMounted && setLikes(response?.data?.likedUsers);
       } catch (error) {
         console.log(error);
       }
     }
     fetchLikes();
+    return () => (isMounted = false);
   }, [alreadyLiked, postID, axiosPrivate]);
 
   async function handleClick() {
@@ -46,7 +50,7 @@ export default function Likes({ postID }) {
   }
 
   return (
-    <button className={styles.likeButton} onClick={() => handleClick()}>
+    <button className={styles.likeButton} onClick={handleClick}>
       {likes.length ? likes.length : 0}
     </button>
   );

@@ -31,7 +31,7 @@ export default function Comments({ postID }) {
     };
   }, [postID, message, axiosPrivate]);
 
-  function handleMessageChange(msg) {
+  function handleChange(msg) {
     setMessage(msg);
   }
 
@@ -39,7 +39,7 @@ export default function Comments({ postID }) {
     const data = { post_id: postID, message: e.target.value };
     try {
       const response = await axiosPrivate.delete("/comments/", { data });
-      handleMessageChange(response?.data?.message);
+      handleChange(response?.data?.message);
     } catch (error) {
       console.log(error);
     }
@@ -71,7 +71,7 @@ export default function Comments({ postID }) {
     <div>
       <div>{comments?.length > 0 && mapComments()}</div>
       <div>{message && message}</div>
-      <AddComment postID={postID} handleMessageChange={handleMessageChange} />
+      <AddComment postID={postID} handleChange={handleChange} />
     </div>
   );
 }

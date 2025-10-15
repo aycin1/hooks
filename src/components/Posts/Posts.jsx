@@ -5,7 +5,7 @@ import styles from "./Posts.module.css";
 export default function Posts({ posts }) {
   const [message, setMessage] = useState(undefined);
 
-  function handleMessageChange(msg) {
+  function handleChange(msg) {
     setMessage(msg);
   }
 
@@ -13,11 +13,7 @@ export default function Posts({ posts }) {
     posts?.length > 0 &&
     posts.map((post) => (
       <div key={post.post_id} className={styles.post}>
-        {message ? (
-          message
-        ) : (
-          <Post post={post} onMsgChange={handleMessageChange} />
-        )}
+        {message ? message : <Post post={post} handleChange={handleChange} />}
       </div>
     ))
   );

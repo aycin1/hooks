@@ -5,19 +5,22 @@ import DropdownOptions from "./DropdownOptions";
 
 export default function RenderDropdown({ patternID }) {
   const axiosPrivate = useAxiosPrivate();
+  const lists = useLists();
   const [message, setMessage] = useState();
   const [listForPattern, setListForPattern] = useState();
-  const lists = useLists();
 
   useEffect(() => {
-    const listTitles = Object.keys(lists).map((list) => list);
-    Object.values(lists).map((list, index) =>
-      list.map(
-        (pattern) =>
-          pattern.pattern_id === patternID &&
-          setListForPattern(listTitles[index])
+    let isMounted = true;
+
+    Object.values(lists).map((list) =>
+      list.map((pattern) =>
+        parseInt(pattern.pattern_id) === parseInt(patternID) && isMounted
+          ? setListForPattern(pattern.list)
+          : null
       )
     );
+
+    return () => (isMounted = false);
   }, [lists, patternID]);
 
   async function handleChange(e) {

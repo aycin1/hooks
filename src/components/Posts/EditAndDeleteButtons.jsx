@@ -7,15 +7,11 @@ import styles from "./Posts.module.css";
 export default function EditAndDeleteButtons({
   postID,
   currentCaption,
-  msgChange,
+  handleChange,
 }) {
   const axiosPrivate = useAxiosPrivate();
   const [caption, setCaption] = useState("");
   const [showInput, setShowInput] = useState(false);
-
-  function handleMessageChange(msg) {
-    msgChange(msg);
-  }
 
   function toggleInputField() {
     return setShowInput((oldValue) => !oldValue);
@@ -29,7 +25,7 @@ export default function EditAndDeleteButtons({
     };
     try {
       const response = await axiosPrivate.put("/feed/", data);
-      handleMessageChange(response?.data?.message);
+      handleChange(response?.data?.message);
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +35,7 @@ export default function EditAndDeleteButtons({
     const data = { post_id: postID };
     try {
       const response = await axiosPrivate.delete("/feed/", { data });
-      handleMessageChange(response?.data?.message);
+      handleChange(response?.data?.message);
     } catch (error) {
       console.log(error);
     }

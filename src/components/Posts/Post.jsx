@@ -8,7 +8,7 @@ import styles from "./Posts.module.css";
 import RenderImage from "./RenderImage";
 import ToggleComments from "./ToggleComments";
 
-export default function Post({ post, msgChange }) {
+export default function Post({ post, handleChange }) {
   const { auth } = useAuth();
   const thumbnailOptions = {
     urlSize: "thumbnail_url",
@@ -22,12 +22,12 @@ export default function Post({ post, msgChange }) {
 
   return (
     <>
-      {auth.username === post.username && (
+      {post.username === auth.username && (
         <EditAndDeleteButtons
           username={post.username}
           postID={post.post_id}
           currentCaption={post.caption}
-          msgChange={msgChange}
+          handleChange={handleChange}
         />
       )}
       <div className={styles.topContainer}>

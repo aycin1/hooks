@@ -2,12 +2,13 @@ import { useParams } from "react-router";
 import RenderDropdown from "../../components/RenderDropdown/RenderDropdown";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
 import usePattern from "../../hooks/usePattern";
+import PatternLink from "./components/PatternLink";
 
 export default function Pattern() {
   const { id } = useParams();
   const pattern = usePattern(id);
 
-  function setProperties() {
+  function setProperties(pattern) {
     return {
       name: pattern?.name,
       notes: pattern?.notes_html,
@@ -27,41 +28,20 @@ export default function Pattern() {
     };
   }
 
-  const properties = setProperties();
-
   function setPatternUrl(properties) {
-    return (properties =
-      pattern?.url === "" && pattern?.printings[0]?.pattern_source?.url !== ""
-        ? { ...properties, url: pattern.printings[0].pattern_source.url }
-        : pattern?.url === "" &&
-          pattern?.printings[0]?.pattern_source?.url === ""
-        ? {
-            ...properties,
-            source: {
-              name: pattern?.printings[0]?.pattern_source?.name,
-              type: pattern?.printings[0]?.pattern_source?.pattern_source_type
-                ?.long_name,
-            },
-          }
-        : { ...properties, url: pattern?.url });
-  }
-
-  function linkToPattern(properties) {
-    setPatternUrl(properties);
-    if (properties.url) {
-      return (
-        <div>
-          <a href={properties.url}>Pattern</a> by {properties.author}
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          {properties.source?.name} ({properties.source?.type.toLowerCase()}) by
-          {properties.author}
-        </div>
-      );
-    }
+    return pattern?.url === "" &&
+      pattern?.printings[0]?.pattern_source?.url !== ""
+      ? { ...properties, url: pattern.printings[0].pattern_source.url }
+      : pattern?.url === "" && pattern?.printings[0]?.pattern_source?.url === ""
+      ? {
+          ...properties,
+          source: {
+            name: pattern?.printings[0]?.pattern_source?.name,
+            type: pattern?.printings[0]?.pattern_source?.pattern_source_type
+              ?.long_name,
+          },
+        }
+      : { ...properties, url: pattern?.url };
   }
 
   const thumbnailOptions = {
@@ -75,10 +55,13 @@ export default function Pattern() {
     maxHeight: "800px",
   };
 
+  const properties = setProperties(pattern);
+  setPatternUrl(properties);
+
   return (
     <div>
       <h3>{properties?.name}</h3>
-      {linkToPattern(properties)}
+      <PatternLink properties={properties} />
       <RenderDropdown patternID={id} />
       <Thumbnail patternID={id} thumbnailOptions={thumbnailOptions} />
       <div dangerouslySetInnerHTML={{ __html: properties?.notes }} />

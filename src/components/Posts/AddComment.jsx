@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-export default function AddComment({ postID, handleMessageChange }) {
+export default function AddComment({ postID, handleChange }) {
   const axiosPrivate = useAxiosPrivate();
   const [comment, setComment] = useState("");
 
@@ -10,7 +10,7 @@ export default function AddComment({ postID, handleMessageChange }) {
     const data = { post_id: postID, message: comment };
     try {
       const response = await axiosPrivate.post("/comments", data);
-      handleMessageChange(response?.data?.message);
+      handleChange(response?.data?.message);
     } catch (error) {
       console.log(error);
     }

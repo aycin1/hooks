@@ -44,7 +44,7 @@ export default function FollowButton({ username }) {
           "/follows/",
           JSON.stringify({ following_user: username })
         );
-      } else if (isFollowing) {
+      } else {
         response = await axiosPrivate.delete("/follows/", {
           data: JSON.stringify({ unfollowing_user: username }),
         });
@@ -61,7 +61,7 @@ export default function FollowButton({ username }) {
     <>
       <button
         style={{ fontSize: "smaller", marginLeft: "10px" }}
-        onClick={(e) => handleClick(e)}
+        onClick={handleClick}
       >
         {buttonText}
       </button>
