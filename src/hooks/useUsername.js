@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "./useAxiosPrivate";
+
 export default function useUsername() {
   const [username, setUsername] = useState();
   const axiosPrivate = useAxiosPrivate();

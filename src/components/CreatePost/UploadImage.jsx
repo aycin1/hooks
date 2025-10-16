@@ -7,6 +7,7 @@ import {
 } from "@imagekit/react";
 import { useRef, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import styles from "./CreatePost.module.css";
 
 export default function UploadImage({ uuid, handleUploadSuccess }) {
   const axiosPrivate = useAxiosPrivate();
@@ -81,12 +82,19 @@ export default function UploadImage({ uuid, handleUploadSuccess }) {
 
   return (
     <>
-      <input type="file" ref={fileInputRef} />
-      <button type="button" onClick={handleUpload}>
-        Upload
-      </button>
-      <br />
-      Upload progress: <progress value={progress} max={100}></progress>
+      <div className={styles.inputAndButton}>
+        <input type="file" ref={fileInputRef} />
+        <button
+          type="button"
+          onClick={handleUpload}
+          className={styles.uploadImgBtn}
+        >
+          Upload
+        </button>
+      </div>
+      <div>
+        Upload progress: <progress value={progress} max={100}></progress>
+      </div>
     </>
   );
 }

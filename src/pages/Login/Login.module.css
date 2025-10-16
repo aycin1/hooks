@@ -18,17 +18,8 @@
 
 .button {
   margin: 2em;
-  border-radius: 8px;
-  border: 1px solid #255735;
-  background-color: rgba(68, 107, 78, 0.815);
-  color: #d9f0d7;
   padding: 0.4em 1.4em;
   font-size: 1.1em;
-  font-family: inherit;
-  cursor: pointer;
-}
-button:hover {
-  background-color: rgba(91, 134, 102, 0.815);
 }
 
 input {

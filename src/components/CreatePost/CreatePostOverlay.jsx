@@ -24,7 +24,7 @@ export default function CreatePostOverlay({ openClick, closeClick }) {
     caption: caption,
   };
 
-  function handlePattern(pattern) {
+  function handleClick(pattern) {
     setChosenPattern(pattern);
   }
 
@@ -37,40 +37,55 @@ export default function CreatePostOverlay({ openClick, closeClick }) {
     try {
       const response = await axiosPrivate.post("/feed", data);
       setMessage(response?.data?.message);
-      window.parent.location = window.parent.location.href;
+      console.log(response);
+      if (response.status === 201)
+        window.parent.location = window.parent.location.href;
     } catch (error) {
       console.log(error);
     }
   }
 
   return (
-    <dialog ref={ref} onCancel={closeClick}>
-      <button onClick={closeClick}>x</button>
+    <dialog ref={ref} onCancel={closeClick} className={styles.overlay}>
+      <button onClick={closeClick} className={styles.closeOverlayBtn}>
+        x
+      </button>
+
       {message ? (
         message
       ) : (
         <form onSubmit={handleSubmit}>
-          <PatternSelect
-            chosenPattern={chosenPattern}
-            handlePattern={handlePattern}
-          />
-          <UploadImage
-            uuid={data.uuid}
-            handleUploadSuccess={handleUploadSuccess}
-          />
-          <input
-            type="text"
-            placeholder="  Caption"
-            value={caption}
-            onChange={(e) => setCaption(e.target.value)}
-          ></input>
-          <button
-            type="submit"
-            disabled={!imageUploadSuccess || !chosenPattern ? true : false}
-            className={styles.uploadPostButton}
-          >
-            Post
-          </button>
+          <div className={styles.patternSelectContainer}>
+            <PatternSelect
+              chosenPattern={chosenPattern}
+              handleClick={handleClick}
+            />
+          </div>
+          <div className={styles.bottomContainer}>
+            <div className={styles.uploadImageContainer}>
+              <UploadImage
+                uuid={data.uuid}
+                handleUploadSuccess={handleUploadSuccess}
+              />
+            </div>
+            <div className={styles.captionAndPostBtn}>
+              <input
+                type="text"
+                placeholder="Caption"
+                value={caption}
+                className={styles.caption}
+                onChange={(e) => setCaption(e.target.value)}
+              ></input>
+              <button
+                type="submit"
+                disabled={!imageUploadSuccess || !chosenPattern ? true : false}
+                title="You must select a pattern and upload an image to create a post"
+                className={styles.uploadPostButton}
+              >
+                Post
+              </button>
+            </div>
+          </div>
         </form>
       )}
     </dialog>

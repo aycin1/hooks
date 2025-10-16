@@ -5,7 +5,10 @@ export default function PatternLink({ properties }) {
     if (properties.url || properties.downloadLocation) {
       return (
         <div>
-          <Link to={properties.url || properties.downloadLocation}>
+          <Link
+            to={properties.url || properties.downloadLocation}
+            target="_blank"
+          >
             Pattern
           </Link>{" "}
           by {properties.author}

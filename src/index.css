@@ -27,7 +27,6 @@ a:hover {
 body {
   display: flex;
   place-items: center;
-  background-color: rgba(166, 224, 181, 0.815);
   background-color: rgba(91, 173, 112, 0.815);
 }
 
@@ -37,16 +36,17 @@ h1 {
   color: rgba(41, 61, 46, 0.815);
 }
 
-/* button {
+button {
   border-radius: 8px;
   border: 1px solid #255735;
   background-color: rgba(68, 107, 78, 0.815);
   color: #d9f0d7;
-  padding: 0.4em 1.4em;
-  font-size: 1.1em;
-  font-family: inherit;
   cursor: pointer;
+  font-family: inherit;
 }
+/*  padding: 0.4em 1.4em;
+  font-size: 1.1em;
+  }*/
 button:hover {
   background-color: rgba(91, 134, 102, 0.815);
 }
@@ -55,11 +55,11 @@ button:disabled {
   background-color: #cccccc;
   color: #8b8b8b;
   cursor: auto;
-} */
+}
 
 input {
   padding: 0.2em;
-  border-radius: 5px;
+  border-radius: 3px;
   border-color: rgb(59, 129, 68);
   border-width: 0.02em;
 }

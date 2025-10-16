@@ -1,13 +1,89 @@
 .addPostButton {
-  border-radius: 8px;
-  border: 1px solid #255735;
-  background-color: rgba(68, 107, 78, 0.815);
-  color: #d9f0d7;
   padding: 0.4em 1.4em;
   font-size: 1.1em;
-  font-family: inherit;
-  cursor: pointer;
 }
-.addPostButton:hover {
-  background-color: rgba(91, 134, 102, 0.815);
+
+.overlay {
+  background-color: rgb(135, 175, 146);
+  border-radius: 5px;
+  border: 2px solid #255735;
+  max-width: 60vw;
+  padding: 2vw 5vw;
+}
+
+.closeOverlayBtn {
+  font-weight: 500;
+  margin: 0px 0px 100px 10px;
+  float: right;
+}
+
+.patternSelectContainer {
+  margin: 10px 0px;
+}
+
+.p {
+  font-weight: 700;
+  font-size: large;
+  color: #114e09;
+}
+
+.displayPatterns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  max-height: 35vh;
+  gap: 2px;
+}
+
+.thumbnail {
+  margin: 2px;
+}
+
+.chosen {
+  border: 3px solid #255735;
+}
+
+.bottomContainer {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+  align-items: center;
+}
+
+.uploadImageContainer {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.inputAndButton {
+  padding-bottom: 15px;
+}
+
+.uploadImgBtn {
+  padding: 4px 16px;
+}
+
+.uploadPostButton {
+  padding: 0.5vh 2vw;
+  font-size: large;
+  font-weight: 600;
+}
+.uploadPostButton:disabled {
+  pointer-events: auto;
+}
+
+.captionAndPostBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  align-content: space-between;
+}
+
+.caption {
+  margin-bottom: 25px;
+  width: 17vw;
 }

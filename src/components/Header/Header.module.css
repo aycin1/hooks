@@ -4,7 +4,7 @@
   justify-content: space-between;
   padding: 0vh 4vw 2vh 4vw;
   margin-bottom: 3vh;
-  max-width: 95vw;
+  width: 75vw;
   border-bottom: 1px double rgb(255, 238, 217);
 }
 
@@ -23,9 +23,16 @@
 
 .logout {
   font-weight: 500;
+  font-size: 16px;
   color: #114e09;
   text-decoration: inherit;
+  background-color: transparent;
+  border: none;
+  padding-left: 3vw;
+  text-shadow: 2px 2px 2px #d9edc7;
 }
 .logout:hover {
   color: #6dad69;
+  background-color: transparent;
+  border: none;
 }
