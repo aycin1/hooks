@@ -14,8 +14,8 @@ export default function RenderDropdown({ patternID }) {
 
     Object.values(lists).map((list) =>
       list.map((pattern) =>
-        parseInt(pattern.pattern_id) === parseInt(patternID) && isMounted
-          ? setListForPattern(pattern.list)
+        parseInt(pattern.pattern_id) === parseInt(patternID)
+          ? isMounted && setListForPattern(pattern.list)
           : null
       )
     );

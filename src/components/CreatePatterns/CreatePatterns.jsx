@@ -11,9 +11,8 @@ export default function CreatePatterns({
       const patternID = pattern.pattern_id || pattern.id;
 
       return (
-        <div>
+        <div key={patternID}>
           <PatternCard
-            key={patternID}
             patternID={patternID}
             thumbnailOptions={thumbnailOptions}
           />

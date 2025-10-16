@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import useUsername from "../../hooks/useUsername";
 import AddComment from "./AddComment";
 
 export default function Comments({ postID }) {
-  const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const [comments, setComments] = useState([]);
   const [message, setMessage] = useState("");
+  const thisUser = useUsername();
 
   useEffect(() => {
     let isMounted = true;
@@ -54,7 +54,7 @@ export default function Comments({ postID }) {
             {comment.comment_username}
           </Link>
 
-          {comment.comment_username === auth.username && (
+          {comment.comment_username === thisUser && (
             <button
               value={comment.message}
               onClick={(e) => handleCommentDeletion(e)}

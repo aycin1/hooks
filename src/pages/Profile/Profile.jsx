@@ -3,13 +3,13 @@ import CreatePost from "../../components/CreatePost/CreatePost";
 import FollowButton from "../../components/FollowButton/FollowButton";
 import Posts from "../../components/Posts/Posts";
 import UserSearch from "../../components/UserSearch/UserSearch";
-import useAuth from "../../hooks/useAuth";
 import usePosts from "../../hooks/usePosts";
+import useUsername from "../../hooks/useUsername";
 import Follows from "./components/Follows";
 import styles from "./Profile.module.css";
 
 export default function Profile() {
-  const { auth } = useAuth();
+  const thisUser = useUsername();
   const { username } = useParams();
   const posts = usePosts(username);
 
@@ -17,7 +17,7 @@ export default function Profile() {
     <div className={styles.profile}>
       <div className={styles.topContainer}>
         <h3>{username}</h3>
-        {username === auth.username ? (
+        {username === thisUser ? (
           <CreatePost />
         ) : (
           <FollowButton username={username} />
@@ -29,7 +29,7 @@ export default function Profile() {
         </div>
         <div className={styles.users}>
           <UserSearch />
-          {username === auth.username && <Follows />}
+          {username === thisUser && <Follows />}
         </div>
       </div>
     </div>

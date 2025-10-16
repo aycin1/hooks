@@ -13,7 +13,7 @@ export default function usePosts(username) {
         let response;
         if (username) {
           const query = new URLSearchParams({ username: username });
-          response = await axiosPrivate.get(`/users/?${query}`, {
+          response = await axiosPrivate.get(`/users/posts/?${query}`, {
             signal: controller.signal,
           });
         } else {

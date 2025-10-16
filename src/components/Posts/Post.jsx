@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import useAuth from "../../hooks/useAuth";
+import useUsername from "../../hooks/useUsername";
 import PatternCard from "../PatternCard/PatternCard";
 import RenderDropdown from "../RenderDropdown/RenderDropdown";
 import EditAndDeleteButtons from "./EditAndDeleteButtons";
@@ -9,7 +9,8 @@ import RenderImage from "./RenderImage";
 import ToggleComments from "./ToggleComments";
 
 export default function Post({ post, handleChange }) {
-  const { auth } = useAuth();
+  const thisUser = useUsername();
+
   const thumbnailOptions = {
     urlSize: "thumbnail_url",
     style: {
@@ -22,7 +23,7 @@ export default function Post({ post, handleChange }) {
 
   return (
     <>
-      {post.username === auth.username && (
+      {post.username === thisUser && (
         <EditAndDeleteButtons
           username={post.username}
           postID={post.post_id}
