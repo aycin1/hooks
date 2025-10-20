@@ -1,7 +1,6 @@
 .dashboard {
   display: flex;
   flex-direction: column;
-  padding-bottom: 2em;
 }
 
 .listButton {
@@ -34,7 +33,7 @@ button:hover {
 }
 
 .patterns {
-  width: 85cap;
+  /* width: 85cap; */
   display: flex;
   flex-wrap: wrap;
   align-items: center;

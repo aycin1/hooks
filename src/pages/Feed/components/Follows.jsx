@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import UserLink from "../../../components/UserLink/UserLink";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
-import styles from "../Profile.module.css";
+import styles from "../Feed.module.css";
 
 export default function Follows() {
   const axiosPrivate = useAxiosPrivate();

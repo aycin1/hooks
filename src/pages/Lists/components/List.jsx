@@ -1,8 +1,9 @@
 import { NavLink } from "react-router";
-import CreatePatterns from "../../../components/CreatePatterns/CreatePatterns";
+import PatternCard from "../../../components/PatternCard/PatternCard";
+import RenderDropdown from "../../../components/RenderDropdown/RenderDropdown";
 import styles from "../Lists.module.css";
 
-export default function CreateList({ list, listTitle }) {
+export default function List({ list, listTitle }) {
   const thumbnailOptions = {
     urlSize: "medium_url",
     style: {
@@ -21,11 +22,15 @@ export default function CreateList({ list, listTitle }) {
       {list.length ? (
         <div className={styles.listCard}>
           <div className={styles.patternCards}>
-            <CreatePatterns
-              list={list}
-              thumbnailOptions={thumbnailOptions}
-              withDropdown={true}
-            />
+            {list.map((pattern) => (
+              <div>
+                <PatternCard
+                  patternID={pattern.pattern_id}
+                  thumbnailOptions={thumbnailOptions}
+                />
+                <RenderDropdown patternID={pattern.pattern_id} />
+              </div>
+            ))}
           </div>
           <NavLink to="/search" className={styles.searchLink}>
             add more patterns!

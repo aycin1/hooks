@@ -1,4 +1,4 @@
-import CreatePatterns from "../../../components/CreatePatterns/CreatePatterns";
+import PatternCard from "../../../components/PatternCard/PatternCard";
 import styles from "../Search.module.css";
 
 export default function SearchResults({ list }) {
@@ -17,11 +17,14 @@ export default function SearchResults({ list }) {
 
   return (
     <div className={styles.patterns}>
-      {list?.length ? (
-        <CreatePatterns list={list} thumbnailOptions={thumbnailOptions} />
-      ) : (
-        "No patterns found, please try again"
-      )}
+      {list?.length
+        ? list.map((pattern) => (
+            <PatternCard
+              patternID={pattern.id}
+              thumbnailOptions={thumbnailOptions}
+            />
+          ))
+        : "No patterns found, please try again"}
     </div>
   );
 }

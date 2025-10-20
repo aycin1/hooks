@@ -1,30 +1,24 @@
-.patterns {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .searchPage {
   display: flex;
 }
 
-.refine {
-  position: initial;
-  background-color: rgba(241, 236, 191, 0.589);
-  padding: 0px 10px 20px;
-  min-width: 30%;
-  border-radius: 20px;
-  border-style: double;
-  border-color: rgb(64, 94, 55);
-  max-height: fit-content;
-  margin-top: 20px;
+.sidebar {
+  position: fixed;
+  max-height: 80vh;
+  overflow-y: scroll;
+  background-color: rgb(211, 236, 207);
+  margin: 11px;
+  padding: 0px 10px;
+  min-width: fit-content;
 }
 
-.refineOptions {
-  font-size: smaller;
-  display: flex;
-  flex-direction: column;
-  justify-self: left;
+.body {
+  width: 80%;
+  padding: 5vh 0vw 0vh 300px;
+}
+
+.searchResults {
+  padding-top: 20px;
 }
 
 .widenSearch {
@@ -36,13 +30,33 @@
   color: rgb(74, 92, 69);
 }
 
+.refineOptions {
+  font-size: smaller;
+  display: flex;
+  flex-direction: column;
+  justify-self: left;
+}
+
+.userInput {
+  display: flex;
+  padding-left: 100px;
+}
+
+.input {
+  width: 60%;
+}
+
+.searchButton {
+  margin: 0px 5px;
+  padding: 2.5px 10px;
+}
+
 .label {
-  /* min-width: fit-content; */
   padding: 0px 10px;
 }
 
-.categories {
-  align-self: left;
-  /* display: flex;
-  flex-direction: column;*/
+.patterns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

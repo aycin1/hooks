@@ -1,0 +1,32 @@
+.feed {
+  width: 100%;
+  display: flex;
+}
+
+.posts {
+  flex-grow: 2;
+  width: 80%;
+}
+
+.sidebar {
+  margin-right: 80px;
+  position: fixed;
+  right: 0;
+  height: 75%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(165, 216, 186);
+  padding: 2.5vh;
+  border-radius: 3px;
+  min-width: fit-content;
+}
+
+.follows {
+  display: flex;
+}
+
+.button {
+  margin-right: 5px;
+  font-size: smaller;
+}

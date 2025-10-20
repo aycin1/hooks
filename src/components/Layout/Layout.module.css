@@ -1,9 +1,23 @@
 .app {
-  padding: 1rem 2rem;
-  max-width: 95vw;
-
+  padding: 0vh 4vw 2vh 4vw;
   color: #114e09;
+  width: 90vw;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
 }
 
 .header {
+  position: fixed;
+  border-bottom: 1px double rgba(120, 145, 114, 0.87);
+  top: 0;
+  z-index: 1;
+  padding: 4vh 20vw 0vh;
+  width: 90%;
+  background-color: rgb(177, 219, 188);
+}
+
+.outlet {
+  padding: 100px 0px;
+  align-self: center;
 }

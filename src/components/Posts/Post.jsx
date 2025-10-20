@@ -22,7 +22,7 @@ export default function Post({ post, handleChange }) {
   };
 
   return (
-    <>
+    <div className={styles.postCard}>
       {post.username === thisUser && (
         <EditAndDeleteButtons
           username={post.username}
@@ -49,6 +49,6 @@ export default function Post({ post, handleChange }) {
         <Likes postID={post.post_id} />
         <ToggleComments postID={post.post_id} />
       </div>
-    </>
+    </div>
   );
 }

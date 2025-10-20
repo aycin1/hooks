@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "../Search.module.css";
 
 export default function UserInput({ handleUserInput }) {
   const [searchField, setSearchField] = useState();
@@ -9,15 +10,19 @@ export default function UserInput({ handleUserInput }) {
   }
 
   return (
-    <>
+    <div className={styles.userInput}>
       <input
-        className="input"
+        className={styles.input}
         placeholder="Search for patterns!"
         onChange={(e) => setSearchField(e.target.value)}
       ></input>
-      <button className="searchButton" type="submit" onClick={handleSubmit}>
+      <button
+        className={styles.searchButton}
+        type="submit"
+        onClick={handleSubmit}
+      >
         Search
       </button>
-    </>
+    </div>
   );
 }

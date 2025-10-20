@@ -6,13 +6,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(177, 219, 188);
 }
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 1rem;
   text-align: center;
-  background-color: rgba(200, 233, 209, 0.815);
+  background-color: rgba(91, 173, 111, 0.644);
 }
 
 a {
@@ -22,12 +22,6 @@ a {
 }
 a:hover {
   color: #6dad69;
-}
-
-body {
-  display: flex;
-  place-items: center;
-  background-color: rgba(91, 173, 112, 0.815);
 }
 
 h1 {
@@ -44,9 +38,6 @@ button {
   cursor: pointer;
   font-family: inherit;
 }
-/*  padding: 0.4em 1.4em;
-  font-size: 1.1em;
-  }*/
 button:hover {
   background-color: rgba(91, 134, 102, 0.815);
 }

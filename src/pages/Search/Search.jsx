@@ -72,11 +72,11 @@ export default function Search() {
 
   return (
     <div className={styles.searchPage}>
-      <div className={styles.refine}>
+      <div className={styles.sidebar}>
         <Toggle toggle={toggle} handleClick={handleClick} />
         <RefineSearch handleChange={handleChange} />
       </div>
-      <div>
+      <div className={styles.body}>
         <UserInput handleUserInput={handleUserInput} />
         <div className={styles.searchResults}>
           {searchResults && <SearchResults list={searchResults} />}

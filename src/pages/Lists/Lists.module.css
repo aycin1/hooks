@@ -6,8 +6,7 @@
 .listCard {
   display: flex;
   flex-direction: column;
-  max-width: 75svw;
-
+  max-width: 75vw;
   justify-self: center;
 }
 
