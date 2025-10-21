@@ -44,17 +44,19 @@ export default function Post({ post }) {
           <div className={styles.topContainer}>
             <RenderImage postID={post.post_id} />
             <div className={styles.side}>
-              <PatternCard
-                patternID={post.pattern_id}
-                thumbnailOptions={thumbnailOptions}
-              />
-              <Dropdown patternID={post.pattern_id} />
               <NavLink
                 to={`/profile/${post.username}`}
                 className={styles.username}
               >
                 {post.username}
               </NavLink>
+              <div>
+                <PatternCard
+                  patternID={post.pattern_id}
+                  thumbnailOptions={thumbnailOptions}
+                />
+                <Dropdown patternID={post.pattern_id} />
+              </div>
             </div>
           </div>
           <p className={styles.caption}>{post.caption}</p>

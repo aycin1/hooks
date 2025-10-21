@@ -1,0 +1,6 @@
+.dropdown {
+  background-color: rgba(237, 248, 231, 0.651);
+  max-width: fit-content;
+  border-radius: 2px;
+  border: 1px double rgba(167, 182, 159, 0.842);
+}

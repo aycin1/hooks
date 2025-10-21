@@ -1,3 +1,5 @@
+import styles from "./Dropdown.module.css";
+
 export default function DropdownOptions({ listForPattern, handleChange }) {
   let options = ["wishlist", "wip", "completed"];
 
@@ -15,7 +17,11 @@ export default function DropdownOptions({ listForPattern, handleChange }) {
   const text = listForPattern ? "edit list" : "add to list";
 
   return (
-    <select name="dropdown" onChange={(e) => handleChange(e)}>
+    <select
+      name="dropdown"
+      onChange={(e) => handleChange(e)}
+      className={styles.dropdown}
+    >
       <option disabled selected>
         {text}
       </option>
