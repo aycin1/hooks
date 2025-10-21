@@ -38,13 +38,13 @@ export default function Comments({ postID }) {
     setMessage(msg);
   }
 
-  async function handleCommentDeletion(e) {
-    const data = { post_id: postID, message: e.target.value };
+  async function handleCommentDeletion(msg) {
+    const data = { post_id: postID, message: msg };
     try {
       const response = await axiosPrivate.delete("/comments/", { data });
       handleChange(response?.data?.message);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -60,8 +60,7 @@ export default function Comments({ postID }) {
 
             {comment.comment_username === thisUser && (
               <button
-                value={comment.message}
-                onClick={(e) => handleCommentDeletion(e)}
+                onClick={() => handleCommentDeletion(comment.message)}
                 className={styles.deleteCommentButton}
                 title="Delete comment"
               >

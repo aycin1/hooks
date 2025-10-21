@@ -11,6 +11,7 @@ export default function AddComment({ postID, handleChange }) {
     try {
       const response = await axiosPrivate.post("/comments", data);
       handleChange(response?.data?.message);
+      setComment("");
     } catch (error) {
       console.log(error);
     }
@@ -23,6 +24,7 @@ export default function AddComment({ postID, handleChange }) {
           className="commentInput"
           placeholder="Comment..."
           onChange={(e) => setComment(e.target.value)}
+          value={comment}
         ></input>
       </label>
     </form>
