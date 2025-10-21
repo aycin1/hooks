@@ -61,13 +61,18 @@ export default function EditAndDeleteButtons({
       </form>
       {!showInput ? (
         <>
-          <button className={styles.editPostButton} onClick={toggleInputField}>
+          <button
+            className={styles.editPostButton}
+            onClick={toggleInputField}
+            title="Edit caption"
+          >
             <FontAwesomeIcon icon={faPencil} size="sm" />
           </button>
           <button
             value={postID}
             className={styles.deletePostButton}
             onClick={handleDeletion}
+            title="Delete post"
           >
             <FontAwesomeIcon icon={faTrashCan} size="sm" />
           </button>

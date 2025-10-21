@@ -1,4 +1,5 @@
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as faSolid } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
@@ -53,7 +54,8 @@ export default function Likes({ postID }) {
 
   return (
     <button className={styles.likeButton} onClick={handleClick}>
-      <FontAwesomeIcon icon={faHeart} /> {likes.length ? likes.length : 0}
+      <FontAwesomeIcon icon={!alreadyLiked ? faHeart : faSolid} />{" "}
+      {likes.length ? likes.length : 0}
     </button>
   );
 }
