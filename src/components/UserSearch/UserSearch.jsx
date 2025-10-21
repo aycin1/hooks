@@ -32,7 +32,7 @@ export default function UserSearch() {
         />
         <button className={styles.button}>Search</button>
       </form>
-      <div className={styles.userLink}>
+      <div className={styles.foundUser}>
         {foundUser ? (
           <UserLink foundUser={foundUser} />
         ) : isSubmitted ? (

@@ -1,11 +1,30 @@
+.posts {
+  /* display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-items: stretch; */
+  padding-top: 20px;
+  display: inline-grid;
+  grid-template-columns: 48% 48%;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1000px) {
+  .posts {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .post {
   display: flex;
   flex-direction: column;
-  width: fit-content;
 }
 
 .postCard {
   border: 1px double rgba(120, 145, 114, 0.507);
+  background-color: rgba(165, 216, 186, 0.753);
   border-radius: 5px;
   margin: 5px;
   padding: 15px;
@@ -14,10 +33,12 @@
 .editPostButton {
   margin-right: 5px;
   padding: 5px;
+  color: #b1dbbc;
 }
 
 .deletePostButton {
   padding: 5px;
+  color: #b1dbbc;
 }
 
 .editAndDeleteButtons {
@@ -42,6 +63,8 @@
 .toggleCommentButton {
   font-size: smaller;
   margin: 2px;
+  padding: 5px 12px;
+  color: #b1dbbc;
 }
 
 .side {
@@ -52,4 +75,21 @@
 
 .topContainer {
   display: flex;
+}
+
+.comments {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+
+.deleteCommentButton {
+  border: none;
+  background-color: transparent;
+}
+.deleteCommentButton:hover {
+  border: none;
+  background-color: transparent;
 }

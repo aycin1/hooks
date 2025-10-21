@@ -1,3 +1,4 @@
+import Dropdown from "../../../components/Dropdown/Dropdown";
 import PatternCard from "../../../components/PatternCard/PatternCard";
 import styles from "../Search.module.css";
 
@@ -16,13 +17,16 @@ export default function SearchResults({ list }) {
   };
 
   return (
-    <div className={styles.patterns}>
+    <div className={styles.searchResults}>
       {list?.length
         ? list.map((pattern) => (
-            <PatternCard
-              patternID={pattern.id}
-              thumbnailOptions={thumbnailOptions}
-            />
+            <div className={styles.pattern}>
+              <PatternCard
+                patternID={pattern.id}
+                thumbnailOptions={thumbnailOptions}
+              />
+              <Dropdown patternID={pattern.id} />
+            </div>
           ))
         : "No patterns found, please try again"}
     </div>

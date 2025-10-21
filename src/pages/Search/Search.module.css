@@ -6,7 +6,7 @@
   position: fixed;
   max-height: 80vh;
   overflow-y: scroll;
-  background-color: rgb(211, 236, 207);
+  background-color: rgba(211, 236, 207, 0.603);
   margin: 11px;
   padding: 0px 10px;
   min-width: fit-content;
@@ -30,20 +30,13 @@
   color: rgb(74, 92, 69);
 }
 
-.refineOptions {
-  font-size: smaller;
-  display: flex;
-  flex-direction: column;
-  justify-self: left;
-}
-
 .userInput {
   display: flex;
-  padding-left: 100px;
+  justify-content: center;
 }
 
 .input {
-  width: 60%;
+  width: 45%;
 }
 
 .searchButton {
@@ -55,8 +48,12 @@
   padding: 0px 10px;
 }
 
-.patterns {
+.searchResults {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.pattern {
+  padding-bottom: 15px;
 }

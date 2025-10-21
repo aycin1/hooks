@@ -47,7 +47,7 @@ export default function Follows() {
           name={name}
           value={index}
           onClick={handleClick}
-          className={styles.button}
+          className={styles.followButton}
         >
           {followArr?.length ? followArr.length : 0} {name}
         </button>

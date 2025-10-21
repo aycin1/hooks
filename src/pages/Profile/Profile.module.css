@@ -1,14 +1,9 @@
 .profile {
   display: flex;
   flex-direction: column;
+
   padding-top: 2vh;
   width: 100%;
-  /* justify-content: space-between; */
-}
-
-.profileContainer {
-  display: flex;
-  flex-direction: row;
 }
 
 .topContainer {
@@ -22,14 +17,7 @@
 }
 
 .posts {
-  /* flex-grow: 2; */
-  /* display: flex; */
-  /* flex-direction: row;
-  flex-wrap: wrap; */
-  /* align-items: center;
-  justify-content: center; */
-  background-color: rgba(224, 245, 212, 0.644);
+  justify-self: center;
   border-radius: 8px;
   padding: 2vh 0vw;
-  display: inline-block;
 }

@@ -3,7 +3,7 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useLists from "../../hooks/useLists";
 import DropdownOptions from "./DropdownOptions";
 
-export default function RenderDropdown({ patternID }) {
+export default function Dropdown({ patternID }) {
   const axiosPrivate = useAxiosPrivate();
   const lists = useLists();
   const [message, setMessage] = useState();
@@ -21,7 +21,7 @@ export default function RenderDropdown({ patternID }) {
     );
 
     return () => (isMounted = false);
-  }, [lists, patternID]);
+  }, [lists, patternID, message]);
 
   async function handleChange(e) {
     const desiredList = e.target.value;
@@ -39,7 +39,9 @@ export default function RenderDropdown({ patternID }) {
           ? await axiosPrivate.patch("/lists/", data)
           : await axiosPrivate.post("/lists/", data);
 
-      if (response?.data?.message) setMessage(response.data.message);
+      if (response?.data?.message) {
+        setMessage(response.data.message);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -52,7 +54,7 @@ export default function RenderDropdown({ patternID }) {
         listForPattern={listForPattern}
         handleChange={handleChange}
       />
-      <div>{message && <p>{message}</p>}</div>
+      <div style={{ fontSize: "small" }}>{message && <p>{message}</p>}</div>
     </>
   );
 }

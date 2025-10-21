@@ -8,6 +8,9 @@
   flex-direction: column;
   max-width: 75vw;
   justify-self: center;
+  padding: 20px 80px;
+  background-color: rgba(245, 245, 220, 0.486);
+  border-radius: 5px;
 }
 
 .patternCards {
@@ -23,12 +26,10 @@
   margin-top: 2vh;
   align-self: end;
   padding: 1vh 4vh;
-  border: 2px double #6ec090;
+  border: 2px double #114e09af;
   border-radius: 8px;
 }
 
 .listTitle {
-  background-color: rgba(245, 245, 220, 0.486);
-  border-radius: 8px;
-  padding: 2vh;
+  padding-top: 2vh;
 }

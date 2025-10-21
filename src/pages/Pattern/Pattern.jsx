@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import RenderDropdown from "../../components/RenderDropdown/RenderDropdown";
+import Dropdown from "../../components/Dropdown/Dropdown";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
 import usePattern from "../../hooks/usePattern";
 import PatternLink from "./components/PatternLink";
@@ -62,7 +62,7 @@ export default function Pattern() {
     <div>
       <h3>{properties?.name}</h3>
       <PatternLink properties={properties} />
-      <RenderDropdown patternID={id} />
+      <Dropdown patternID={id} />
       <Thumbnail patternID={id} thumbnailOptions={thumbnailOptions} />
       <div dangerouslySetInnerHTML={{ __html: properties?.notes }} />
     </div>

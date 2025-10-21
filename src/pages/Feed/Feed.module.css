@@ -1,22 +1,19 @@
 .feed {
-  width: 100%;
   display: flex;
 }
 
 .posts {
-  flex-grow: 2;
-  width: 80%;
+  padding: 0vh 200px 0px 0px;
 }
 
 .sidebar {
-  margin-right: 80px;
+  margin-right: 70px;
   position: fixed;
   right: 0;
-  height: 75%;
-  z-index: 1;
+  max-height: 75%;
   display: flex;
   flex-direction: column;
-  background-color: rgb(165, 216, 186);
+  background-color: rgba(165, 216, 186, 0.829);
   padding: 2.5vh;
   border-radius: 3px;
   min-width: fit-content;
@@ -24,9 +21,11 @@
 
 .follows {
   display: flex;
+  align-self: center;
 }
 
-.button {
+.followButton {
   margin-right: 5px;
   font-size: smaller;
+  padding: 5px 18px;
 }

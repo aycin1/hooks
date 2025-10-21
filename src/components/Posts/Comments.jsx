@@ -1,8 +1,11 @@
+import { faSquareXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useUsername from "../../hooks/useUsername";
 import AddComment from "./AddComment";
+import styles from "./Posts.module.css";
 
 export default function Comments({ postID }) {
   const axiosPrivate = useAxiosPrivate();
@@ -48,20 +51,27 @@ export default function Comments({ postID }) {
   function mapComments() {
     return comments.map((comment, index) => {
       return (
-        <div key={index}>
+        <div key={index} className={styles.comments}>
           <p>{comment.message}</p>
-          <Link to={`/profile/${comment.comment_username}`}>
-            {comment.comment_username}
-          </Link>
+          <div>
+            <Link to={`/profile/${comment.comment_username}`}>
+              {comment.comment_username}
+            </Link>
 
-          {comment.comment_username === thisUser && (
-            <button
-              value={comment.message}
-              onClick={(e) => handleCommentDeletion(e)}
-            >
-              delete
-            </button>
-          )}
+            {comment.comment_username === thisUser && (
+              <button
+                value={comment.message}
+                onClick={(e) => handleCommentDeletion(e)}
+                className={styles.deleteCommentButton}
+                title="Delete comment"
+              >
+                <FontAwesomeIcon
+                  icon={faSquareXmark}
+                  style={{ color: "#114e09" }}
+                />
+              </button>
+            )}
+          </div>
         </div>
       );
     });
@@ -69,8 +79,7 @@ export default function Comments({ postID }) {
 
   return (
     <div>
-      <div>{comments?.length > 0 && mapComments()}</div>
-      <div>{message && message}</div>
+      {comments?.length > 0 && mapComments()}
       <AddComment postID={postID} handleChange={handleChange} />
     </div>
   );

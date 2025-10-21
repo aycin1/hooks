@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
+import Dropdown from "../../../components/Dropdown/Dropdown";
 import PatternCard from "../../../components/PatternCard/PatternCard";
-import RenderDropdown from "../../../components/RenderDropdown/RenderDropdown";
 import styles from "../Lists.module.css";
 
 export default function List({ list, listTitle }) {
@@ -28,7 +28,7 @@ export default function List({ list, listTitle }) {
                   patternID={pattern.pattern_id}
                   thumbnailOptions={thumbnailOptions}
                 />
-                <RenderDropdown patternID={pattern.pattern_id} />
+                <Dropdown patternID={pattern.pattern_id} />
               </div>
             ))}
           </div>

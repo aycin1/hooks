@@ -1,4 +1,4 @@
-import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
@@ -26,6 +26,9 @@ export default function EditAndDeleteButtons({
     try {
       const response = await axiosPrivate.put("/feed/", data);
       handleChange(response?.data?.message);
+      if (response.status === 200) {
+        window.location.href = parent.window.location;
+      }
     } catch (error) {
       console.log(error);
     }
@@ -36,6 +39,10 @@ export default function EditAndDeleteButtons({
     try {
       const response = await axiosPrivate.delete("/feed/", { data });
       handleChange(response?.data?.message);
+      console.log(response);
+      if (response.status === 200) {
+        window.location.href = parent.window.location;
+      }
     } catch (error) {
       console.log(error);
     }
@@ -62,7 +69,7 @@ export default function EditAndDeleteButtons({
             className={styles.deletePostButton}
             onClick={handleDeletion}
           >
-            <FontAwesomeIcon icon={faTrash} size="sm" />
+            <FontAwesomeIcon icon={faTrashCan} size="sm" />
           </button>
         </>
       ) : (
