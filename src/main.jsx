@@ -12,7 +12,7 @@ createRoot(document.getElementById("root")).render(
       <AuthProvider>
         <ListsProvider>
           <Routes>
-            <Route path="/*" element={<App />}></Route>
+            <Route path="/*" element={<App />} />
           </Routes>
         </ListsProvider>
       </AuthProvider>

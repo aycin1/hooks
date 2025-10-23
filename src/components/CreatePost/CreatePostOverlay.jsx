@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import styles from "./CreatePost.module.css";
 import PatternSelect from "./PatternSelect";
@@ -13,6 +14,7 @@ export default function CreatePostOverlay({ openClick, closeClick }) {
   const [imageUploadSuccess, setImageUploadSuccess] = useState(false);
   const ref = useRef();
   const uuid = useRef(uuidv4());
+  const { persist } = useAuth();
 
   useEffect(() => {
     openClick ? ref.current?.showModal() : ref.current?.close();
@@ -38,7 +40,7 @@ export default function CreatePostOverlay({ openClick, closeClick }) {
       const response = await axiosPrivate.post("/feed", data);
       setMessage(response?.data?.message);
       console.log(response);
-      if (response.status === 201)
+      if (response.status === 201 && persist === true)
         window.parent.location = window.parent.location.href;
     } catch (error) {
       console.log(error);

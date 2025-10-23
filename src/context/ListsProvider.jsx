@@ -1,11 +1,12 @@
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-
-const ListsContext = createContext({});
+import { ListsContext } from "./ListsContext";
 
 export function ListsProvider({ children }) {
-  const [lists, setLists] = useState({});
+  const [lists, setLists] = useState();
   const axiosPrivate = useAxiosPrivate();
+  const { auth } = useAuth();
 
   useEffect(() => {
     async function getLists() {
@@ -16,13 +17,10 @@ export function ListsProvider({ children }) {
         console.log(err);
       }
     }
-
     getLists();
-  }, [axiosPrivate, children]);
+  }, [auth, children, axiosPrivate]);
 
   return (
     <ListsContext.Provider value={lists}>{children}</ListsContext.Provider>
   );
 }
-
-export default ListsContext;

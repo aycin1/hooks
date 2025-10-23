@@ -22,8 +22,8 @@ export default function List({ list, listTitle }) {
       {list.length ? (
         <div className={styles.listCard}>
           <div className={styles.patternCards}>
-            {list.map((pattern) => (
-              <div>
+            {list?.map((pattern) => (
+              <div key={pattern.pattern_id}>
                 <PatternCard
                   patternID={pattern.pattern_id}
                   thumbnailOptions={thumbnailOptions}

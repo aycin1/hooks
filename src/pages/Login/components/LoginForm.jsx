@@ -32,7 +32,6 @@ export default function LoginForm() {
           withCredentials: true,
         }
       );
-
       const accessToken = response?.data?.accessToken;
       setAuth({ username, password, accessToken });
       setUsername("");

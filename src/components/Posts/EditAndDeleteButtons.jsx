@@ -1,6 +1,7 @@
 import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import styles from "./Posts.module.css";
 
@@ -12,6 +13,7 @@ export default function EditAndDeleteButtons({
   const axiosPrivate = useAxiosPrivate();
   const [caption, setCaption] = useState("");
   const [showInput, setShowInput] = useState(false);
+  const { persist } = useAuth();
 
   function toggleInputField() {
     return setShowInput((oldValue) => !oldValue);
@@ -26,8 +28,8 @@ export default function EditAndDeleteButtons({
     try {
       const response = await axiosPrivate.put("/feed/", data);
       handleChange(response?.data?.message);
-      if (response.status === 200) {
-        window.location.href = parent.window.location;
+      if (response.status === 200 && persist === true) {
+        window.parent.location = window.parent.location.href;
       }
     } catch (error) {
       console.log(error);
@@ -40,8 +42,8 @@ export default function EditAndDeleteButtons({
       const response = await axiosPrivate.delete("/feed/", { data });
       handleChange(response?.data?.message);
       console.log(response);
-      if (response.status === 200) {
-        window.location.href = parent.window.location;
+      if (response.status === 200 && persist === true) {
+        window.parent.location = window.parent.location.href;
       }
     } catch (error) {
       console.log(error);

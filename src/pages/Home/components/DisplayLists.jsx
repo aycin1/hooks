@@ -21,9 +21,9 @@ export default function DisplayLists({ chosenList }) {
   return (
     <div className={styles.list}>
       <div className={styles.patterns}>
-        {lists[chosenList].length > 0 &&
+        {lists?.[chosenList]?.length > 0 &&
           lists[chosenList].map((pattern) => (
-            <div>
+            <div key={pattern.pattern_id}>
               <PatternCard
                 patternID={pattern.pattern_id}
                 thumbnailOptions={thumbnailOptions}

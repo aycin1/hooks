@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import useAuth from "./useAuth";
 import useAxiosPrivate from "./useAxiosPrivate";
 
 export default function useUsername() {
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState("");
   const axiosPrivate = useAxiosPrivate();
+  const { auth } = useAuth();
 
   useEffect(() => {
     let isMounted = true;
@@ -26,7 +28,7 @@ export default function useUsername() {
       isMounted = false;
       controller.abort();
     };
-  }, [username, axiosPrivate]);
+  }, [auth, axiosPrivate]);
 
   return username;
 }

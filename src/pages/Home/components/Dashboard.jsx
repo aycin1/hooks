@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router";
 import useLists from "../../../hooks/useLists";
 import styles from "../Home.module.css";
-import DisplayListButtons from "./DisplayListButtons";
 import DisplayLists from "./DisplayLists";
+import ListButtons from "./ListButtons";
 
 export default function Dashboard() {
-  const [chosenList, setChosenList] = useState();
   const lists = useLists();
+  const [chosenList, setChosenList] = useState();
 
   function handleClick(list) {
     setChosenList(list);
@@ -15,7 +15,12 @@ export default function Dashboard() {
 
   return (
     <div className={styles.dashboard}>
-      <DisplayListButtons handleClick={handleClick} />
+      <div>
+        {lists &&
+          Object.keys(lists).map((title) => (
+            <ListButtons key={title} title={title} handleClick={handleClick} />
+          ))}
+      </div>
       {lists?.[chosenList]?.length ? (
         <DisplayLists chosenList={chosenList} />
       ) : chosenList ? (
