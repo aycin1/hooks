@@ -1,6 +1,6 @@
-import { NavLink } from "react-router";
 import Dropdown from "../../../components/Dropdown/Dropdown";
 import PatternCard from "../../../components/PatternCard/PatternCard";
+import SearchLink from "../../../components/SearchLink/SearchLink";
 import styles from "../Lists.module.css";
 
 export default function List({ list, listTitle }) {
@@ -32,14 +32,14 @@ export default function List({ list, listTitle }) {
               </div>
             ))}
           </div>
-          <NavLink to="/search" className={styles.searchLink}>
+          <SearchLink className={styles.searchLink}>
             add more patterns!
-          </NavLink>
+          </SearchLink>
         </div>
       ) : (
-        <NavLink to="/search">
+        <SearchLink>
           this list is empty, click here to search patterns!
-        </NavLink>
+        </SearchLink>
       )}
     </div>
   );

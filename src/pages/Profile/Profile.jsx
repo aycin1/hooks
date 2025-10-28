@@ -22,9 +22,7 @@ export default function Profile() {
         )}
       </div>
 
-      <div className={styles.posts}>
-        <Posts posts={posts} />
-      </div>
+      <div className={styles.posts}>{posts && <Posts posts={posts} />}</div>
     </div>
   );
 }

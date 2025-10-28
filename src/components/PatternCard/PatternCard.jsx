@@ -7,7 +7,7 @@ export default function PatternCard({ patternID, thumbnailOptions }) {
 
   return (
     <div style={{ margin: "0vh 2vh 3vh" }}>
-      <h5>{name}</h5>
+      <p style={{ fontSize: "small" }}>{name}</p>
       <Link to={`/pattern/${patternID}`}>
         <Thumbnail patternID={patternID} thumbnailOptions={thumbnailOptions} />
       </Link>

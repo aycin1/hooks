@@ -20,7 +20,7 @@ export default function SearchResults({ list }) {
     <div className={styles.searchResults}>
       {list?.length
         ? list.map((pattern) => (
-            <div className={styles.pattern}>
+            <div className={styles.pattern} key={pattern.id}>
               <PatternCard
                 patternID={pattern.id}
                 thumbnailOptions={thumbnailOptions}

@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router";
 import useLogout from "../../hooks/useLogout";
 import useUsername from "../../hooks/useUsername";
+import SearchLink from "../SearchLink/SearchLink";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -25,9 +26,7 @@ export default function Header() {
         <NavLink to={"/lists"} className={styles.links}>
           Lists
         </NavLink>
-        <NavLink to={"/search"} className={styles.links}>
-          Search
-        </NavLink>
+        <SearchLink className={styles.links}>Search</SearchLink>
         <NavLink to={"/feed"} className={styles.links}>
           Feed
         </NavLink>

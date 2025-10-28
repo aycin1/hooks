@@ -18,7 +18,7 @@ export function ListsProvider({ children }) {
       }
     }
     getLists();
-  }, [auth, children, axiosPrivate]);
+  }, [children, auth, axiosPrivate]);
 
   return (
     <ListsContext.Provider value={lists}>{children}</ListsContext.Provider>

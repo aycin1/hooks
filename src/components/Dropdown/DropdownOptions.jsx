@@ -3,8 +3,8 @@ import styles from "./Dropdown.module.css";
 export default function DropdownOptions({ listForPattern, handleChange }) {
   let options = ["wishlist", "wip", "completed"];
 
-  function handleOptions() {
-    if (listForPattern) {
+  function handleOptions(list) {
+    if (list) {
       const currentListIndex = options.indexOf(listForPattern);
       options.splice(currentListIndex, 1);
       options.push("remove");
@@ -13,7 +13,7 @@ export default function DropdownOptions({ listForPattern, handleChange }) {
       return options;
     }
   }
-  const refinedOptions = handleOptions();
+  const refinedOptions = handleOptions(listForPattern);
   const text = listForPattern ? "edit list" : "add to list";
 
   return (

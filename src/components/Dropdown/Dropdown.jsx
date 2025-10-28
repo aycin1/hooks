@@ -49,12 +49,15 @@ export default function Dropdown({ patternID }) {
 
   return (
     <>
-      <DropdownOptions
-        key={patternID}
-        listForPattern={listForPattern}
-        handleChange={handleChange}
-      />
-      <div style={{ fontSize: "small" }}>{message && <p>{message}</p>}</div>
+      {message ? (
+        <p style={{ fontSize: "small" }}>{message}</p>
+      ) : (
+        <DropdownOptions
+          key={patternID}
+          listForPattern={listForPattern}
+          handleChange={handleChange}
+        />
+      )}
     </>
   );
 }

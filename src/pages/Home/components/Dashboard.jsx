@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import SearchLink from "../../../components/SearchLink/SearchLink";
 import useLists from "../../../hooks/useLists";
 import styles from "../Home.module.css";
-import DisplayLists from "./DisplayLists";
-import ListButtons from "./ListButtons";
+import DisplayList from "./DisplayList";
+import ListButton from "./ListButton";
 
 export default function Dashboard() {
   const lists = useLists();
@@ -18,15 +18,15 @@ export default function Dashboard() {
       <div>
         {lists &&
           Object.keys(lists).map((title) => (
-            <ListButtons key={title} title={title} handleClick={handleClick} />
+            <ListButton key={title} title={title} handleClick={handleClick} />
           ))}
       </div>
       {lists?.[chosenList]?.length ? (
-        <DisplayLists chosenList={chosenList} />
+        <DisplayList chosenList={chosenList} />
       ) : chosenList ? (
-        <Link to="/search">
+        <SearchLink>
           this list is empty, click here to search patterns!
-        </Link>
+        </SearchLink>
       ) : (
         <h4>please select a list</h4>
       )}

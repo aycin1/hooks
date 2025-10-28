@@ -23,11 +23,18 @@
 }
 
 .searchLink {
-  margin-top: 2vh;
+  font-size: large;
+  font-weight: 600;
   align-self: end;
-  padding: 1vh 4vh;
-  border: 2px double #114e09af;
+  padding: 1vh 2vw;
+  margin: 2vh 0vw;
+  border: 2px double rgba(215, 226, 198, 0.637);
   border-radius: 8px;
+  text-shadow: 1px 1px 1px #d9edc7;
+}
+.searchLink:hover {
+  background-color: rgba(215, 226, 198, 0.637);
+  color: #255735;
 }
 
 .listTitle {

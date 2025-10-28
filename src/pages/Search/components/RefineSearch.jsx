@@ -7,8 +7,9 @@ import nodes from "./customNodes";
 export default function RefineSearch({ handleChange }) {
   return (
     <div className={styles.refineSearch}>
-      {nodes?.map((node) => (
+      {nodes?.map((node, i) => (
         <Checkbox
+          key={i}
           node={node}
           value={node[0].value}
           handleChange={handleChange}

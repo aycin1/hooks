@@ -107,6 +107,7 @@ export default function RegistrationForm() {
       </label>
       <input
         id="email"
+        data-testid="email"
         className={styles.input}
         type="text"
         value={email}
@@ -118,6 +119,7 @@ export default function RegistrationForm() {
         onBlur={() => setEmailFocus(false)}
       />
       <p
+        aria-invalid={emailFocus && email && !validEmail ? false : true}
         className={
           emailFocus && email && !validEmail
             ? styles.instructions
@@ -143,6 +145,7 @@ export default function RegistrationForm() {
       </label>
       <input
         id="username"
+        data-testid="username"
         className={styles.input}
         type="text"
         value={username}
@@ -154,6 +157,7 @@ export default function RegistrationForm() {
         onBlur={() => setUserFocus(false)}
       />
       <p
+        aria-invalid={userFocus && username && !validName ? false : true}
         className={
           userFocus && username && !validName
             ? styles.instructions
@@ -183,6 +187,7 @@ export default function RegistrationForm() {
       </label>
       <input
         id="password"
+        data-testid="password"
         className={styles.input}
         type="password"
         value={password}
@@ -192,6 +197,7 @@ export default function RegistrationForm() {
         onBlur={() => setPwdFocus(false)}
       />
       <p
+        aria-invalid={pwdFocus && !validPwd ? false : true}
         className={
           pwdFocus && !validPwd ? styles.instructions : styles.offscreen
         }
@@ -218,6 +224,7 @@ export default function RegistrationForm() {
       </label>
       <input
         id="password_confirm"
+        data-testid="passwordConfirm"
         className={styles.input}
         type="password"
         value={pwdConfirm}
@@ -227,6 +234,7 @@ export default function RegistrationForm() {
         onBlur={() => setConfirmFocus(false)}
       />
       <p
+        aria-invalid={confirmFocus && !validConfirm ? false : true}
         className={
           confirmFocus && !validConfirm ? styles.instructions : styles.offscreen
         }
@@ -237,9 +245,7 @@ export default function RegistrationForm() {
 
       {/*  */}
 
-      <p ref={errorRef} className={errorMsg ? "error-msg" : styles.offscreen}>
-        {errorMsg}
-      </p>
+      <p ref={errorRef}>{errorMsg && errorMsg}</p>
 
       {/*  */}
 
@@ -247,6 +253,7 @@ export default function RegistrationForm() {
         disabled={
           !validEmail || !validName || !validPwd || !validConfirm ? true : false
         }
+        data-testid="registerButton"
         className={styles.button}
       >
         Register

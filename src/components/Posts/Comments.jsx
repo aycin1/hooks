@@ -48,7 +48,7 @@ export default function Comments({ postID }) {
     }
   }
 
-  function mapComments() {
+  function mapComments(comments) {
     return comments.map((comment, index) => {
       return (
         <div key={index} className={styles.comments}>
@@ -57,7 +57,6 @@ export default function Comments({ postID }) {
             <Link to={`/profile/${comment.comment_username}`}>
               {comment.comment_username}
             </Link>
-
             {comment.comment_username === thisUser && (
               <button
                 onClick={() => handleCommentDeletion(comment.message)}
@@ -78,7 +77,7 @@ export default function Comments({ postID }) {
 
   return (
     <div>
-      {comments?.length > 0 && mapComments()}
+      {comments?.length > 0 && mapComments(comments)}
       <AddComment postID={postID} handleChange={handleChange} />
     </div>
   );

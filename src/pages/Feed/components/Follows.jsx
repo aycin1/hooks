@@ -13,7 +13,7 @@ export default function Follows() {
     const controller = new AbortController();
 
     async function getFollowers() {
-      const response = await axiosPrivate.get(`/follows/follow-count`, {
+      const response = await axiosPrivate.get(`/follows/count`, {
         signal: controller.signal,
       });
       isMounted && setFollowCount(response.data);

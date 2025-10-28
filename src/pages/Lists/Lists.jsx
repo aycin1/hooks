@@ -7,9 +7,10 @@ export default function Lists() {
 
   return (
     <div className={styles.lists}>
-      {Object.entries(lists).map(([key, value]) => (
-        <List key={key} list={value} listTitle={key} />
-      ))}
+      {lists &&
+        Object.entries(lists).map(([key, value]) => (
+          <List key={key} list={value} listTitle={key} />
+        ))}
     </div>
   );
 }

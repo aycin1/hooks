@@ -26,10 +26,17 @@ button:hover {
 
 .link {
   font-size: large;
+  font-weight: 600;
   align-self: end;
-  padding: 1vh 4vh;
-  border: 2px double #6ec090;
+  padding: 1vh 3vw;
+  margin: 0px 4vw;
+  border: 2px double #8ccc9f;
   border-radius: 8px;
+  text-shadow: 1px 1px 1px #d9edc7;
+}
+.link:hover {
+  background-color: #8ccc9f;
+  color: #255735;
 }
 
 .patterns {
@@ -38,4 +45,10 @@ button:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+.patternCard {
+  width: 180px;
+  height: 300px;
+  overflow: hidden;
 }

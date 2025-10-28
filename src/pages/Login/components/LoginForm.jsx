@@ -63,6 +63,7 @@ export default function LoginForm() {
       </label>
       <input
         id="username"
+        data-testid="username"
         type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
@@ -74,15 +75,18 @@ export default function LoginForm() {
       </label>
       <input
         id="password"
+        data-testid="password"
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
       />
 
-      <p className={errorMsg ? "error-msg" : "offscreen"}>{errorMsg}</p>
+      <p>{errorMsg && errorMsg}</p>
 
-      <button className={styles.button}>Log in</button>
+      <button className={styles.button} data-testid="loginButton">
+        Log in
+      </button>
       <div className={styles.persistCheck}>
         <input
           type="checkbox"

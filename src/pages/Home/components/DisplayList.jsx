@@ -1,16 +1,14 @@
-import { NavLink } from "react-router";
 import Dropdown from "../../../components/Dropdown/Dropdown";
 import PatternCard from "../../../components/PatternCard/PatternCard";
+import SearchLink from "../../../components/SearchLink/SearchLink";
 import useLists from "../../../hooks/useLists";
 import styles from "../Home.module.css";
 
-export default function DisplayLists({ chosenList }) {
+export default function DisplayList({ chosenList }) {
   const lists = useLists();
   const thumbnailOptions = {
     urlSize: "medium_url",
     style: {
-      width: "100%",
-      height: "auto",
       maxWidth: "150px",
       minWidth: "150px",
       overflow: "hidden",
@@ -23,7 +21,7 @@ export default function DisplayLists({ chosenList }) {
       <div className={styles.patterns}>
         {lists?.[chosenList]?.length > 0 &&
           lists[chosenList].map((pattern) => (
-            <div key={pattern.pattern_id}>
+            <div key={pattern.pattern_id} className={styles.patternCard}>
               <PatternCard
                 patternID={pattern.pattern_id}
                 thumbnailOptions={thumbnailOptions}
@@ -32,9 +30,8 @@ export default function DisplayLists({ chosenList }) {
             </div>
           ))}
       </div>
-      <NavLink to="/search" className={styles.link}>
-        add patterns here
-      </NavLink>
+
+      <SearchLink className={styles.link}>add patterns here</SearchLink>
     </div>
   );
 }
