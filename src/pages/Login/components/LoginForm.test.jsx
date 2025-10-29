@@ -30,7 +30,6 @@ vi.mock("../../../hooks/useAuth", () => ({
 
 describe("login form", () => {
   beforeEach(() => {
-    vi.clearAllMocks();
     localStorage.clear();
   });
 

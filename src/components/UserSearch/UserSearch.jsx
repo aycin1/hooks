@@ -4,7 +4,7 @@ import UserLink from "../UserLink/UserLink";
 import styles from "./UserSearch.module.css";
 
 export default function UserSearch() {
-  const [searchField, setSearchField] = useState();
+  const [searchField, setSearchField] = useState("");
   const [foundUser, setFoundUser] = useState();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const axiosPrivate = useAxiosPrivate();
@@ -12,7 +12,9 @@ export default function UserSearch() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await axiosPrivate.get(`/users/search/${searchField}`);
+      const response = await axiosPrivate.get(
+        `/users/search/${searchField.split(" ").join("")}`
+      );
       setFoundUser(response.data.username);
     } catch (error) {
       console.log(error);
@@ -25,12 +27,15 @@ export default function UserSearch() {
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           className={styles.input}
+          data-testid="userSearchInput"
           type="text"
           value={searchField}
           placeholder="Search for your friends!"
           onChange={(e) => setSearchField(e.target.value)}
         />
-        <button className={styles.button}>Search</button>
+        <button className={styles.button} data-testid="userSearchButton">
+          Search
+        </button>
       </form>
       <div className={styles.foundUser}>
         {foundUser ? (

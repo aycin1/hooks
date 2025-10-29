@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { http, HttpResponse } from "msw";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { server } from "../../../mocks/node";
 import RegistrationForm from "./RegistrationForm";
 
@@ -15,10 +15,6 @@ vi.mock("react-router", async () => {
 });
 
 describe("registration form", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
-
   async function fillValidForm() {
     await userEvent.type(screen.getByTestId("email"), "test@gmail.com");
     await userEvent.type(screen.getByTestId("username"), "validUser");
@@ -83,10 +79,10 @@ describe("registration form", () => {
         const user = userEvent.setup();
         render(<RegistrationForm />);
 
-        const emailInput = screen.getByTestId("email");
-        await user.type(emailInput, "invalid@email");
+        const input = screen.getByTestId("email");
+        await user.type(input, "invalid@email");
         await user.click(screen.getByLabelText(/username/i));
-        await userEvent.click(emailInput);
+        await userEvent.click(input);
 
         await waitFor(() =>
           expect(
@@ -94,8 +90,8 @@ describe("registration form", () => {
           ).toBeValid()
         );
 
-        await user.clear(emailInput);
-        await user.type(emailInput, "valid@email.com");
+        await user.clear(input);
+        await user.type(input, "valid@email.com");
 
         await waitFor(() =>
           expect(
@@ -128,10 +124,10 @@ describe("registration form", () => {
       const user = userEvent.setup();
       render(<RegistrationForm />);
 
-      const usernameInput = screen.getByTestId("username");
-      await user.type(usernameInput, "hi");
+      const input = screen.getByTestId("username");
+      await user.type(input, "hi");
       await user.click(screen.getByTestId("password"));
-      await user.click(usernameInput);
+      await user.click(input);
 
       await waitFor(() =>
         expect(
@@ -139,8 +135,8 @@ describe("registration form", () => {
         ).toBeValid()
       );
 
-      await user.clear(usernameInput);
-      await user.type(usernameInput, "validUser");
+      await user.clear(input);
+      await user.type(input, "validUser");
 
       await waitFor(() =>
         expect(
@@ -153,10 +149,10 @@ describe("registration form", () => {
       const user = userEvent.setup();
       render(<RegistrationForm />);
 
-      const passwordInput = screen.getByTestId("password");
-      await user.type(passwordInput, "weak");
+      const input = screen.getByTestId("password");
+      await user.type(input, "weak");
       await user.click(screen.getByLabelText(/username/i));
-      await userEvent.click(passwordInput);
+      await userEvent.click(input);
 
       await waitFor(() =>
         expect(
@@ -164,8 +160,8 @@ describe("registration form", () => {
         ).toBeValid()
       );
 
-      await user.clear(passwordInput);
-      await user.type(passwordInput, "ValidPwd123!");
+      await user.clear(input);
+      await user.type(input, "ValidPwd123!");
 
       await waitFor(() =>
         expect(
@@ -178,17 +174,17 @@ describe("registration form", () => {
       const user = userEvent.setup();
       render(<RegistrationForm />);
 
-      const confirmInput = screen.getByTestId("passwordConfirm");
-      await user.type(confirmInput, "mismatch");
+      const input = screen.getByTestId("passwordConfirm");
+      await user.type(input, "mismatch");
       await user.type(screen.getByTestId("password"), "ValidPwd123!");
-      await user.click(confirmInput);
+      await user.click(input);
 
       await waitFor(() =>
         expect(screen.getByText(/passwords must match/i)).toBeValid()
       );
 
-      await user.clear(confirmInput);
-      await user.type(confirmInput, "ValidPwd123!");
+      await user.clear(input);
+      await user.type(input, "ValidPwd123!");
 
       await waitFor(() =>
         expect(screen.getByText(/passwords must match/i)).toBeInvalid()
