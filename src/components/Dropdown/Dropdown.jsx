@@ -12,13 +12,14 @@ export default function Dropdown({ patternID }) {
   useEffect(() => {
     let isMounted = true;
 
-    Object.values(lists).map((list) =>
-      list.map((pattern) =>
-        parseInt(pattern.pattern_id) === parseInt(patternID)
-          ? isMounted && setListForPattern(pattern.list)
-          : null
-      )
-    );
+    lists &&
+      Object.values(lists).map((list) =>
+        list.map((pattern) =>
+          parseInt(pattern.pattern_id) === parseInt(patternID)
+            ? isMounted && setListForPattern(pattern.list)
+            : null
+        )
+      );
 
     return () => (isMounted = false);
   }, [lists, patternID, message]);
