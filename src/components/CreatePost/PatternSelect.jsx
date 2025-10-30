@@ -11,12 +11,8 @@ export default function PatternSelect({ chosenPattern, handleClick }) {
     maxHeight: "80px",
   };
 
-  const patterns = Object.values(lists)
-    .flatMap((list) => list)
-    .map((pattern) => pattern.pattern_id);
-
-  function displayPatterns(patterns) {
-    return patterns.map((pattern) => (
+  function displayPattern(pattern) {
+    return (
       <div
         key={pattern}
         onClick={() => handleClick(pattern)}
@@ -28,7 +24,7 @@ export default function PatternSelect({ chosenPattern, handleClick }) {
       >
         <Thumbnail thumbnailOptions={thumbnailOptions} patternID={pattern} />
       </div>
-    ));
+    );
   }
 
   return (
@@ -38,7 +34,12 @@ export default function PatternSelect({ chosenPattern, handleClick }) {
           ? "Select a pattern from your lists to post..."
           : "...and show your friends your creation!"}
       </p>
-      <div className={styles.displayPatterns}>{displayPatterns(patterns)}</div>
+      <div className={styles.displayPatterns}>
+        {lists &&
+          Object.values(lists)
+            .flatMap((list) => list)
+            .map((pattern) => displayPattern(pattern.pattern_id))}
+      </div>
     </>
   );
 }

@@ -39,25 +39,25 @@ export default function Follows() {
 
   function mapButtons(arr) {
     return arr?.map((obj, index) => {
-      const name = Object.keys(obj)[0];
-      const followArr = Object.values(obj)[0];
-      return (
+      return Object.entries(obj).map(([key, value]) => (
         <button
           key={index}
-          name={name}
+          name={key}
           value={index}
           onClick={handleClick}
           className={styles.followButton}
         >
-          {followArr?.length ? followArr.length : 0} {name}
+          {value?.length ? value.length : 0} {key}
         </button>
-      );
+      ));
     });
   }
 
   return (
     <>
-      <div className={styles.follows}>{mapButtons(followCount)}</div>
+      <div className={styles.follows}>
+        {followCount.length > 0 && mapButtons(followCount)}
+      </div>
       <div className={styles.users}>{users && mapUsers()}</div>
     </>
   );
