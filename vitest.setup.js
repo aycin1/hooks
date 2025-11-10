@@ -16,6 +16,5 @@ afterAll(() => server.close());
 // Reset handlers after each test for test isolation
 afterEach(() => {
   server.resetHandlers();
-
   cleanup();
 });

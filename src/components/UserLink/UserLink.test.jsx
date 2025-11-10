@@ -4,9 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 import useUsername from "../../hooks/useUsername";
 import UserLink from "./UserLink";
 
-vi.mock("../../hooks/useUsername", () => ({
-  default: vi.fn(),
-}));
+vi.mock("../../hooks/useUsername", () => ({ default: vi.fn() }));
 
 vi.mock("../FollowButton/FollowButton", () => ({
   default: ({ username }) => (

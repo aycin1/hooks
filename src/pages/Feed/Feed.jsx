@@ -12,7 +12,6 @@ export default function Feed() {
     <div className={styles.feed}>
       <div>
         <CreatePost />
-
         <div className={styles.posts}>
           <Posts posts={posts} />
         </div>

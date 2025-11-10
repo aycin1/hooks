@@ -80,10 +80,20 @@ export const handlers = [
       },
     ]);
   }),
+  http.get(/\/lists$/, () => {
+    return HttpResponse.json({
+      wishlist: [{ pattern_id: 123, list: "wishlist" }],
+      wip: [
+        { pattern_id: "abc", list: "wip" },
+        { pattern_id: "def", list: "wip" },
+      ],
+      completed: [],
+    });
+  }),
 
   // http.get("http://localhost:2501/users/", () => {
   //   return HttpResponse.text("username");
   // }),
-  // http.get("http://localhost:2501/lists/", () => {}),
+
   // http.get("http://localhost:2501/posts/", () => {}),
 ];

@@ -13,16 +13,18 @@ export default function DropdownOptions({ listForPattern, handleChange }) {
       return options;
     }
   }
+
   const refinedOptions = handleOptions(listForPattern);
   const text = listForPattern ? "edit list" : "add to list";
 
   return (
     <select
       name="dropdown"
-      onChange={(e) => handleChange(e)}
+      value=""
+      onChange={handleChange}
       className={styles.dropdown}
     >
-      <option disabled selected>
+      <option disabled value="">
         {text}
       </option>
       {refinedOptions.map((option) => (
