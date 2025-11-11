@@ -80,6 +80,7 @@ export const handlers = [
       },
     ]);
   }),
+
   http.get(/\/lists$/, () => {
     return HttpResponse.json({
       wishlist: [{ pattern_id: 123, list: "wishlist" }],
@@ -91,9 +92,15 @@ export const handlers = [
     });
   }),
 
-  // http.get("http://localhost:2501/users/", () => {
-  //   return HttpResponse.text("username");
-  // }),
+  http.get(/\/users\/$/, () => {
+    return HttpResponse.text("thisUser");
+  }),
 
-  // http.get("http://localhost:2501/posts/", () => {}),
+  http.get("/posts", () => {
+    return HttpResponse.json({});
+  }),
+
+  http.post(/\/feed$/, () => {
+    return HttpResponse.json({ message: "Posted" }, { status: 201 });
+  }),
 ];

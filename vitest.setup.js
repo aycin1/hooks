@@ -10,11 +10,11 @@ beforeEach(() => {
 // Start server before all tests
 beforeAll(() => server.listen());
 
-// Close server after all tests
-afterAll(() => server.close());
-
 // Reset handlers after each test for test isolation
 afterEach(() => {
   server.resetHandlers();
   cleanup();
 });
+
+// Close server after all tests
+afterAll(() => server.close());

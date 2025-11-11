@@ -3,11 +3,11 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { ListsProvider } from "../../../context/ListsProvider";
 import { testAxios } from "../../../testAxios";
-import Dashboard from "./Dashboard";
+import Dashboard from "../components/Dashboard";
 
-vi.mock("../../hooks/useAxiosPrivate", () => ({ default: () => testAxios }));
+vi.mock("../../../hooks/useAxiosPrivate", () => ({ default: () => testAxios }));
 
-vi.mock("./ListButton", () => ({
+vi.mock("../components/ListButton", () => ({
   default: ({ handleClick, title }) => (
     <button data-testid="mockedListButton" onClick={() => handleClick(title)}>
       {title}
@@ -15,7 +15,7 @@ vi.mock("./ListButton", () => ({
   ),
 }));
 
-vi.mock("./DisplayList", () => ({
+vi.mock("../components/DisplayList", () => ({
   default: ({ chosenList }) => (
     <div data-testid="mockedDisplayList">{chosenList}</div>
   ),

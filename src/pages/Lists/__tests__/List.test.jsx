@@ -2,9 +2,9 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { ListsProvider } from "../../../context/ListsProvider";
 import { testAxios } from "../../../testAxios";
-import DisplayList from "./DisplayList";
+import List from "../components/List";
 
-vi.mock("../../hooks/useAxiosPrivate", () => ({ default: () => testAxios }));
+vi.mock("../../../hooks/useAxiosPrivate", () => ({ default: () => testAxios }));
 
 vi.mock("../../../components/PatternCard/PatternCard", () => ({
   default: ({ patternID }) => (
@@ -22,34 +22,40 @@ vi.mock("../../../components/SearchLink/SearchLink", () => ({
   default: ({ children }) => <a data-testid="mockedSearchLink">{children}</a>,
 }));
 
-describe("display list", () => {
-  it("renders pattern cards for chosen list", async () => {
+describe("list", () => {
+  it("renders appropriate message if list is empty", async () => {
     render(
       <ListsProvider>
-        <DisplayList chosenList="wip" />
+        <List listTitle="completed" />
       </ListsProvider>
     );
 
     await waitFor(() => {
-      expect(screen.getAllByTestId("mockedPatternCard")).toHaveLength(2);
-      expect(screen.getAllByTestId("mockedDropdown")).toHaveLength(2);
+      expect(screen.getByText("completed")).toBeInTheDocument();
+
       expect(screen.getByTestId("mockedSearchLink")).toHaveTextContent(
-        "add patterns here"
+        "this list is empty, click here to search patterns"
       );
     });
   });
 
-  it("renders only SearchLink for empty list", async () => {
+  it("renders pattern cards and dropdowns for populated list", async () => {
     render(
       <ListsProvider>
-        <DisplayList chosenList="completed" />
+        <List listTitle="wip" />
       </ListsProvider>
     );
 
     await waitFor(() => {
-      expect(screen.queryByTestId("mockedPatternCard")).not.toBeInTheDocument();
+      expect(screen.getByText("wip")).toBeInTheDocument();
+
+      expect(screen.getByText("pattern card abc")).toBeInTheDocument();
+      expect(screen.getByText("dropdown for abc")).toBeInTheDocument();
+      expect(screen.getByText("pattern card def")).toBeInTheDocument();
+      expect(screen.getByText("dropdown for def")).toBeInTheDocument();
+
       expect(screen.getByTestId("mockedSearchLink")).toHaveTextContent(
-        "add patterns here"
+        "add more patterns!"
       );
     });
   });

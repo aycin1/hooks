@@ -8,6 +8,7 @@ export default function AddComment({ postID, handleChange }) {
   async function handleSubmit(e) {
     e.preventDefault();
     const data = { post_id: postID, message: comment };
+
     try {
       const response = await axiosPrivate.post("/comments", data);
       handleChange(response?.data?.message);

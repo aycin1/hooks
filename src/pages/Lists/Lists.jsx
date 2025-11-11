@@ -8,9 +8,7 @@ export default function Lists() {
   return (
     <div className={styles.lists}>
       {lists &&
-        Object.entries(lists).map(([key, value]) => (
-          <List key={key} list={value} listTitle={key} />
-        ))}
+        Object.keys(lists).map((key) => <List key={key} listTitle={key} />)}
     </div>
   );
 }

@@ -39,7 +39,7 @@ export default function CreatePostOverlay({ openClick, closeClick }) {
     try {
       const response = await axiosPrivate.post("/feed", data);
       setMessage(response?.data?.message);
-      console.log(response);
+
       if (response.status === 201 && persist === true)
         window.parent.location = window.parent.location.href;
     } catch (error) {
@@ -49,7 +49,11 @@ export default function CreatePostOverlay({ openClick, closeClick }) {
 
   return (
     <dialog ref={ref} onCancel={closeClick} className={styles.overlay}>
-      <button onClick={closeClick} className={styles.closeOverlayBtn}>
+      <button
+        onClick={closeClick}
+        className={styles.closeOverlayBtn}
+        aria-label="close overlay"
+      >
         x
       </button>
 
@@ -73,18 +77,21 @@ export default function CreatePostOverlay({ openClick, closeClick }) {
             <div className={styles.captionAndPostBtn}>
               <input
                 type="text"
+                aria-label="caption"
                 placeholder="Caption"
                 value={caption}
                 className={styles.caption}
                 onChange={(e) => setCaption(e.target.value)}
               ></input>
               <button
+                data-testid="submit"
+                aria-label="submit"
                 type="submit"
                 disabled={!imageUploadSuccess || !chosenPattern ? true : false}
                 title="You must select a pattern and upload an image to create a post"
                 className={styles.uploadPostButton}
               >
-                Post
+                submit
               </button>
             </div>
           </div>

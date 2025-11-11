@@ -1,9 +1,13 @@
 import Dropdown from "../../../components/Dropdown/Dropdown";
 import PatternCard from "../../../components/PatternCard/PatternCard";
 import SearchLink from "../../../components/SearchLink/SearchLink";
+import useLists from "../../../hooks/useLists";
 import styles from "../Lists.module.css";
 
-export default function List({ list, listTitle }) {
+export default function List({ listTitle }) {
+  const lists = useLists();
+  const list = lists?.[listTitle];
+
   const thumbnailOptions = {
     urlSize: "medium_url",
     style: {
@@ -19,7 +23,7 @@ export default function List({ list, listTitle }) {
   return (
     <div className={styles.listCards}>
       <h2 className={styles.listTitle}>{listTitle}</h2>
-      {list.length ? (
+      {list?.length ? (
         <div className={styles.listCard}>
           <div className={styles.patternCards}>
             {list?.map((pattern) => (

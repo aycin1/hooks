@@ -11,31 +11,44 @@ export default function Likes({ postID }) {
   const [alreadyLiked, setAlreadyLiked] = useState();
 
   useEffect(() => {
+    const controller = new AbortController();
     let isMounted = true;
+
     async function checkIfLiked() {
       try {
-        const response = await axiosPrivate.get(`/likes/user/${postID}`);
+        const response = await axiosPrivate.get(`/likes/user/${postID}`, {
+          signal: controller.signal,
+        });
         isMounted && setAlreadyLiked(response?.data ? true : false);
       } catch (error) {
         console.log(error);
       }
     }
     checkIfLiked();
-    return () => (isMounted = false);
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
   }, []);
 
   useEffect(() => {
     let isMounted = true;
+    const controller = new AbortController();
     async function fetchLikes() {
       try {
-        const response = await axiosPrivate.get(`/likes/${postID}`);
+        const response = await axiosPrivate.get(`/likes/${postID}`, {
+          signal: controller.signal,
+        });
         isMounted && setLikes(response?.data?.likedUsers);
       } catch (error) {
         console.log(error);
       }
     }
     fetchLikes();
-    return () => (isMounted = false);
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
   }, [alreadyLiked, postID, axiosPrivate]);
 
   async function handleClick() {
