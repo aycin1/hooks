@@ -34,9 +34,10 @@ describe("dashboard", () => {
     );
 
     await waitFor(() => {
-      const buttons = screen.getAllByRole("button");
-      expect(buttons).toHaveLength(3);
-      expect(screen.getByText("wishlist")).toBeInTheDocument();
+      expect(screen.getAllByTestId("mockedListButton")).toHaveLength(3);
+      expect(screen.getAllByTestId("mockedListButton")[0]).toHaveTextContent(
+        "wishlist"
+      );
     });
   });
 

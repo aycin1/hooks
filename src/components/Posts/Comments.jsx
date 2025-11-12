@@ -59,6 +59,7 @@ export default function Comments({ postID }) {
             </Link>
             {comment.comment_username === thisUser && (
               <button
+                aria-label="delete comment"
                 onClick={() => handleCommentDeletion(comment.message)}
                 className={styles.deleteCommentButton}
                 title="Delete comment"

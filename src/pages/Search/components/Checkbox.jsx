@@ -3,10 +3,10 @@ import {
   faChevronRight,
   faFolder,
   faFolderOpen,
-  faMinusSquare,
-  faPlusSquare,
   faSquare,
   faSquareCheck,
+  faSquareMinus,
+  faSquarePlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
@@ -44,8 +44,8 @@ export default function Checkbox({ node, value, handleChange, expandAll }) {
         ),
         expandClose: <FontAwesomeIcon icon={faChevronRight} style={style} />,
         expandOpen: <FontAwesomeIcon icon={faChevronDown} style={style} />,
-        expandAll: <FontAwesomeIcon icon={faPlusSquare} style={style} />,
-        collapseAll: <FontAwesomeIcon icon={faMinusSquare} style={style} />,
+        expandAll: <FontAwesomeIcon icon={faSquarePlus} style={style} />,
+        collapseAll: <FontAwesomeIcon icon={faSquareMinus} style={style} />,
         parentClose: <FontAwesomeIcon icon={faFolder} style={style} />,
         parentOpen: <FontAwesomeIcon icon={faFolderOpen} style={style} />,
         leaf: "",

@@ -96,11 +96,35 @@ export const handlers = [
     return HttpResponse.text("thisUser");
   }),
 
-  http.get("/posts", () => {
-    return HttpResponse.json({});
-  }),
-
   http.post(/\/feed$/, () => {
     return HttpResponse.json({ message: "Posted" }, { status: 201 });
+  }),
+
+  http.get("http://localhost:2501/patterns/filter/:patternID", ({ params }) => {
+    const { patternID } = params;
+    return HttpResponse.json({
+      pattern: {
+        id: patternID,
+        name: "wooly hat",
+        photos: [
+          {
+            url: "example.jpg",
+          },
+        ],
+      },
+    });
+  }),
+
+  http.get("http://localhost:2501/comments/:postID", ({ params }) => {
+    const { postID } = params;
+    return HttpResponse.json([
+      { postID: postID, message: "c1", comment_username: "user" },
+      { postID: postID, message: "c2", comment_username: "thisUser" },
+    ]);
+  }),
+
+  http.post("http://localhost:2501/comments/:postID", ({ params }) => {
+    const { postID } = params;
+    return HttpResponse.json({ message: "comment success" }, { status: 201 });
   }),
 ];

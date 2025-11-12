@@ -1,7 +1,7 @@
 import {
   faCheck,
-  faInfoCircle,
-  faTimes,
+  faCircleInfo,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
@@ -101,7 +101,7 @@ export default function RegistrationForm() {
           className={validEmail ? styles.valid : styles.hide}
         />
         <FontAwesomeIcon
-          icon={faTimes}
+          icon={faXmark}
           className={validEmail || !email ? styles.hide : styles.invalid}
         />
       </label>
@@ -126,7 +126,7 @@ export default function RegistrationForm() {
             : styles.offscreen
         }
       >
-        <FontAwesomeIcon icon={faInfoCircle} />
+        <FontAwesomeIcon icon={faCircleInfo} />
         Please enter a valid email address
       </p>
 
@@ -139,7 +139,7 @@ export default function RegistrationForm() {
           className={validName ? styles.valid : styles.hide}
         />
         <FontAwesomeIcon
-          icon={faTimes}
+          icon={faXmark}
           className={validName || !username ? styles.hide : styles.invalid}
         />
       </label>
@@ -164,7 +164,7 @@ export default function RegistrationForm() {
             : styles.offscreen
         }
       >
-        <FontAwesomeIcon icon={faInfoCircle} />
+        <FontAwesomeIcon icon={faCircleInfo} />
         Username must be between 5 and 23 characters.
         <br />
         Must begin with a letter.
@@ -181,7 +181,7 @@ export default function RegistrationForm() {
           className={validPwd ? styles.valid : styles.hide}
         />
         <FontAwesomeIcon
-          icon={faTimes}
+          icon={faXmark}
           className={validPwd || !password ? styles.hide : styles.invalid}
         />
       </label>
@@ -202,7 +202,7 @@ export default function RegistrationForm() {
           pwdFocus && !validPwd ? styles.instructions : styles.offscreen
         }
       >
-        <FontAwesomeIcon icon={faInfoCircle} />
+        <FontAwesomeIcon icon={faCircleInfo} />
         Password must be between 8 and 24 characters.
         <br />
         Must contain uppercase and lowercase letters,
@@ -218,7 +218,7 @@ export default function RegistrationForm() {
           className={validConfirm && pwdConfirm ? styles.valid : styles.hide}
         />
         <FontAwesomeIcon
-          icon={faTimes}
+          icon={faXmark}
           className={validConfirm || !pwdConfirm ? styles.hide : styles.invalid}
         />
       </label>
@@ -239,7 +239,7 @@ export default function RegistrationForm() {
           confirmFocus && !validConfirm ? styles.instructions : styles.offscreen
         }
       >
-        <FontAwesomeIcon icon={faInfoCircle} />
+        <FontAwesomeIcon icon={faCircleInfo} />
         Passwords must match
       </p>
 
