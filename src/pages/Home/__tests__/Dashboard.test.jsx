@@ -2,10 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { ListsProvider } from "../../../context/ListsProvider";
-import { testAxios } from "../../../testAxios";
 import Dashboard from "../components/Dashboard";
-
-vi.mock("../../../hooks/useAxiosPrivate", () => ({ default: () => testAxios }));
 
 vi.mock("../components/ListButton", () => ({
   default: ({ handleClick, title }) => (
@@ -19,10 +16,6 @@ vi.mock("../components/DisplayList", () => ({
   default: ({ chosenList }) => (
     <div data-testid="mockedDisplayList">{chosenList}</div>
   ),
-}));
-
-vi.mock("../../../components/SearchLink/SearchLink", () => ({
-  default: ({ children }) => <a data-testid="mockedSearchLink">{children}</a>,
 }));
 
 describe("dashboard", () => {

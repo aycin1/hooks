@@ -27,7 +27,7 @@ export default function Likes({ postID }) {
     checkIfLiked();
     return () => {
       isMounted = false;
-      controller.abort();
+      isMounted && controller.abort();
     };
   }, []);
 
@@ -47,7 +47,7 @@ export default function Likes({ postID }) {
     fetchLikes();
     return () => {
       isMounted = false;
-      controller.abort();
+      isMounted && controller.abort();
     };
   }, [alreadyLiked, postID, axiosPrivate]);
 

@@ -1,10 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { ListsProvider } from "../../../context/ListsProvider";
-import { testAxios } from "../../../testAxios";
 import DisplayList from "../components/DisplayList";
-
-vi.mock("../../../hooks/useAxiosPrivate", () => ({ default: () => testAxios }));
 
 vi.mock("../../../components/PatternCard/PatternCard", () => ({
   default: ({ patternID }) => (
@@ -16,10 +13,6 @@ vi.mock("../../../components/Dropdown/Dropdown", () => ({
   default: ({ patternID }) => (
     <div data-testid="mockedDropdown">dropdown for {patternID}</div>
   ),
-}));
-
-vi.mock("../../../components/SearchLink/SearchLink", () => ({
-  default: ({ children }) => <a data-testid="mockedSearchLink">{children}</a>,
 }));
 
 describe("display list", () => {

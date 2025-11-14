@@ -1,10 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { expect, it, vi } from "vitest";
-import { testAxios } from "../../testAxios";
 import FollowButton from "./FollowButton";
-
-vi.mock("../../hooks/useAxiosPrivate", () => ({ default: () => testAxios }));
+vi.unmock("./FollowButton");
 
 it("clicking button toggles following state", async () => {
   const user = userEvent.setup();

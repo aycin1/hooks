@@ -1,18 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
-import { testAxios } from "../../../testAxios";
+import { describe, expect, it } from "vitest";
+
 import Follows from "./Follows";
-
-vi.mock("../../../components/UserLink/UserLink", () => ({
-  default: ({ foundUser }) => (
-    <a href="https://test.com" data-testid="mockedUserLink">
-      {foundUser}
-    </a>
-  ),
-}));
-
-vi.mock("../../../hooks/useAxiosPrivate", () => ({ default: () => testAxios }));
 
 describe("follows", () => {
   it("renders follow count buttons", async () => {

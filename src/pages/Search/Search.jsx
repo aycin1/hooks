@@ -1,8 +1,9 @@
+import { faSquare, faSquareCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { axiosPrivate } from "../../api/axios";
 import RefineSearch from "./components/RefineSearch";
 import SearchResults from "./components/SearchResults";
-import Toggle from "./components/Toggle";
 import UserInput from "./components/UserInput";
 import styles from "./Search.module.css";
 
@@ -11,15 +12,15 @@ export default function Search() {
   const [refineOptions, setRefineOptions] = useState({});
   const [searchResults, setSearchResults] = useState();
   const [toggle, setToggle] = useState(true);
+  const style = { color: "#709c62ff" };
 
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
 
     function joinArrays(checkedArr) {
-      const join = toggle ? "%2B" : "%7C";
       if (checkedArr?.length > 1) {
-        return `${checkedArr.join(join)}`;
+        return `${checkedArr.join(toggle ? "%2B" : "%7C")}`;
       } else if (checkedArr?.length === 1) {
         return `${checkedArr[0]}`;
       } else {
@@ -54,9 +55,13 @@ export default function Search() {
     fetchResults();
     return () => {
       isMounted = false;
-      controller.abort();
+      isMounted && controller.abort();
     };
   }, [refineOptions, userInput, toggle]);
+
+  function handleClick() {
+    setToggle((oldVal) => !oldVal);
+  }
 
   function handleChange(value, checked) {
     setRefineOptions((oldVal) => ({ ...oldVal, [value]: checked }));
@@ -66,14 +71,18 @@ export default function Search() {
     setUserInput(msg);
   }
 
-  function handleClick() {
-    setToggle((oldVal) => !oldVal);
-  }
-
   return (
     <div className={styles.searchPage}>
       <div className={styles.sidebar}>
-        <Toggle toggle={toggle} handleClick={handleClick} />
+        <div className={styles.widenSearch}>
+          <h4 className={styles.label}>Broaden search?</h4>
+          <FontAwesomeIcon
+            icon={toggle ? faSquare : faSquareCheck}
+            value={toggle}
+            style={style}
+            onClick={handleClick}
+          />
+        </div>
         <RefineSearch handleChange={handleChange} />
       </div>
       <div className={styles.body}>

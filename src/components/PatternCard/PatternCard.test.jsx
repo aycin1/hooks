@@ -2,23 +2,18 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { describe, expect, it, vi } from "vitest";
 import PatternCard from "./PatternCard";
-
-vi.mock("../Thumbnail/Thumbnail", () => ({
-  default: ({ patternID }) => (
-    <div data-testid="mockedThumbnail">{patternID}</div>
-  ),
-}));
+vi.unmock("./PatternCard");
 
 describe("pattern card", () => {
   it("renders pattern name and thumbnail", async () => {
     render(
       <MemoryRouter>
-        <PatternCard patternID="123" />
+        <PatternCard patternID="1" />
       </MemoryRouter>
     );
 
     expect(await screen.findByRole("paragraph")).toHaveTextContent("wooly hat");
-    expect(screen.getByTestId("mockedThumbnail")).toHaveTextContent("123");
+    expect(screen.getByTestId("mockedThumbnail")).toHaveTextContent("1");
   });
 
   it("renders link with correct path param", async () => {
@@ -28,6 +23,9 @@ describe("pattern card", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByRole("link")).toHaveAttribute("href", "/pattern/456");
+    expect(await screen.findByRole("link")).toHaveAttribute(
+      "href",
+      "/pattern/456"
+    );
   });
 });

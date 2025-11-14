@@ -26,7 +26,7 @@ export default function useUsername() {
 
     return () => {
       isMounted = false;
-      controller.abort();
+      isMounted && controller.abort();
     };
   }, [auth, axiosPrivate]);
 

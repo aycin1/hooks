@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import usePattern from "../../hooks/usePattern";
 import Thumbnail from "./Thumbnail";
+vi.unmock("./Thumbnail");
 
 vi.mock("../../hooks/usePattern", () => ({
   default: vi.fn(),

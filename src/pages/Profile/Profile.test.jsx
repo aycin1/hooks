@@ -11,10 +11,6 @@ vi.mock("../../components/CreatePost/CreatePost", () => ({
   default: () => <div data-testid="mockedCreatePost">Create Post</div>,
 }));
 
-vi.mock("../../components/FollowButton/FollowButton", () => ({
-  default: () => <div data-testid="mockedFollowButton">Follow Button</div>,
-}));
-
 vi.mock("../../components/Posts/Posts", () => ({
   default: ({ posts }) => <a data-testid="mockedPosts">{posts}</a>,
 }));
@@ -37,8 +33,8 @@ describe("profile", () => {
     render(<Profile />);
 
     await waitFor(() => {
-      expect(screen.getByText("diffUser")).toBeInTheDocument();
-      expect(screen.getByText("Follow Button")).toBeInTheDocument();
+      expect(screen.getByRole("heading")).toHaveTextContent("diffUser");
+      expect(screen.getByRole("button")).toHaveTextContent("diffUser");
     });
   });
 });

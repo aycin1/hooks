@@ -4,12 +4,6 @@ import { describe, expect, it, vi } from "vitest";
 import { ListsProvider } from "../../../context/ListsProvider";
 import PatternSelect from "../PatternSelect";
 
-vi.mock("../../Thumbnail/Thumbnail", () => ({
-  default: ({ patternID }) => (
-    <div data-testid="mockedThumbnail">{patternID}</div>
-  ),
-}));
-
 describe("pattern select", () => {
   it("renders appropriate message if pattern isn't selected", async () => {
     render(

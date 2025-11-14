@@ -1,18 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
-import { testAxios } from "../../testAxios";
+import { describe, expect, it } from "vitest";
 import UserSearch from "./UserSearch";
-
-vi.mock("../UserLink/UserLink", () => ({
-  default: ({ foundUser }) => (
-    <a href="https://test.com" data-testid="mockedUserLink">
-      {foundUser}
-    </a>
-  ),
-}));
-
-vi.mock("../../hooks/useAxiosPrivate", () => ({ default: () => testAxios }));
 
 describe("user search", () => {
   it("updates input field when user types", async () => {

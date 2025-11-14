@@ -3,14 +3,9 @@ import { MemoryRouter } from "react-router";
 import { describe, expect, it, vi } from "vitest";
 import useUsername from "../../hooks/useUsername";
 import UserLink from "./UserLink";
+vi.unmock("./UserLink");
 
 vi.mock("../../hooks/useUsername", () => ({ default: vi.fn() }));
-
-vi.mock("../FollowButton/FollowButton", () => ({
-  default: ({ username }) => (
-    <div data-testid="mockedFollowButton">{username}</div>
-  ),
-}));
 
 describe("user link", () => {
   it("renders link to found user", () => {

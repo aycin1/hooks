@@ -1,25 +1,11 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { ListsProvider } from "../../context/ListsProvider";
-import { testAxios } from "../../testAxios";
 import Dropdown from "./Dropdown";
-
-vi.mock("../../hooks/useAxiosPrivate", () => ({ default: () => testAxios }));
+vi.unmock("./Dropdown");
 
 describe("dropdown", () => {
-  beforeEach(() => {
-    vi.spyOn(testAxios, "post").mockResolvedValue({
-      data: { message: "added" },
-    });
-    vi.spyOn(testAxios, "patch").mockResolvedValue({
-      data: { message: "updated" },
-    });
-    vi.spyOn(testAxios, "delete").mockResolvedValue({
-      data: { message: "removed" },
-    });
-  });
-
   it("renders correct placeholder if pattern is in a list", async () => {
     render(
       <ListsProvider>

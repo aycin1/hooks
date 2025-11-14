@@ -52,18 +52,21 @@ export default function EditAndDeleteButtons({
 
   return (
     <div className={styles.editAndDeleteButtons}>
-      <form onSubmit={handleCaptionChange}>
-        {showInput && (
+      {showInput && (
+        <form onSubmit={handleCaptionChange}>
           <input
+            aria-label="input for caption change"
             type="text"
             placeholder={currentCaption || "edit caption..."}
             onChange={(e) => setCaption(e.target.value)}
           ></input>
-        )}
-      </form>
+        </form>
+      )}
+
       {!showInput ? (
         <>
           <button
+            aria-label="edit caption"
             className={styles.editPostButton}
             onClick={toggleInputField}
             title="Edit caption"
@@ -71,6 +74,7 @@ export default function EditAndDeleteButtons({
             <FontAwesomeIcon icon={faPencil} size="sm" />
           </button>
           <button
+            aria-label="delete post"
             value={postID}
             className={styles.deletePostButton}
             onClick={handleDeletion}
@@ -80,7 +84,11 @@ export default function EditAndDeleteButtons({
           </button>
         </>
       ) : (
-        <button className={styles.toggleInputButton} onClick={toggleInputField}>
+        <button
+          aria-label="close input field"
+          className={styles.toggleInputButton}
+          onClick={toggleInputField}
+        >
           x
         </button>
       )}
