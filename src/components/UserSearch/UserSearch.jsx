@@ -27,15 +27,13 @@ export default function UserSearch() {
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           className={styles.input}
-          data-testid="userSearchInput"
+          aria-label="user search input"
           type="text"
           value={searchField}
           placeholder="Search for your friends!"
           onChange={(e) => setSearchField(e.target.value)}
         />
-        <button className={styles.button} data-testid="userSearchButton">
-          Search
-        </button>
+        <button className={styles.button}>Search</button>
       </form>
       <div className={styles.foundUser}>
         {foundUser ? (

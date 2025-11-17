@@ -5,7 +5,7 @@ export default function ListButton({ title, handleClick }) {
     <button
       className={styles.listButton}
       name={title}
-      data-testid="list-button"
+      aria-label={`list button for ${title}`}
       onClick={(e) => handleClick(e.target.name)}
     >
       {title}

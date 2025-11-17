@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import styles from "./Posts.module.css";
 
 export default function AddComment({ postID, handleChange }) {
   const axiosPrivate = useAxiosPrivate();
@@ -22,7 +23,7 @@ export default function AddComment({ postID, handleChange }) {
     <form onSubmit={handleSubmit}>
       <label type="submit">
         <input
-          className="commentInput"
+          className={styles.commentInput}
           placeholder="Comment..."
           onChange={(e) => setComment(e.target.value)}
           value={comment}

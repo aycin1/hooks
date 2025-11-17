@@ -8,17 +8,25 @@ describe("user search", () => {
     const user = userEvent.setup();
     render(<UserSearch />);
 
-    await user.type(screen.getByTestId("userSearchInput"), "user");
+    await user.type(
+      screen.getByPlaceholderText("Search for your friends!"),
+      "user"
+    );
 
-    expect(screen.getByTestId("userSearchInput").value).toStrictEqual("user");
+    expect(
+      screen.getByPlaceholderText("Search for your friends!").value
+    ).toStrictEqual("user");
   });
 
   it("renders error message for no user found", async () => {
     const user = userEvent.setup();
     render(<UserSearch />);
 
-    await user.type(screen.getByTestId("userSearchInput"), "wrongUser");
-    await user.click(screen.getByTestId("userSearchButton"));
+    await user.type(
+      screen.getByPlaceholderText("Search for your friends!"),
+      "wrongUser"
+    );
+    await user.click(screen.getByRole("button", { name: "Search" }));
 
     await waitFor(() =>
       expect(screen.getByText(/no users found/i)).toBeInTheDocument()
@@ -29,8 +37,11 @@ describe("user search", () => {
     const user = userEvent.setup();
     render(<UserSearch />);
 
-    await user.type(screen.getByTestId("userSearchInput"), "thisUser");
-    await user.click(screen.getByTestId("userSearchButton"));
+    await user.type(
+      screen.getByPlaceholderText("Search for your friends!"),
+      "thisUser"
+    );
+    await user.click(screen.getByRole("button", { name: "Search" }));
 
     await waitFor(() => {
       expect(screen.getByTestId("mockedUserLink")).toHaveTextContent(

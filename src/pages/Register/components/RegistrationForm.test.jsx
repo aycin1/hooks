@@ -16,10 +16,16 @@ vi.mock("react-router", async () => {
 
 describe("registration form", () => {
   async function fillValidForm() {
-    await userEvent.type(screen.getByTestId("email"), "test@gmail.com");
-    await userEvent.type(screen.getByTestId("username"), "validUser");
-    await userEvent.type(screen.getByTestId("password"), "MyPwd123!");
-    await userEvent.type(screen.getByTestId("passwordConfirm"), "MyPwd123!");
+    await userEvent.type(
+      screen.getByLabelText(/email address/i),
+      "test@gmail.com"
+    );
+    await userEvent.type(screen.getByLabelText(/username/i), "validUser");
+    await userEvent.type(screen.getByLabelText("Password:"), "MyPwd123!");
+    await userEvent.type(
+      screen.getByLabelText(/confirm password/i),
+      "MyPwd123!"
+    );
   }
 
   it("updates input fields when user types", async () => {
@@ -27,10 +33,12 @@ describe("registration form", () => {
 
     await fillValidForm();
 
-    expect(screen.getByTestId("email").value).toStrictEqual("test@gmail.com");
-    expect(screen.getByTestId("username").value).toStrictEqual("validUser");
-    expect(screen.getByTestId("password").value).toStrictEqual("MyPwd123!");
-    expect(screen.getByTestId("passwordConfirm").value).toStrictEqual(
+    expect(screen.getByLabelText(/email address/i).value).toStrictEqual(
+      "test@gmail.com"
+    );
+    expect(screen.getByLabelText(/username/i).value).toStrictEqual("validUser");
+    expect(screen.getByLabelText("Password:").value).toStrictEqual("MyPwd123!");
+    expect(screen.getByLabelText(/confirm password/i).value).toStrictEqual(
       "MyPwd123!"
     );
   });
@@ -39,7 +47,7 @@ describe("registration form", () => {
     render(<RegistrationForm />);
 
     await fillValidForm();
-    await userEvent.click(screen.getByTestId("registerButton"));
+    await userEvent.click(screen.getByRole("button", { name: /register/i }));
 
     await waitFor(() =>
       expect(mockedUseNavigate).toHaveBeenCalledExactlyOnceWith("/login")
@@ -55,7 +63,7 @@ describe("registration form", () => {
     render(<RegistrationForm />);
 
     await fillValidForm();
-    await userEvent.click(screen.getByTestId("registerButton"));
+    await userEvent.click(screen.getByRole("button", { name: /register/i }));
 
     await waitFor(() => {
       expect(screen.getByText(/no response from the server/i)).toBeDefined();
@@ -67,7 +75,7 @@ describe("registration form", () => {
     it("initially disabled button enabled with valid field inputs", async () => {
       render(<RegistrationForm />);
 
-      const button = screen.getByTestId("registerButton");
+      const button = screen.getByRole("button", { name: /register/i });
       expect(button).toBeDisabled();
 
       await fillValidForm();
@@ -79,15 +87,15 @@ describe("registration form", () => {
         const user = userEvent.setup();
         render(<RegistrationForm />);
 
-        const input = screen.getByTestId("email");
+        const input = screen.getByLabelText(/email address/i);
         await user.type(input, "invalid@email");
         await user.click(screen.getByLabelText(/username/i));
         await userEvent.click(input);
 
         await waitFor(() =>
           expect(
-            screen.getByText(/please enter a valid email address/i)
-          ).toBeValid()
+            screen.getByText(/please enter a valid email address/i).className
+          ).toContain("instructions")
         );
 
         await user.clear(input);
@@ -95,8 +103,8 @@ describe("registration form", () => {
 
         await waitFor(() =>
           expect(
-            screen.getByText(/please enter a valid email address/i)
-          ).not.toBeValid()
+            screen.getByText(/please enter a valid email address/i).className
+          ).toContain("offscreen")
         );
       });
 
@@ -105,13 +113,16 @@ describe("registration form", () => {
         render(<RegistrationForm />);
 
         await user.type(
-          screen.getByTestId("email"),
+          screen.getByLabelText(/email address/i),
           "already-exists@example.com"
         );
-        await user.type(screen.getByTestId("username"), "validUser");
-        await user.type(screen.getByTestId("password"), "MyPwd123!");
-        await user.type(screen.getByTestId("passwordConfirm"), "MyPwd123!");
-        await user.click(screen.getByTestId("registerButton"));
+        await user.type(screen.getByLabelText(/username/i), "validUser");
+        await user.type(screen.getByLabelText("Password:"), "MyPwd123!");
+        await user.type(
+          screen.getByLabelText(/confirm password/i),
+          "MyPwd123!"
+        );
+        await user.click(screen.getByRole("button", { name: /register/i }));
 
         await waitFor(() => {
           expect(screen.getByText(/user already exists/i)).toBeDefined();
@@ -124,15 +135,16 @@ describe("registration form", () => {
       const user = userEvent.setup();
       render(<RegistrationForm />);
 
-      const input = screen.getByTestId("username");
+      const input = screen.getByLabelText(/username/i);
       await user.type(input, "hi");
-      await user.click(screen.getByTestId("password"));
+      await user.click(screen.getByLabelText("Password:"));
       await user.click(input);
 
       await waitFor(() =>
         expect(
           screen.getByText(/username must be between 5 and 23 characters/i)
-        ).toBeValid()
+            .className
+        ).toContain("instructions")
       );
 
       await user.clear(input);
@@ -141,7 +153,8 @@ describe("registration form", () => {
       await waitFor(() =>
         expect(
           screen.getByText(/username must be between 5 and 23 characters/i)
-        ).not.toBeValid()
+            .className
+        ).toContain("offscreen")
       );
     });
 
@@ -149,7 +162,7 @@ describe("registration form", () => {
       const user = userEvent.setup();
       render(<RegistrationForm />);
 
-      const input = screen.getByTestId("password");
+      const input = screen.getByLabelText("Password:");
       await user.type(input, "weak");
       await user.click(screen.getByLabelText(/username/i));
       await userEvent.click(input);
@@ -157,7 +170,8 @@ describe("registration form", () => {
       await waitFor(() =>
         expect(
           screen.getByText(/password must be between 8 and 24 characters/i)
-        ).toBeValid()
+            .className
+        ).toContain("instructions")
       );
 
       await user.clear(input);
@@ -166,7 +180,8 @@ describe("registration form", () => {
       await waitFor(() =>
         expect(
           screen.getByText(/password must be between 8 and 24 characters/i)
-        ).toBeInvalid()
+            .className
+        ).toContain("offscreen")
       );
     });
 
@@ -174,20 +189,24 @@ describe("registration form", () => {
       const user = userEvent.setup();
       render(<RegistrationForm />);
 
-      const input = screen.getByTestId("passwordConfirm");
+      const input = screen.getByLabelText(/confirm password/i);
       await user.type(input, "mismatch");
-      await user.type(screen.getByTestId("password"), "ValidPwd123!");
+      await user.type(screen.getByLabelText("Password:"), "ValidPwd123!");
       await user.click(input);
 
       await waitFor(() =>
-        expect(screen.getByText(/passwords must match/i)).toBeValid()
+        expect(screen.getByText(/passwords must match/i).className).toContain(
+          "instructions"
+        )
       );
 
       await user.clear(input);
       await user.type(input, "ValidPwd123!");
 
       await waitFor(() =>
-        expect(screen.getByText(/passwords must match/i)).toBeInvalid()
+        expect(screen.getByText(/passwords must match/i).className).toContain(
+          "offscreen"
+        )
       );
     });
   });

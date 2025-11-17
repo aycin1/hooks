@@ -37,8 +37,8 @@ describe("login form", () => {
     const user = userEvent.setup();
     render(<LoginForm />);
 
-    const username = screen.getByTestId("username");
-    const password = screen.getByTestId("password");
+    const username = screen.getByLabelText(/username/i);
+    const password = screen.getByLabelText(/password/i);
 
     await user.type(username, "example");
     await user.type(password, "MyPwd123!");
@@ -51,9 +51,9 @@ describe("login form", () => {
     const user = userEvent.setup();
     render(<LoginForm />);
 
-    await user.type(screen.getByTestId("username"), "example");
-    await user.type(screen.getByTestId("password"), "MyPwd123!");
-    await user.click(screen.getByTestId("loginButton"));
+    await user.type(screen.getByLabelText(/username/i), "example");
+    await user.type(screen.getByLabelText(/password/i), "MyPwd123!");
+    await user.click(screen.getByRole("button", { name: /log in/i }));
 
     await waitFor(() => {
       expect(mockedSetAuth).toHaveBeenCalledWith({
@@ -73,9 +73,9 @@ describe("login form", () => {
 
     render(<LoginForm />);
 
-    await user.type(screen.getByTestId("username"), "incorrect");
-    await user.type(screen.getByTestId("password"), "user");
-    await user.click(screen.getByTestId("loginButton"));
+    await user.type(screen.getByLabelText(/username/i), "incorrect");
+    await user.type(screen.getByLabelText(/password/i), "user");
+    await user.click(screen.getByRole("button", { name: /log in/i }));
 
     await waitFor(() => {
       expect(screen.getByText(/invalid credentials/i)).toBeDefined();
@@ -92,9 +92,9 @@ describe("login form", () => {
     );
     render(<LoginForm />);
 
-    await user.type(screen.getByTestId("username"), "example");
-    await user.type(screen.getByTestId("password"), "MyPwd123!");
-    await user.click(screen.getByTestId("loginButton"));
+    await user.type(screen.getByLabelText(/username/i), "example");
+    await user.type(screen.getByLabelText(/password/i), "MyPwd123!");
+    await user.click(screen.getByRole("button", { name: /log in/i }));
 
     await waitFor(() => {
       expect(screen.getByText(/no response from the server/i)).toBeDefined();
@@ -107,7 +107,9 @@ describe("login form", () => {
 
     render(<LoginForm />);
 
-    const checkbox = screen.getByLabelText(/trust this device/i);
+    const checkbox = screen.getByRole("checkbox", {
+      name: /trust this device/i,
+    });
 
     expect(checkbox.checked).toEqual(false);
 

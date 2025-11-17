@@ -84,9 +84,7 @@ export default function CreatePostOverlay({ openClick, closeClick }) {
                 onChange={(e) => setCaption(e.target.value)}
               ></input>
               <button
-                data-testid="submit"
                 aria-label="submit"
-                type="submit"
                 disabled={!imageUploadSuccess || !chosenPattern ? true : false}
                 title="You must select a pattern and upload an image to create a post"
                 className={styles.uploadPostButton}

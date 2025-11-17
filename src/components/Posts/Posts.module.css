@@ -86,6 +86,10 @@
   padding: 0px 10px;
 }
 
+.commentInput {
+  width: 20vw;
+}
+
 .deleteCommentButton {
   border: none;
   background-color: transparent;

@@ -40,19 +40,21 @@ describe("create post overlay", () => {
   it("disables submit button initially", () => {
     render(<CreatePostOverlay openClick={true} closeClick={vi.fn()} />);
 
-    expect(screen.getByTestId("submit")).toBeDisabled();
+    waitFor(() => {
+      expect(screen.getByRole("button", { name: "submit" })).toBeDisabled();
+    });
   });
 
-  it("enables submit button on pattern selection and image upload", async () => {
+  it("enables submit button on pattern selection and image upload", () => {
     const user = userEvent.setup();
     render(<CreatePostOverlay openClick={true} closeClick={vi.fn()} />);
 
     user.click(screen.getByTestId("pattern 1"));
     user.click(screen.getByTestId("mockedUpload"));
 
-    await waitFor(() => {
-      expect(screen.getByTestId("submit")).toBeEnabled();
-    });
+    waitFor(() =>
+      expect(screen.getByRole("button", { name: "submit" })).toBeEnabled()
+    );
   });
 
   it("submits successfully and displays success message from server", async () => {
@@ -61,7 +63,7 @@ describe("create post overlay", () => {
 
     user.click(screen.getByTestId("pattern 1"));
     user.click(screen.getByTestId("mockedUpload"));
-    await user.click(screen.getByTestId("submit"));
+    await user.click(screen.queryByRole("button", { name: "submit" }));
 
     await waitFor(() => {
       expect(screen.getByText("Posted")).toBeInTheDocument();

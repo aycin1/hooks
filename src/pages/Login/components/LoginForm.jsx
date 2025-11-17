@@ -62,31 +62,30 @@ export default function LoginForm() {
         Username:{" "}
       </label>
       <input
+        aria-label="username input"
         id="username"
-        data-testid="username"
         type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
+        className={styles.input}
       />
 
       <label htmlFor="password" className={styles.password}>
         Password:{" "}
       </label>
       <input
+        aria-label="password input"
         id="password"
-        data-testid="password"
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
+        className={styles.input}
       />
 
       <p>{errorMsg && errorMsg}</p>
 
-      <button className={styles.button} data-testid="loginButton">
-        Log in
-      </button>
       <div className={styles.persistCheck}>
         <input
           type="checkbox"
@@ -94,8 +93,13 @@ export default function LoginForm() {
           onChange={togglePersist}
           checked={persist}
         />
+        {"  "}
         <label htmlFor="persist">Trust this device?</label>
       </div>
+
+      <button className={styles.button} aria-label="log in button">
+        Log in
+      </button>
     </form>
   );
 }
