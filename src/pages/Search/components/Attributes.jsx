@@ -31,11 +31,8 @@ export default function Attributes({ handleChange }) {
 
   function sortAttributes(attributes) {
     return attributes?.map((attributeObj, index) => {
-      attributeObj = {
-        ...attributeObj,
-        label: attributeObj.name,
-        value: attributeObj.permalink || attributeObj.id,
-      };
+      attributeObj.label = attributeObj.name;
+      attributeObj.value = attributeObj.permalink || attributeObj.id;
 
       if (attributeObj?.pattern_attributes?.[0]?.name === "placeholder") {
         delete attributeObj.pattern_attributes;

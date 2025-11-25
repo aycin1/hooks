@@ -13,13 +13,18 @@
 }
 
 .links {
+  min-width: fit-content;
+}
+
+.link {
+  font-weight: 700;
   padding-left: 3vw;
   text-shadow: 2px 2px 2px #d9edc7;
 }
 
 .logout {
-  font-weight: 500;
   font-size: 16px;
+  font-weight: 700;
   color: #114e09;
   text-decoration: inherit;
   background-color: transparent;

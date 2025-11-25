@@ -7,38 +7,42 @@ export default function Dropdown({ patternID }) {
   const axiosPrivate = useAxiosPrivate();
   const lists = useLists();
   const [message, setMessage] = useState();
-  const [listForPattern, setListForPattern] = useState();
+  const [currentList, setCurrentList] = useState("");
 
   useEffect(() => {
-    let isMounted = true;
-
-    lists &&
-      Object.values(lists).map((list) =>
-        list.map((pattern) =>
-          parseInt(pattern.pattern_id) === parseInt(patternID)
-            ? isMounted && setListForPattern(pattern.list)
-            : null
-        )
-      );
-
-    return () => (isMounted = false);
+    const list =
+      lists &&
+      Object.values(lists)
+        .flatMap((list) => list.patterns)
+        .filter(
+          (pattern) => parseInt(pattern?.pattern_id) === parseInt(patternID)
+        );
+    setCurrentList(list?.[0]?.name);
   }, [lists, patternID, message]);
 
+  async function getResponse(value) {
+    const response =
+      value === "remove"
+        ? await axiosPrivate.delete("/lists/", {
+            data: {
+              pattern_id: parseInt(patternID),
+            },
+          })
+        : currentList
+        ? await axiosPrivate.patch("/lists/", {
+            pattern_id: parseInt(patternID),
+            list: value,
+          })
+        : await axiosPrivate.post("/lists/", {
+            pattern_id: parseInt(patternID),
+            list: value,
+          });
+    return response;
+  }
+
   async function handleChange(e) {
-    const desiredList = e.target.value;
-
-    const data =
-      desiredList === "remove"
-        ? { pattern_id: patternID }
-        : { pattern_id: patternID, list: desiredList };
-
     try {
-      const response =
-        desiredList === "remove"
-          ? await axiosPrivate.delete("/lists/", { data })
-          : listForPattern
-          ? await axiosPrivate.patch("/lists/", data)
-          : await axiosPrivate.post("/lists/", data);
+      const response = await getResponse(e.target.value);
 
       if (response?.data?.message) {
         setMessage(response.data.message);
@@ -55,7 +59,7 @@ export default function Dropdown({ patternID }) {
       ) : (
         <DropdownOptions
           key={patternID}
-          listForPattern={listForPattern}
+          listForPattern={currentList}
           handleChange={handleChange}
         />
       )}

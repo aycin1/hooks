@@ -16,10 +16,10 @@
 .patternCards {
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
-  align-items: end;
+  overflow-x: auto;
   padding-bottom: 2vh;
   max-width: inherit;
+  gap: 10px;
 }
 
 .searchLink {

@@ -32,14 +32,14 @@ export default function Comments({ postID }) {
       isMounted = false;
       controller.abort();
     };
-  }, [postID, message, axiosPrivate]);
+  }, [postID, comments, message, axiosPrivate]);
 
   function handleChange(msg) {
     setMessage(msg);
   }
 
   async function handleCommentDeletion(msg) {
-    const data = { post_id: postID, message: msg };
+    const data = { post_id: postID, comment: msg };
     try {
       const response = await axiosPrivate.delete("/comments/", { data });
       handleChange(response?.data?.message);
@@ -52,15 +52,13 @@ export default function Comments({ postID }) {
     return comments.map((comment, index) => {
       return (
         <div key={index} className={styles.comments}>
-          <p>{comment.message}</p>
+          <p>{comment.comment}</p>
           <div>
-            <Link to={`/profile/${comment.comment_username}`}>
-              {comment.comment_username}
-            </Link>
-            {comment.comment_username === thisUser && (
+            <Link to={`/profile/${comment.username}`}>{comment.username}</Link>
+            {comment.username === thisUser && (
               <button
                 aria-label="delete comment"
-                onClick={() => handleCommentDeletion(comment.message)}
+                onClick={() => handleCommentDeletion(comment.comment)}
                 className={styles.deleteCommentButton}
                 title="Delete comment"
               >
@@ -77,9 +75,12 @@ export default function Comments({ postID }) {
   }
 
   return (
-    <div>
-      {comments?.length > 0 && mapComments(comments)}
-      <AddComment postID={postID} handleChange={handleChange} />
+    <div className={styles.commentsContainer}>
+      <div>
+        {comments?.length > 0 && mapComments(comments)}
+        <AddComment postID={postID} handleChange={handleChange} />
+      </div>
+      <div style={{ fontSize: "small" }}>{message && message}</div>
     </div>
   );
 }

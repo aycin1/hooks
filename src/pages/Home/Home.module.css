@@ -3,20 +3,29 @@
   flex-direction: column;
 }
 
+.listButtons {
+  display: flex;
+  align-self: center;
+  overflow-x: auto;
+  max-height: 10vh;
+}
+
 .listButton {
-  margin: 1.5em 1em;
-  padding: 0.6em 1.8em;
+  margin: 1.5vh 1vw;
+  min-width: fit-content;
+  padding: 1.2vh 3.4vw;
   font-weight: 600;
   border-radius: 8px;
-  border: 1px solid #255735;
-  background-color: rgba(68, 107, 78, 0.815);
-  color: #d9f0d7;
+  border: 1px solid #348e51;
+  background-color: rgb(227, 247, 219);
+  color: rgb(41, 122, 61);
   font-size: 1.1em;
-  font-family: inherit;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   cursor: pointer;
 }
-button:hover {
-  background-color: rgba(91, 134, 102, 0.815);
+
+.listButton:hover {
+  background-color: #c2e0bf;
 }
 
 .list {
@@ -40,15 +49,26 @@ button:hover {
 }
 
 .patterns {
-  /* width: 85cap; */
+  width: 85vw;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .patternCard {
-  width: 180px;
-  height: 300px;
   overflow: hidden;
+  padding-bottom: 7vh;
+}
+
+.dropdown {
+  /* display: none; */
+  position: absolute;
+  transform: translate(10px, 50px);
+}
+
+.patternCard:hover > .dropdown {
+  z-index: 2;
+  display: grid;
+  position: absolute;
 }

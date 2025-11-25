@@ -13,15 +13,23 @@ export default function Dashboard() {
     setChosenList(list);
   }
 
+  const chosenListContents =
+    lists && Object.values(lists).find((list) => list.name === chosenList);
+
   return (
     <div className={styles.dashboard}>
-      <div>
+      <div className={styles.listButtons}>
         {lists &&
-          Object.keys(lists).map((title) => (
-            <ListButton key={title} title={title} handleClick={handleClick} />
+          Object.values(lists).map((list) => (
+            <ListButton
+              key={list.name}
+              title={list.name}
+              handleClick={handleClick}
+            />
           ))}
       </div>
-      {lists?.[chosenList]?.length ? (
+
+      {chosenListContents?.patterns?.length ? (
         <DisplayList chosenList={chosenList} />
       ) : chosenList ? (
         <SearchLink>

@@ -1,7 +1,9 @@
+import useLists from "../../hooks/useLists";
 import styles from "./Dropdown.module.css";
 
 export default function DropdownOptions({ listForPattern, handleChange }) {
-  let options = ["wishlist", "wip", "completed"];
+  const lists = useLists();
+  let options = lists && Object.values(lists).map((list) => list.name);
 
   function handleOptions(list) {
     if (list) {
@@ -24,10 +26,10 @@ export default function DropdownOptions({ listForPattern, handleChange }) {
       onChange={handleChange}
       className={styles.dropdown}
     >
-      <option disabled value="">
+      <option disabled value="" className={styles.text}>
         {text}
       </option>
-      {refinedOptions.map((option) => (
+      {refinedOptions?.map((option) => (
         <option key={option} value={option}>
           {option}
         </option>

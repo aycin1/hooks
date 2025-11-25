@@ -21,7 +21,7 @@ export default function CreatePostOverlay({ openClick, closeClick }) {
   }, [openClick]);
 
   const data = {
-    pattern_id: chosenPattern,
+    pattern_id: parseInt(chosenPattern),
     uuid: uuid.current,
     caption: caption,
   };

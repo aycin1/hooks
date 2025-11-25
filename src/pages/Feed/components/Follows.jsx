@@ -16,7 +16,7 @@ export default function Follows() {
       const response = await axiosPrivate.get(`/follows/count`, {
         signal: controller.signal,
       });
-      isMounted && setFollowCount(response.data);
+      isMounted && setFollowCount(response?.data);
     }
     getFollowers();
 
@@ -27,8 +27,8 @@ export default function Follows() {
   }, [axiosPrivate, users]);
 
   function mapUsers() {
-    return Object.values(users).map((user) => {
-      return <UserLink key={user} foundUser={user} />;
+    return Object.values(users).map((user, index) => {
+      return <UserLink key={index} foundUser={user} />;
     });
   }
 
@@ -41,7 +41,7 @@ export default function Follows() {
     return arr?.map((obj, index) => {
       return Object.entries(obj).map(([key, value]) => (
         <button
-          key={index}
+          key={value}
           name={key}
           value={index}
           onClick={handleClick}
@@ -56,7 +56,7 @@ export default function Follows() {
   return (
     <>
       <div className={styles.follows}>
-        {followCount.length > 0 && mapButtons(followCount)}
+        {followCount && mapButtons(followCount)}
       </div>
       <div className={styles.users}>{users && mapUsers()}</div>
     </>

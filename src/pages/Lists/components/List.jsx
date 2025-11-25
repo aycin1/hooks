@@ -6,7 +6,9 @@ import styles from "../Lists.module.css";
 
 export default function List({ listTitle }) {
   const lists = useLists();
-  const list = lists?.[listTitle];
+  const list =
+    lists &&
+    Object.values(lists).filter((list) => list.name === listTitle)[0]?.patterns;
 
   const thumbnailOptions = {
     urlSize: "medium_url",

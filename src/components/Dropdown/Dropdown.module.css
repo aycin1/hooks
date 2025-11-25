@@ -1,6 +1,13 @@
 .dropdown {
-  background-color: rgba(237, 248, 231, 0.651);
-  max-width: fit-content;
-  border-radius: 2px;
+  background-color: rgb(242, 244, 240);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana;
+  font-size: smaller;
+  max-width: 120px;
+  padding: 3px;
+  border-radius: 3px;
   border: 1px double rgba(167, 182, 159, 0.842);
+}
+
+.text {
+  text-align: center;
 }

@@ -4,7 +4,7 @@
 }
 
 .overlay {
-  background-color: rgb(145, 182, 155);
+  background-color: rgba(188, 220, 196, 0.958);
   border-radius: 5px;
   border: 2px solid #255735;
   max-width: 60vw;

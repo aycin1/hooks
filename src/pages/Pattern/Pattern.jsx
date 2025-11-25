@@ -3,68 +3,98 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
 import usePattern from "../../hooks/usePattern";
 import PatternLink from "./components/PatternLink";
+import styles from "./Pattern.module.css";
 
 export default function Pattern() {
   const { id } = useParams();
   const pattern = usePattern(id);
-
-  function setProperties(pattern) {
-    return {
-      name: pattern?.name,
-      notes: pattern?.notes_html,
-      craft: pattern?.craft?.name,
-      needleSizes: pattern?.pattern_needle_sizes[0],
-      currency: pattern?.currency,
-      price: pattern?.price,
-      isFree: pattern?.free,
-      patternType: pattern?.pattern_type.name,
-      yardage: pattern?.yardage,
-      gauge: pattern?.gauge_description,
-      category: pattern?.pattern_categories,
-      weight: pattern?.yarn_weight_description,
-      author: pattern?.pattern_author?.name,
-      downloadable: pattern?.downloadable,
-      downloadLocation: pattern?.download_location?.url,
-    };
-  }
-
-  function setPatternUrl(properties) {
-    return pattern?.url === "" &&
-      pattern?.printings[0]?.pattern_source?.url !== ""
-      ? { ...properties, url: pattern.printings[0].pattern_source.url }
-      : pattern?.url === "" && pattern?.printings[0]?.pattern_source?.url === ""
-      ? {
-          ...properties,
-          source: {
-            name: pattern?.printings[0]?.pattern_source?.name,
-            type: pattern?.printings[0]?.pattern_source?.pattern_source_type
-              ?.long_name,
-          },
-        }
-      : { ...properties, url: pattern?.url };
-  }
 
   const thumbnailOptions = {
     urlSize: "medium2_url",
     style: {
       width: "100%",
       height: "auto",
-      maxWidth: "500px",
-      minWidth: "500px",
+      maxWidth: "450px",
+      minWidth: "450px",
     },
     maxHeight: "800px",
   };
 
-  const properties = setProperties(pattern);
-  setPatternUrl(properties);
-
   return (
     <div>
-      <h3>{properties?.name}</h3>
-      <PatternLink properties={properties} />
-      <Dropdown patternID={id} />
-      <Thumbnail patternID={id} thumbnailOptions={thumbnailOptions} />
-      <div dangerouslySetInnerHTML={{ __html: properties?.notes }} />
+      <h3>{pattern?.name}</h3>
+
+      <div className={styles.container}>
+        <div className={styles.lhs}>
+          <div className={styles.linkAndDropdown}>
+            <PatternLink patternID={id} />
+            <Dropdown patternID={id} />
+          </div>
+          <div>
+            <table className={styles.table}>
+              <tbody>
+                <tr>
+                  <th scope="row" className={styles.th}>
+                    Price
+                  </th>
+                  <td className={styles.td}>
+                    {!pattern?.isFree
+                      ? `${pattern?.price} ${pattern?.currency}`
+                      : "Free!"}
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" className={styles.th}>
+                    Craft
+                  </th>
+                  <td className={styles.td}>{pattern?.craft}</td>
+                </tr>
+                <tr>
+                  <th scope="row" className={styles.th}>
+                    Weight
+                  </th>
+                  <td className={styles.td}>{pattern?.weight}</td>
+                </tr>
+                {pattern?.yardage && (
+                  <tr>
+                    <th scope="row" className={styles.th}>
+                      Yardage
+                    </th>
+                    <td className={styles.td}>{pattern?.yardageDescription}</td>
+                  </tr>
+                )}
+                {pattern?.needleSizes?.length > 0 && (
+                  <tr>
+                    <th scope="row" className={styles.th}>
+                      {pattern?.craft === "crochet"
+                        ? "Hook size"
+                        : "Needle size"}
+                    </th>
+                    <td className={styles.td}>
+                      {pattern?.needleSizes?.map((size, i) => (
+                        <div key={i}>{size?.name}</div>
+                      ))}
+                    </td>
+                  </tr>
+                )}
+                {pattern?.gauge && (
+                  <tr>
+                    <th scope="row" className={styles.th}>
+                      Gauge
+                    </th>
+                    <td className={styles.td}>{pattern?.gaugeDescription}</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <Thumbnail patternID={id} thumbnailOptions={thumbnailOptions} />
+        </div>
+      </div>
+
+      <div dangerouslySetInnerHTML={{ __html: pattern?.notes }} />
     </div>
   );
 }

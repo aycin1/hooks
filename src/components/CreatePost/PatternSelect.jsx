@@ -37,7 +37,7 @@ export default function PatternSelect({ chosenPattern, handleClick }) {
       <div className={styles.displayPatterns}>
         {lists &&
           Object.values(lists)
-            .flatMap((list) => list)
+            .flatMap((list) => list.patterns)
             .map((pattern) => displayPattern(pattern.pattern_id))}
       </div>
     </>

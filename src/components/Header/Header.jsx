@@ -19,18 +19,18 @@ export default function Header() {
       <NavLink to={"/"} className={styles.name}>
         Fibre fantasies
       </NavLink>
-      <div>
-        <NavLink to={`/profile/${username}`} className={styles.links}>
+      <div className={styles.links}>
+        <NavLink to={`/profile/${username}`} className={styles.link}>
           Profile
         </NavLink>
-        <NavLink to={"/lists"} className={styles.links}>
+        <NavLink to={"/lists"} className={styles.link}>
           Lists
         </NavLink>
-        <SearchLink className={styles.links}>Search</SearchLink>
-        <NavLink to={"/feed"} className={styles.links}>
+        <SearchLink className={styles.link}>Search</SearchLink>
+        <NavLink to={"/feed"} className={styles.link}>
           Feed
         </NavLink>
-        <button onClick={signOut} className={styles.logout}>
+        <button onClick={signOut} className={`${styles.logout} ${styles.link}`}>
           Logout
         </button>
       </div>

@@ -25,14 +25,15 @@ export default function Categories({ handleChange }) {
     fetchCategories();
     return () => {
       isMounted = false;
-      controller.abort();
+      isMounted && controller.abort();
     };
   }, [axiosPrivate]);
 
   function mapCategories(categories) {
     return categories?.map((categoryObj) => {
-      categoryObj.value = categoryObj.permalink;
-      categoryObj.label = categoryObj.name;
+      categoryObj.value = categoryObj?.permalink;
+      categoryObj.label = categoryObj?.name;
+
       if (categoryObj?.children?.length) {
         mapCategories(categoryObj.children);
       } else {

@@ -5,7 +5,7 @@
   justify-items: stretch; */
   padding-top: 20px;
   display: inline-grid;
-  grid-template-columns: 48% 48%;
+  /* grid-template-columns: 48% 48%; */
   align-items: center;
   justify-content: center;
 }
@@ -78,6 +78,11 @@
   display: flex;
 }
 
+.commentsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .comments {
   display: flex;
   flex-direction: row;
@@ -87,7 +92,8 @@
 }
 
 .commentInput {
-  width: 20vw;
+  min-width: 29vw;
+  float: left;
 }
 
 .deleteCommentButton {

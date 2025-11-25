@@ -19,6 +19,7 @@ export default function Likes({ postID }) {
         const response = await axiosPrivate.get(`/likes/user/${postID}`, {
           signal: controller.signal,
         });
+
         isMounted && setAlreadyLiked(response?.data ? true : false);
       } catch (error) {
         console.log(error);
@@ -39,7 +40,7 @@ export default function Likes({ postID }) {
         const response = await axiosPrivate.get(`/likes/${postID}`, {
           signal: controller.signal,
         });
-        isMounted && setLikes(response?.data?.likedUsers);
+        isMounted && setLikes(response?.data);
       } catch (error) {
         console.log(error);
       }
@@ -68,7 +69,7 @@ export default function Likes({ postID }) {
   return (
     <button className={styles.likeButton} onClick={handleClick}>
       <FontAwesomeIcon icon={!alreadyLiked ? faHeart : faSolid} />{" "}
-      {likes.length ? likes.length : 0}
+      {likes?.length ? likes?.length : 0}
     </button>
   );
 }

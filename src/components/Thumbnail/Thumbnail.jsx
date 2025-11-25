@@ -5,7 +5,7 @@ export default function Thumbnail({ patternID, thumbnailOptions }) {
   const pattern = usePattern(patternID);
 
   function getUrl(pattern) {
-    return Object.values(pattern.photos)[0][urlSize];
+    return Object.values(pattern.photos)[0]?.[urlSize];
   }
 
   return (

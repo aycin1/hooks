@@ -51,15 +51,21 @@ export const handlers = [
     return HttpResponse.json({ error: "No user found" }, { status: 404 });
   }),
 
-  http.get("*/lists", () => {
-    return HttpResponse.json({
-      wishlist: [{ pattern_id: 123, list: "wishlist" }],
-      wip: [
-        { pattern_id: "abc", list: "wip" },
-        { pattern_id: "def", list: "wip" },
-      ],
-      completed: [],
-    });
+  http.get("*/lists*", () => {
+    return HttpResponse.json([
+      {
+        name: "wishlist",
+        patterns: [{ pattern_id: 123, list: "wishlist" }],
+      },
+      {
+        name: "wip",
+        patterns: [
+          { pattern_id: 987, list: "wip" },
+          { pattern_id: 456, list: "wip" },
+        ],
+      },
+      { name: "completed", patterns: [] },
+    ]);
   }),
 
   http.post("*/lists/", () => {
