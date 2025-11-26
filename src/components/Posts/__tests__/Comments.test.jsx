@@ -84,7 +84,7 @@ describe("comments", () => {
 
     await waitFor(() => {
       expect(deleteSpy).toHaveBeenCalledExactlyOnceWith({
-        message: "c2",
+        comment: "c2",
         post_id: 123456,
       });
     });

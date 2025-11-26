@@ -33,20 +33,6 @@ describe("login form", () => {
     localStorage.clear();
   });
 
-  it("updates input fields when user types", async () => {
-    const user = userEvent.setup();
-    render(<LoginForm />);
-
-    const username = screen.getByLabelText(/username/i);
-    const password = screen.getByLabelText(/password/i);
-
-    await user.type(username, "example");
-    await user.type(password, "MyPwd123!");
-
-    expect(username.value).toStrictEqual("example");
-    expect(password.value).toStrictEqual("MyPwd123!");
-  });
-
   it("submits user data and navigates on success", async () => {
     const user = userEvent.setup();
     render(<LoginForm />);

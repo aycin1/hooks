@@ -39,13 +39,12 @@ describe("list", () => {
       </ListsProvider>
     );
 
+    expect(screen.getByText("wip")).toBeInTheDocument();
     await waitFor(() => {
-      expect(screen.getByText("wip")).toBeInTheDocument();
-
-      expect(screen.getByText("pattern card abc")).toBeInTheDocument();
-      expect(screen.getByText("dropdown for abc")).toBeInTheDocument();
-      expect(screen.getByText("pattern card def")).toBeInTheDocument();
-      expect(screen.getByText("dropdown for def")).toBeInTheDocument();
+      expect(screen.getByText("pattern card 987")).toBeInTheDocument();
+      expect(screen.getByText("dropdown for 987")).toBeInTheDocument();
+      expect(screen.getByText("pattern card 456")).toBeInTheDocument();
+      expect(screen.getByText("dropdown for 456")).toBeInTheDocument();
 
       expect(screen.getByTestId("mockedSearchLink")).toHaveTextContent(
         "add more patterns!"

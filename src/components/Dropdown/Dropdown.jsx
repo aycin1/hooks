@@ -17,6 +17,7 @@ export default function Dropdown({ patternID }) {
         .filter(
           (pattern) => parseInt(pattern?.pattern_id) === parseInt(patternID)
         );
+    console.log(list?.[0]);
     setCurrentList(list?.[0]?.name);
   }, [lists, patternID, message]);
 

@@ -32,37 +32,37 @@ vi.mock("../UploadImage", () => ({
 
 describe("create post overlay", () => {
   it("renders patterns to select from", () => {
-    render(<CreatePostOverlay openClick={true} closeClick={vi.fn()} />);
+    render(<CreatePostOverlay openClick={true} closeClick={() => vi.fn()} />);
     expect(screen.getByText("pattern 1")).toBeInTheDocument();
     expect(screen.getByText("pattern 2")).toBeInTheDocument();
   });
 
-  it("disables submit button initially", () => {
-    render(<CreatePostOverlay openClick={true} closeClick={vi.fn()} />);
+  it("disables submit button initially", async () => {
+    render(<CreatePostOverlay openClick={true} closeClick={() => vi.fn()} />);
 
-    waitFor(() => {
-      expect(screen.getByRole("button", { name: "submit" })).toBeDisabled();
-    });
+    await waitFor(() =>
+      expect(screen.getByRole("button", { name: "submit" })).toBeDisabled()
+    );
   });
 
-  it("enables submit button on pattern selection and image upload", () => {
+  it("enables submit button on pattern selection and image upload", async () => {
     const user = userEvent.setup();
-    render(<CreatePostOverlay openClick={true} closeClick={vi.fn()} />);
+    render(<CreatePostOverlay openClick={true} closeClick={() => vi.fn()} />);
 
-    user.click(screen.getByTestId("pattern 1"));
-    user.click(screen.getByTestId("mockedUpload"));
+    await user.click(screen.getByTestId("pattern 1"));
+    await user.click(screen.getByTestId("mockedUpload"));
 
-    waitFor(() =>
+    await waitFor(() =>
       expect(screen.getByRole("button", { name: "submit" })).toBeEnabled()
     );
   });
 
   it("submits successfully and displays success message from server", async () => {
     const user = userEvent.setup();
-    render(<CreatePostOverlay openClick={true} closeClick={vi.fn()} />);
+    render(<CreatePostOverlay openClick={true} closeClick={() => vi.fn()} />);
 
-    user.click(screen.getByTestId("pattern 1"));
-    user.click(screen.getByTestId("mockedUpload"));
+    await user.click(screen.getByTestId("pattern 1"));
+    await user.click(screen.getByTestId("mockedUpload"));
     await user.click(screen.queryByRole("button", { name: "submit" }));
 
     await waitFor(() => {

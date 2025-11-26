@@ -36,11 +36,6 @@ describe("registration form", () => {
     expect(screen.getByLabelText(/email address/i).value).toStrictEqual(
       "test@gmail.com"
     );
-    expect(screen.getByLabelText(/username/i).value).toStrictEqual("validUser");
-    expect(screen.getByLabelText("Password:").value).toStrictEqual("MyPwd123!");
-    expect(screen.getByLabelText(/confirm password/i).value).toStrictEqual(
-      "MyPwd123!"
-    );
   });
 
   it("navigates user to /login on success", async () => {

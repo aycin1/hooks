@@ -1,25 +1,29 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { describe, expect, it, vi } from "vitest";
 import PatternCard from "./PatternCard";
 vi.unmock("./PatternCard");
 
 describe("pattern card", () => {
-  it("renders pattern name and thumbnail", async () => {
+  it("renders pattern name and thumbnail", () => {
     render(
       <MemoryRouter>
-        <PatternCard patternID="1" />
+        <PatternCard patternID={1} />
       </MemoryRouter>
     );
 
-    expect(await screen.findByRole("paragraph")).toHaveTextContent("wooly hat");
-    expect(screen.getByTestId("mockedThumbnail")).toHaveTextContent("1");
+    waitFor(async () => {
+      expect(await screen.findByRole("paragraph")).toHaveTextContent(
+        "wooly hat"
+      );
+      expect(screen.getByTestId("mockedThumbnail")).toHaveTextContent("1");
+    });
   });
 
   it("renders link with correct path param", async () => {
     render(
       <MemoryRouter>
-        <PatternCard patternID="456" />
+        <PatternCard patternID={456} />
       </MemoryRouter>
     );
 

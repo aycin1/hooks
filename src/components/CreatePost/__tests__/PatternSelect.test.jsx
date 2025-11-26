@@ -31,8 +31,8 @@ describe("pattern select", () => {
     const thumbnails = await screen.findAllByTestId("mockedThumbnail");
     expect(thumbnails).toHaveLength(3);
     expect(thumbnails[0]).toHaveTextContent(123);
-    expect(thumbnails[1]).toHaveTextContent("abc");
-    expect(thumbnails[2]).toHaveTextContent("def");
+    expect(thumbnails[1]).toHaveTextContent(987);
+    expect(thumbnails[2]).toHaveTextContent(456);
   });
 
   it("calls handleClick with chosen thumbnails pattern ID", async () => {

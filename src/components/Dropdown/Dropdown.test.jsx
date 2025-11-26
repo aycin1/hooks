@@ -22,7 +22,7 @@ describe("dropdown", () => {
   it("renders correct placeholder if pattern is NOT in any list", async () => {
     render(
       <ListsProvider>
-        <Dropdown patternID={456} />
+        <Dropdown patternID={654} />
       </ListsProvider>
     );
 
@@ -36,7 +36,7 @@ describe("dropdown", () => {
     const user = userEvent.setup();
     render(
       <ListsProvider>
-        <Dropdown patternID={456} />
+        <Dropdown patternID={654} />
       </ListsProvider>
     );
 

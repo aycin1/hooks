@@ -11,7 +11,7 @@ export function ListsProvider({ children }) {
   useEffect(() => {
     async function getLists() {
       try {
-        const response = await axiosPrivate.get("/lists");
+        const response = await axiosPrivate.get("/lists/");
         setLists(response.data);
       } catch (err) {
         console.log(err);
