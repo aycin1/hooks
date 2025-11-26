@@ -4,7 +4,7 @@ This project is a full-stack social media platform centered around one of my hob
 
 ### Link
 
-[Backend source code](https://github.com/aycin1/crochet_backend)
+[Backend source code](https://github.com/aycin1/fibre-fantasies-frontend)
 
 <!-- [Deployed website]() -->
 
