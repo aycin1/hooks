@@ -6,7 +6,7 @@ This project is a full-stack social media platform centered around one of my hob
 
 [Backend source code](https://github.com/aycin1/crochet_backend)
 
-[Deployed website]()
+<!-- [Deployed website]() -->
 
 ## How it's made
 
