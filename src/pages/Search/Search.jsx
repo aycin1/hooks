@@ -46,7 +46,7 @@ export default function Search() {
         const response = await axiosPrivate.get(`/patterns/refine/?${query}`, {
           signal: controller.signal,
         });
-        response?.data.splice(50);
+
         isMounted && setSearchResults(response?.data);
       } catch (error) {
         console.log(error);

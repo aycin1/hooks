@@ -12,17 +12,19 @@ This project is a full-stack social media platform centered around one of my hob
 
 The frontend is built with **React** and **Vite**, which provides fast development builds. Navigation is achieved using **React-Router** and the interface is composed of reusable components that communicate with the backend using RESTful API calls for CRUD operations.
 
-The frontend integrates **ImageKit**, which provides optimised image rendering. Images uploaded by users are returned as ImageKit URLs (from the backend) and are subsequently rendered on the frontend.
+This project utilises **ImageKit**, which provides optimised image rendering. Images uploaded by users are returned as ImageKit URLs (from the backend) and are subsequently rendered on the frontend.
 
 Styling is achieved with **CSS modules**, enabling local scopes and therefore greater code maintainability.
 
+Tests are run with **Vitest**, using **React Testing Library** for interacting with and querying DOM elements and **Mock Service Worker** to intercept and mock network requests made to the backend.
+
 # Usage
 
-// add screenshots of site flow and how website can be used
+<!-- // add screenshots of site flow and how website can be used -->
 
 # Installation
 
-////
+<!-- //// -->
 
 ## Dependencies
 
@@ -40,11 +42,15 @@ Styling is achieved with **CSS modules**, enabling local scopes and therefore gr
 
 # Improvements
 
-// I would love to add more features to this project eventually. I intend to add an educational section for people who may want to learn or advance their skills
-// making Search faster
-// being able to create, edit and delete your own lists
-// option to make certain lists public - appear on your profile
-// ability to share patterns and instant message with friends
+<!--ability to share patterns and instant message with friends -->
+
+- I intend to implement pagination within the Search component for faster loading of data on the frontend received from the third party API via the backend.
+
+- Currently, three custom lists are created upon user registration on the backend. I would like to establish the appropriate endpoints for users to be able to create, edit, and delete their own lists.
+
+- I aim to add privacy features such as making your profile private and having the ability to approve or deny follow requests from other users, as well as the option to make any list public and therefore visible on the users profile.
+
+- Furthermore, I hope to collate informative blogs and tutorials for an educational section for those who would like to learn or advance their skills.
 
 # Acknowledgements
 
