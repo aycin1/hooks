@@ -1,6 +1,6 @@
 # Fibre fantasies frontend
 
-This project is a full-stack social media platform centered around one of my hobbies: crochet and knitting. It allows users to search for patterns (provided by the Ravelry API), save them to a list, and share posts showcasing their own work. Users can follow one another, interact with posts, and discover and organise patterns.
+This project is a full-stack social media platform centered around one of my hobbies: crochet and knitting. It allows users to search for patterns (provided by the [Ravelry API](https://www.ravelry.com/api)), save them to a list, and share posts showcasing their own work. Users can follow one another, interact with posts, and discover and organise patterns.
 
 ### Link
 
@@ -38,7 +38,7 @@ Tests are run with **Vitest**, using **React Testing Library** for interacting w
 - react-checkbox-tree 1.8.0
 - react-dom 19.1.1
 - react-router 7.9.0
-- uuid 13.0.0"
+- uuid 13.0.0
 
 # Improvements
 
