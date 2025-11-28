@@ -2,11 +2,13 @@
 
 This project is a full-stack social media platform centered around one of my hobbies: crochet and knitting. It allows users to search for patterns (provided by the [Ravelry API](https://www.ravelry.com/api)), save them to a list, and share posts showcasing their own work. Users can follow one another, interact with posts, and discover and organise patterns.
 
-### Link
+### Links
 
-[Backend source code](https://github.com/aycin1/fibre-fantasies-frontend)
+[Deployed website](https://fibre-fantasies.vercel.app/)
 
-<!-- [Deployed website]() -->
+[Deployed API](https://fibre-fantasies-backend.onrender.com)
+
+[Backend code](https://github.com/aycin1/fibre-fantasies-backend)
 
 ## How it's made
 
@@ -18,13 +20,11 @@ Styling is achieved with **CSS modules**, enabling local scopes and therefore gr
 
 Tests are run with **Vitest**, using **React Testing Library** for interacting with and querying DOM elements and **Mock Service Worker** to intercept and mock network requests made to the backend.
 
+The frontend is deployed with **Vercel** and the backend and database have been deployed on **Render**.
+
 # Usage
 
 <!-- // add screenshots of site flow and how website can be used -->
-
-# Installation
-
-<!-- //// -->
 
 ## Dependencies
 

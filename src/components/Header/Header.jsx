@@ -20,7 +20,10 @@ export default function Header() {
         Fibre fantasies
       </NavLink>
       <div className={styles.links}>
-        <NavLink to={`/profile/${username}`} className={styles.link}>
+        <NavLink
+          to={username && `/profile/${username}`}
+          className={styles.link}
+        >
           Profile
         </NavLink>
         <NavLink to={"/lists"} className={styles.link}>
