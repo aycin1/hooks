@@ -62,7 +62,7 @@
 }
 
 .dropdown {
-  /* display: none; */
+  display: none;
   position: absolute;
   transform: translate(10px, 50px);
 }

@@ -32,6 +32,7 @@
   border-radius: 8px;
   text-shadow: 1px 1px 1px #d9edc7;
 }
+
 .searchLink:hover {
   background-color: rgba(215, 226, 198, 0.637);
   color: #255735;
@@ -39,4 +40,13 @@
 
 .listTitle {
   padding-top: 2vh;
+}
+
+.dropdown {
+  display: none;
+}
+
+.pattern:hover > .dropdown {
+  z-index: 2;
+  display: grid;
 }

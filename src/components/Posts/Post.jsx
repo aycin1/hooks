@@ -50,12 +50,14 @@ export default function Post({ post }) {
               >
                 {post.username}
               </NavLink>
-              <div>
+              <div className={styles.pattern}>
                 <PatternCard
                   patternID={post.pattern_id}
                   thumbnailOptions={thumbnailOptions}
                 />
-                <Dropdown patternID={post.pattern_id} />
+                <div className={styles.dropdown}>
+                  <Dropdown patternID={post.pattern_id} />
+                </div>
               </div>
             </div>
           </div>

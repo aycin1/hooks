@@ -25,7 +25,9 @@ export default function SearchResults({ list }) {
                 patternID={pattern.id}
                 thumbnailOptions={thumbnailOptions}
               />
-              <Dropdown patternID={pattern.id} />
+              <div className={styles.dropdown}>
+                <Dropdown patternID={pattern.id} />
+              </div>
             </div>
           ))
         : "No patterns found, please try again"}

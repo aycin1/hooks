@@ -29,12 +29,14 @@ export default function List({ listTitle }) {
         <div className={styles.listCard}>
           <div className={styles.patternCards}>
             {list?.map((pattern) => (
-              <div key={pattern.pattern_id}>
+              <div key={pattern.pattern_id} className={styles.pattern}>
                 <PatternCard
                   patternID={pattern.pattern_id}
                   thumbnailOptions={thumbnailOptions}
                 />
-                <Dropdown patternID={pattern.pattern_id} />
+                <div className={styles.dropdown}>
+                  <Dropdown patternID={pattern.pattern_id} />
+                </div>
               </div>
             ))}
           </div>

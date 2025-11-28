@@ -74,6 +74,15 @@
   align-items: center;
 }
 
+.dropdown {
+  display: none;
+}
+
+.pattern:hover > .dropdown {
+  z-index: 2;
+  display: grid;
+}
+
 .topContainer {
   display: flex;
 }

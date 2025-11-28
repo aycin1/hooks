@@ -57,3 +57,12 @@
 .pattern {
   padding-bottom: 15px;
 }
+
+.dropdown {
+  display: none;
+}
+
+.pattern:hover > .dropdown {
+  z-index: 2;
+  display: grid;
+}
