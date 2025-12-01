@@ -1,3 +1,21 @@
+.home {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userSearch {
+  margin-right: 20px;
+  position: fixed;
+  right: 0;
+  max-height: 75%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(165, 216, 186, 0.829);
+  padding: 2.5vh;
+  border-radius: 3px;
+  min-width: fit-content;
+}
+
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -48,17 +66,23 @@
   color: #255735;
 }
 
+.searchLink {
+  padding-top: 50px;
+  font-size: large;
+  text-shadow: 1px 1px 1px #d9edc7;
+}
+
 .patterns {
-  width: 85vw;
+  width: 65vw;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .patternCard {
   overflow: hidden;
-  padding-bottom: 7vh;
+  padding: 0px 0.5vw 3vh 0.5vw;
 }
 
 .dropdown {

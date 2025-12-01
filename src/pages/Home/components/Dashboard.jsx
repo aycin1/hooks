@@ -32,9 +32,11 @@ export default function Dashboard() {
       {chosenListContents?.patterns?.length ? (
         <DisplayList chosenList={chosenList} />
       ) : chosenList ? (
-        <SearchLink>
-          this list is empty, click here to search patterns!
-        </SearchLink>
+        <div className={styles.searchLink}>
+          <SearchLink>
+            this list is empty, click here to search patterns!
+          </SearchLink>
+        </div>
       ) : (
         <h4>please select a list</h4>
       )}

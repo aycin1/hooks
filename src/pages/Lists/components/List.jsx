@@ -45,7 +45,7 @@ export default function List({ listTitle }) {
           </SearchLink>
         </div>
       ) : (
-        <SearchLink>
+        <SearchLink className={styles.listCard}>
           this list is empty, click here to search patterns!
         </SearchLink>
       )}

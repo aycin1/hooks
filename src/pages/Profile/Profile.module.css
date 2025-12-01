@@ -1,23 +1,26 @@
 .profile {
   display: flex;
   flex-direction: column;
-
   padding-top: 2vh;
   width: 100%;
 }
 
 .topContainer {
+  width: 80%;
   display: flex;
+  align-self: center;
   align-items: center;
   justify-content: space-between;
-  padding: 0vh 8vw;
+  padding: 0vh 7vw;
   background-color: rgba(228, 245, 220, 0.486);
   border-radius: 8px;
   margin-bottom: 2.5vh;
 }
 
+.username {
+  font-size: x-large;
+}
+
 .posts {
-  justify-self: center;
-  border-radius: 8px;
-  padding: 2vh 0vw;
+  justify-content: center;
 }

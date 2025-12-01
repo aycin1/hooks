@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-export default function FollowButton({ username }) {
+export default function FollowButton({ username, style }) {
   const [isFollowing, setIsFollowing] = useState();
   const axiosPrivate = useAxiosPrivate();
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     let isMounted = true;
@@ -27,23 +28,23 @@ export default function FollowButton({ username }) {
     checkIfFollowing();
     return () => {
       isMounted = false;
-      controller.abort();
+      isMounted && controller.abort();
     };
-  }, [username, axiosPrivate]);
+  }, [username, message, axiosPrivate]);
 
   async function handleClick() {
     try {
+      let response;
       if (!isFollowing) {
-        await axiosPrivate.post(
-          "/follows/",
-          JSON.stringify({ following_user: username })
-        );
+        response = await axiosPrivate.post("/follows/", {
+          following_user: username,
+        });
       } else {
-        await axiosPrivate.delete("/follows/", {
-          data: JSON.stringify({ unfollowing_user: username }),
+        response = await axiosPrivate.delete("/follows/", {
+          data: { unfollowing_user: username },
         });
       }
-      setIsFollowing((prev) => !prev);
+      setMessage(response?.data?.message);
     } catch (error) {
       console.log(error);
     }
@@ -52,7 +53,7 @@ export default function FollowButton({ username }) {
   return (
     <>
       <button
-        style={{ fontSize: "smaller", marginLeft: "10px" }}
+        style={{ fontSize: "smaller", marginLeft: "10px", ...style }}
         onClick={handleClick}
       >
         {isFollowing ? "unfollow" : "follow"}

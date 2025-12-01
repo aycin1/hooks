@@ -78,9 +78,11 @@ export default function Comments({ postID }) {
     <div className={styles.commentsContainer}>
       <div>
         {comments?.length > 0 && mapComments(comments)}
+        <div style={{ fontSize: "small", justifySelf: "right" }}>
+          {message && message}
+        </div>
         <AddComment postID={postID} handleChange={handleChange} />
       </div>
-      <div style={{ fontSize: "small" }}>{message && message}</div>
     </div>
   );
 }

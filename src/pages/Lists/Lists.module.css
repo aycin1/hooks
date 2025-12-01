@@ -6,11 +6,13 @@
 .listCard {
   display: flex;
   flex-direction: column;
-  max-width: 75vw;
+  width: 75vw;
+  align-items: center;
   justify-self: center;
   padding: 20px 80px;
-  background-color: rgba(245, 245, 220, 0.486);
+  background-color: rgb(177, 219, 188);
   border-radius: 5px;
+  font-size: large;
 }
 
 .patternCards {
@@ -26,7 +28,7 @@
   font-size: large;
   font-weight: 600;
   align-self: end;
-  padding: 1vh 2vw;
+  padding: 1vh 1.5vw;
   margin: 2vh 0vw;
   border: 2px double rgba(215, 226, 198, 0.637);
   border-radius: 8px;
@@ -44,9 +46,17 @@
 
 .dropdown {
   display: none;
+  position: absolute;
+  justify-self: center;
 }
 
 .pattern:hover > .dropdown {
   z-index: 2;
   display: grid;
+  position: absolute;
+}
+
+.patternCard {
+  overflow: hidden;
+  padding: 0px 0.5vw 3vh 0.5vw;
 }

@@ -1,33 +1,35 @@
 .posts {
-  /* display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-items: stretch; */
   padding-top: 20px;
-  display: inline-grid;
-  /* grid-template-columns: 48% 48%; */
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 20px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1300px) {
   .posts {
     display: flex;
     flex-direction: column;
+  }
+  .post {
+    width: max-content;
   }
 }
 
 .post {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 .postCard {
   border: 1px double rgba(120, 145, 114, 0.507);
-  background-color: rgba(165, 216, 186, 0.753);
+  background-color: rgba(165, 216, 186, 0.685);
   border-radius: 5px;
-  margin: 5px;
   padding: 15px;
+  height: 100%;
+  width: 95%;
 }
 
 .editPostButton {
@@ -72,15 +74,25 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  padding-left: 1vw;
+  min-width: fit-content;
+}
+
+.patternCard {
+  overflow: hidden;
+  padding: 0px 0.5vw 3vh 0.5vw;
 }
 
 .dropdown {
   display: none;
+  position: absolute;
+  justify-self: center;
 }
 
 .pattern:hover > .dropdown {
   z-index: 2;
   display: grid;
+  position: absolute;
 }
 
 .topContainer {
@@ -101,8 +113,10 @@
 }
 
 .commentInput {
-  min-width: 29vw;
+  width: 80%;
+  padding: 5px;
   float: left;
+  margin-top: 10px;
 }
 
 .deleteCommentButton {

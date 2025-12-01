@@ -14,11 +14,15 @@ export default function Profile() {
   return (
     <div className={styles.profile}>
       <div className={styles.topContainer}>
-        <h3>{username}</h3>
+        <h3 className={styles.username}>{username}</h3>
+
         {username === thisUser ? (
           <CreatePost />
         ) : (
-          <FollowButton username={username} />
+          <FollowButton
+            username={username}
+            style={{ padding: "0.4em 1.4em", fontSize: " 1.1em" }}
+          />
         )}
       </div>
 

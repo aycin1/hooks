@@ -55,14 +55,17 @@
 }
 
 .pattern {
-  padding-bottom: 15px;
+  padding-bottom: 5vh;
 }
 
 .dropdown {
   display: none;
+  position: absolute;
+  justify-self: center;
 }
 
 .pattern:hover > .dropdown {
   z-index: 2;
   display: grid;
+  position: absolute;
 }

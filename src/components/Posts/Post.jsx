@@ -33,16 +33,20 @@ export default function Post({ post }) {
         message
       ) : (
         <>
-          {post.username === thisUser && (
+          {post.username === thisUser ? (
             <EditAndDeleteButtons
               username={post.username}
               postID={post.post_id}
               currentCaption={post.caption}
               handleChange={handleChange}
             />
+          ) : (
+            <br />
           )}
           <div className={styles.topContainer}>
-            <RenderImage postID={post.post_id} />
+            <div className={styles.userImage}>
+              <RenderImage postID={post.post_id} />
+            </div>
             <div className={styles.side}>
               <NavLink
                 to={`/profile/${post.username}`}
@@ -61,7 +65,8 @@ export default function Post({ post }) {
               </div>
             </div>
           </div>
-          <p className={styles.caption}>{post.caption}</p>
+          <p className={styles.caption}>{post.caption || <br />}</p>
+
           <Likes postID={post.post_id} />
           <ToggleComments postID={post.post_id} />
         </>

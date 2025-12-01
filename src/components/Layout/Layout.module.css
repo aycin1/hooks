@@ -2,7 +2,7 @@
   padding: 0vh 4vw 2vh 4vw;
   color: #114e09;
   width: 90vw;
-  height: fit-content;
+  min-height: 90vh;
   display: flex;
   justify-content: center;
 }
@@ -19,5 +19,4 @@
 
 .outlet {
   padding: 100px 0px;
-  align-self: center;
 }

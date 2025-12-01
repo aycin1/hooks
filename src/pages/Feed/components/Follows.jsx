@@ -22,7 +22,7 @@ export default function Follows() {
 
     return () => {
       isMounted = false;
-      controller.abort();
+      isMounted && controller.abort();
     };
   }, [axiosPrivate, users]);
 
