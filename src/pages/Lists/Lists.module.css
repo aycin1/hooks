@@ -1,14 +1,11 @@
-.listCards {
-  overflow-x: hidden;
-  align-items: center;
-}
-
 .listCard {
   display: flex;
   flex-direction: column;
-  width: 75vw;
+  width: 70vw;
+  flex-wrap: wrap;
   align-items: center;
   justify-self: center;
+  overflow-x: auto;
   padding: 20px 80px;
   background-color: rgb(177, 219, 188);
   border-radius: 5px;
@@ -19,16 +16,16 @@
 .patternCards {
   display: flex;
   flex-direction: row;
-  overflow-x: auto;
   padding-bottom: 2vh;
   max-width: inherit;
+  align-items: last baseline;
   gap: 10px;
 }
 
 .searchLink {
   font-size: large;
   font-weight: 600;
-  align-self: end;
+  align-self: start;
   padding: 1vh 1.5vw;
   margin: 2vh 0vw;
   border: 2px double rgba(215, 226, 198, 0.637);

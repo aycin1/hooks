@@ -23,7 +23,7 @@ export default function List({ listTitle }) {
   };
 
   return (
-    <div className={styles.listCards}>
+    <div className={styles.list}>
       <h2 className={styles.listTitle}>{listTitle}</h2>
       {list?.length ? (
         <div className={styles.listCard}>
