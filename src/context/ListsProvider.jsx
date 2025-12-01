@@ -15,7 +15,9 @@ export function ListsProvider({ children }) {
     }
   };
 
-  useEffect(() => refreshLists(), []);
+  useEffect(() => {
+    refreshLists();
+  }, []);
 
   return (
     <ListsContext.Provider value={{ lists, refreshLists }}>

@@ -1,8 +1,8 @@
 import CreatePost from "../../components/CreatePost/CreatePost";
+import Follows from "../../components/Follows/Follows";
 import Posts from "../../components/Posts/Posts";
 import UserSearch from "../../components/UserSearch/UserSearch";
 import usePosts from "../../hooks/usePosts";
-import Follows from "./components/Follows";
 import styles from "./Feed.module.css";
 
 export default function Feed() {
@@ -12,13 +12,13 @@ export default function Feed() {
     <div className={styles.feed}>
       <div>
         <CreatePost />
+        <div className={styles.sidebar}>
+          <UserSearch />
+          <Follows />
+        </div>
         <div className={styles.posts}>
           <Posts posts={posts} />
         </div>
-      </div>
-      <div className={styles.sidebar}>
-        <UserSearch />
-        <Follows />
       </div>
     </div>
   );

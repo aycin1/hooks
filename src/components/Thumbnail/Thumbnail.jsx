@@ -19,7 +19,7 @@ export default function Thumbnail({ patternID, thumbnailOptions }) {
           alt={`Image of pattern ${pattern.id}`}
         />
       ) : (
-        "Image not found"
+        "..."
       )}
     </div>
   );

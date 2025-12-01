@@ -28,19 +28,3 @@
     padding: 0px;
   }
 }
-
-.follows {
-  display: flex;
-  align-self: center;
-}
-
-.followButton {
-  margin-right: 5px;
-  font-size: smaller;
-  padding: 5px 18px;
-}
-
-.users {
-  padding: 5px 0px 2px 8px;
-  justify-items: start;
-}

@@ -38,7 +38,7 @@ export default function Dashboard() {
           </SearchLink>
         </div>
       ) : (
-        <h4>please select a list</h4>
+        <h4 className={styles.selectList}>please select a list!</h4>
       )}
     </div>
   );

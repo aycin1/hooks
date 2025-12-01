@@ -28,6 +28,9 @@
   .heading {
     padding-right: 0px;
   }
+  .posts {
+    width: 100%;
+  }
 }
 
 .dashboard {
@@ -42,10 +45,39 @@
   max-height: 10vh;
 }
 
+@keyframes animation {
+  0% {
+    font-size: 1.1em;
+  }
+  25% {
+    font-size: 1.15em;
+  }
+  50% {
+    font-size: 1.1em;
+  }
+  75% {
+    font-size: 1.15em;
+  }
+  100% {
+    font-size: 1.1em;
+  }
+}
+
+.selectList {
+  position: absolute;
+  align-self: center;
+  padding-top: 70px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  animation-name: animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
 .listButton {
   margin: 1.5vh 1vw;
   min-width: fit-content;
-  padding: 1.2vh 3.4vw;
+  height: fit-content;
+  padding: 12px 34px;
   font-weight: 600;
   border-radius: 8px;
   border: 1px solid #348e51;
@@ -109,4 +141,19 @@
   z-index: 2;
   display: grid;
   position: absolute;
+}
+
+.postsContainer {
+  padding-top: 100px;
+}
+
+.posts {
+  width: fit-content;
+}
+
+@media screen and (max-width: 1300px) {
+  .posts {
+    width: fit-content;
+    justify-self: center;
+  }
 }
