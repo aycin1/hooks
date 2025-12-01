@@ -3,7 +3,7 @@ import List from "./components/List";
 import styles from "./Lists.module.css";
 
 export default function Lists() {
-  const lists = useLists();
+  const { lists } = useLists();
 
   return (
     <div className={styles.lists}>

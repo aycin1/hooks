@@ -2,7 +2,7 @@ import useLists from "../../hooks/useLists";
 import styles from "./Dropdown.module.css";
 
 export default function DropdownOptions({ listForPattern, handleChange }) {
-  const lists = useLists();
+  const { lists } = useLists();
   let options = lists && Object.values(lists).map((list) => list.name);
 
   function handleOptions(list) {

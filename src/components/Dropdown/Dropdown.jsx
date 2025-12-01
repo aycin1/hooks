@@ -5,7 +5,7 @@ import DropdownOptions from "./DropdownOptions";
 
 export default function Dropdown({ patternID }) {
   const axiosPrivate = useAxiosPrivate();
-  const lists = useLists();
+  const { lists, refreshLists } = useLists();
   const [message, setMessage] = useState();
   const [currentList, setCurrentList] = useState("");
 
@@ -23,20 +23,23 @@ export default function Dropdown({ patternID }) {
   async function getResponse(value) {
     const response =
       value === "remove"
-        ? await axiosPrivate.delete("/lists/", {
+        ? (await axiosPrivate.delete("/lists/", {
             data: {
               pattern_id: parseInt(patternID),
             },
-          })
+          }),
+          refreshLists())
         : currentList
-        ? await axiosPrivate.patch("/lists/", {
+        ? (await axiosPrivate.patch("/lists/", {
             pattern_id: parseInt(patternID),
             list: value,
-          })
-        : await axiosPrivate.post("/lists/", {
+          }),
+          refreshLists())
+        : (await axiosPrivate.post("/lists/", {
             pattern_id: parseInt(patternID),
             list: value,
-          });
+          }),
+          refreshLists());
     return response;
   }
 

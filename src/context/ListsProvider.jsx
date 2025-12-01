@@ -1,26 +1,25 @@
 import { useEffect, useState } from "react";
-import useAuth from "../hooks/useAuth";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { ListsContext } from "./ListsContext";
 
 export function ListsProvider({ children }) {
   const [lists, setLists] = useState();
   const axiosPrivate = useAxiosPrivate();
-  const { auth } = useAuth();
 
-  useEffect(() => {
-    async function getLists() {
-      try {
-        const response = await axiosPrivate.get("/lists/");
-        setLists(response.data);
-      } catch (err) {
-        console.log(err);
-      }
+  const refreshLists = async () => {
+    try {
+      const response = await axiosPrivate.get("/lists/");
+      setLists(response.data);
+    } catch (err) {
+      console.log(err);
     }
-    getLists();
-  }, [children, auth, axiosPrivate]);
+  };
+
+  useEffect(() => refreshLists(), []);
 
   return (
-    <ListsContext.Provider value={lists}>{children}</ListsContext.Provider>
+    <ListsContext.Provider value={{ lists, refreshLists }}>
+      {children}
+    </ListsContext.Provider>
   );
 }

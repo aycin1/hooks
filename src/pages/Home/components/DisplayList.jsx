@@ -5,7 +5,7 @@ import useLists from "../../../hooks/useLists";
 import styles from "../Home.module.css";
 
 export default function DisplayList({ chosenList }) {
-  const lists = useLists();
+  const { lists } = useLists();
   const thumbnailOptions = {
     urlSize: "medium_url",
     style: {

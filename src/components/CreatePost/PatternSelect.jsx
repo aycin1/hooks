@@ -3,7 +3,7 @@ import Thumbnail from "../Thumbnail/Thumbnail";
 import styles from "./CreatePost.module.css";
 
 export default function PatternSelect({ chosenPattern, handleClick }) {
-  const lists = useLists();
+  const { lists } = useLists();
 
   const thumbnailOptions = {
     urlSize: "small_url",

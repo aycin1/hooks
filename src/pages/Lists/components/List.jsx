@@ -5,7 +5,7 @@ import useLists from "../../../hooks/useLists";
 import styles from "../Lists.module.css";
 
 export default function List({ listTitle }) {
-  const lists = useLists();
+  const { lists } = useLists();
   const list =
     lists &&
     Object.values(lists).filter((list) => list.name === listTitle)[0]?.patterns;

@@ -6,7 +6,7 @@ import DisplayList from "./DisplayList";
 import ListButton from "./ListButton";
 
 export default function Dashboard() {
-  const lists = useLists();
+  const { lists } = useLists();
   const [chosenList, setChosenList] = useState();
 
   function handleClick(list) {
