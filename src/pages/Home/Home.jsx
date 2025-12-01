@@ -17,17 +17,21 @@ export default function Home() {
 
   return (
     <div className={styles.home}>
-      <h2 className={styles.heading}>Welcome, {username}!</h2>
-      <Dashboard />
+      <div className={styles.main}>
+        <h2 className={styles.heading}>Welcome, {username}!</h2>
+        <Dashboard />
 
+        {snippet.length > 0 && (
+          <div className={styles.postsContainer}>
+            <h3 className={styles.heading}>Most recent posts in your feed:</h3>
+            <div className={styles.posts}>
+              <Posts posts={snippet} />
+            </div>
+          </div>
+        )}
+      </div>
       <div className={styles.userSearch}>
         <UserSearch />
-      </div>
-      <div className={styles.postsContainer}>
-        <h3 className={styles.heading}>Most recent posts in your feed:</h3>
-        <div className={styles.posts}>
-          <Posts posts={snippet} />
-        </div>
       </div>
     </div>
   );
