@@ -1,3 +1,4 @@
+import Follows from "../../components/Follows/Follows";
 import Posts from "../../components/Posts/Posts";
 import usePosts from "../../hooks/usePosts";
 import useUsername from "../../hooks/useUsername";
@@ -32,6 +33,7 @@ export default function Home() {
       </div>
       <div className={styles.userSearch}>
         <UserSearch />
+        <Follows />
       </div>
     </div>
   );

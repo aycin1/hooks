@@ -8,18 +8,18 @@ export function ListsProvider({ children }) {
   const axiosPrivate = useAxiosPrivate();
   const { auth } = useAuth();
 
-  const refreshLists = async () => {
+  const refreshLists = useCallback(async () => {
     try {
       const response = await axiosPrivate.get("/lists/");
       setLists(response.data);
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [axiosPrivate]);
 
   useEffect(() => {
     refreshLists();
-  }, [auth.username]);
+  }, [auth.username, refreshLists]);
 
   return (
     <ListsContext.Provider value={{ lists, refreshLists }}>
