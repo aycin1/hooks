@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { ListsContext } from "./ListsContext";
 
 export function ListsProvider({ children }) {
   const [lists, setLists] = useState();
   const axiosPrivate = useAxiosPrivate();
+  const { auth } = useAuth();
 
   const refreshLists = async () => {
     try {
@@ -17,7 +19,7 @@ export function ListsProvider({ children }) {
 
   useEffect(() => {
     refreshLists();
-  }, []);
+  }, [auth.username]);
 
   return (
     <ListsContext.Provider value={{ lists, refreshLists }}>
