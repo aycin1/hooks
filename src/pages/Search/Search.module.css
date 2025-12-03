@@ -3,18 +3,22 @@
 }
 
 .sidebar {
-  position: fixed;
-  max-height: 80vh;
+  max-height: 76vh;
   overflow-y: scroll;
   background-color: rgba(211, 236, 207, 0.603);
   margin: 11px;
-  padding: 0px 10px;
+  padding: 0px 10px 8px;
   min-width: fit-content;
 }
 
 .body {
-  width: 80%;
-  padding: 5vh 0vw 0vh 300px;
+  padding: 2vh 2vw 0vh;
+}
+
+@media screen and (max-width: 1150px) {
+  .sidebar {
+    display: none;
+  }
 }
 
 .searchResults {
@@ -32,16 +36,22 @@
 
 .userInput {
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
 .input {
-  width: 45%;
+  width: 30%;
+  font-size: medium;
+  padding: 6px 0px 4px 8px;
 }
 
 .searchButton {
-  margin: 0px 5px;
-  padding: 2.5px 10px;
+  margin: 0px 0px;
+  padding: 6px 8px 4px;
+  border-radius: 3px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
 }
 
 .label {

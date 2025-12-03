@@ -1,3 +1,5 @@
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import styles from "../Search.module.css";
 
@@ -10,11 +12,11 @@ export default function UserInput({ handleUserInput }) {
   }
 
   return (
-    <div className={styles.userInput}>
+    <form className={styles.userInput} onSubmit={handleSubmit}>
       <input
         aria-label="pattern search input field"
         className={styles.input}
-        placeholder="Search for patterns!"
+        placeholder="Looking for something specific?"
         value={searchField}
         onChange={(e) => setSearchField(e.target.value)}
       ></input>
@@ -22,10 +24,9 @@ export default function UserInput({ handleUserInput }) {
         aria-label="button to search patterns"
         className={styles.searchButton}
         type="submit"
-        onClick={handleSubmit}
       >
-        Search
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
       </button>
-    </div>
+    </form>
   );
 }
