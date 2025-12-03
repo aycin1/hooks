@@ -43,7 +43,7 @@ export default function LoginForm() {
       } else if (err.response?.data.message) {
         setErrorMsg(err.response.data.message);
       } else {
-        setErrorMsg("Registration failed, please try again");
+        setErrorMsg("Login failed, please try again");
       }
     }
   }

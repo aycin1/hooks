@@ -4,9 +4,8 @@
   width: 70vw;
   flex-wrap: wrap;
   align-items: center;
-  justify-self: center;
   overflow-x: auto;
-  padding: 20px 80px;
+  padding: 50px 50px 30px;
   background-color: rgb(177, 219, 188);
   border-radius: 5px;
   font-size: large;

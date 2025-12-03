@@ -33,6 +33,7 @@ export default function List({ listTitle }) {
                 <PatternCard
                   patternID={pattern.pattern_id}
                   thumbnailOptions={thumbnailOptions}
+                  hideName={true}
                 />
                 <div className={styles.dropdown}>
                   <Dropdown patternID={pattern.pattern_id} />

@@ -6,7 +6,6 @@ import DropdownOptions from "./DropdownOptions";
 export default function Dropdown({ patternID }) {
   const axiosPrivate = useAxiosPrivate();
   const { lists, refreshLists } = useLists();
-  const [message, setMessage] = useState();
   const [currentList, setCurrentList] = useState("");
 
   useEffect(() => {
@@ -18,38 +17,30 @@ export default function Dropdown({ patternID }) {
           (pattern) => parseInt(pattern?.pattern_id) === parseInt(patternID)
         );
     setCurrentList(list?.[0]?.name);
-  }, [lists, patternID, message]);
+  }, [lists, patternID]);
 
   async function getResponse(value) {
-    const response =
-      value === "remove"
-        ? (await axiosPrivate.delete("/lists/", {
-            data: {
-              pattern_id: parseInt(patternID),
-            },
-          }),
-          refreshLists())
-        : currentList
-        ? (await axiosPrivate.patch("/lists/", {
+    return value === "remove"
+      ? await axiosPrivate.delete("/lists/", {
+          data: {
             pattern_id: parseInt(patternID),
-            list: value,
-          }),
-          refreshLists())
-        : (await axiosPrivate.post("/lists/", {
-            pattern_id: parseInt(patternID),
-            list: value,
-          }),
-          refreshLists());
-    return response;
+          },
+        })
+      : currentList
+      ? await axiosPrivate.patch("/lists/", {
+          pattern_id: parseInt(patternID),
+          list: value,
+        })
+      : await axiosPrivate.post("/lists/", {
+          pattern_id: parseInt(patternID),
+          list: value,
+        });
   }
 
   async function handleChange(e) {
     try {
       const response = await getResponse(e.target.value);
-
-      if (response?.data?.message) {
-        setMessage(response.data.message);
-      }
+      response?.data?.message && refreshLists();
     } catch (error) {
       console.log(error);
     }
@@ -57,15 +48,11 @@ export default function Dropdown({ patternID }) {
 
   return (
     <>
-      {message ? (
-        <p style={{ fontSize: "small" }}>{message}</p>
-      ) : (
-        <DropdownOptions
-          key={patternID}
-          listForPattern={currentList}
-          handleChange={handleChange}
-        />
-      )}
+      <DropdownOptions
+        key={patternID}
+        listForPattern={currentList}
+        handleChange={handleChange}
+      />
     </>
   );
 }
