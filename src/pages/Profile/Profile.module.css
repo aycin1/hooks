@@ -10,10 +10,9 @@
 }
 
 .banner {
-  width: 50%;
+  width: 30vw;
   min-width: fit-content;
   display: flex;
-  justify-self: center;
   align-items: center;
   justify-content: space-between;
   padding: 0vh 7vw;
@@ -24,6 +23,7 @@
 
 .username {
   font-size: x-large;
+  padding-right: 10px;
 }
 
 .posts {
