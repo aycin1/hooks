@@ -4,16 +4,15 @@
 }
 
 .overlay {
-  background-color: rgba(188, 220, 196, 0.958);
+  background-color: rgba(193, 224, 198, 0.822);
   border-radius: 5px;
-  border: 2px solid #255735;
-  max-width: 60vw;
-  padding: 2vw 5vw;
+  border: 1px solid #255735;
+  max-width: 50vw;
+  padding: 5vh 5vw;
 }
 
 .closeOverlayBtn {
   font-weight: 500;
-  margin: 0px 0px 100px 10px;
   float: right;
 }
 
@@ -32,7 +31,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 35vh;
   gap: 2px;
 }
