@@ -1,19 +1,23 @@
 .searchPage {
   display: flex;
+  width: 98vw;
+  justify-content: center;
 }
 
 .sidebar {
   position: fixed;
-  max-height: 76vh;
+  left: 0;
+  height: 87vh;
   overflow-y: scroll;
-  background-color: rgba(211, 236, 207, 0.603);
-  margin: 11px;
+  background-color: rgba(227, 243, 225, 0.61);
+  transform: translate(0px, -22px);
   padding: 0px 10px 8px;
   min-width: fit-content;
 }
 
 .body {
-  padding: 2vh 1vw 0vh 24vw;
+  padding: 2vh 0vw 0vh 23vw;
+  width: 100%;
 }
 
 @media screen and (max-width: 1250px) {
@@ -23,7 +27,6 @@
   .body {
     padding-left: 1vw;
     width: 87vw;
-    justify-self: center;
   }
 }
 
