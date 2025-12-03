@@ -89,7 +89,7 @@ export default function CreatePostOverlay({ openClick, closeClick }) {
                 title="You must select a pattern and upload an image to create a post"
                 className={styles.uploadPostButton}
               >
-                submit
+                Submit
               </button>
             </div>
           </div>

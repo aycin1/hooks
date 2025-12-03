@@ -3,6 +3,7 @@
 }
 
 .sidebar {
+  position: fixed;
   max-height: 76vh;
   overflow-y: scroll;
   background-color: rgba(211, 236, 207, 0.603);
@@ -12,12 +13,17 @@
 }
 
 .body {
-  padding: 2vh 2vw 0vh;
+  padding: 2vh 1vw 0vh 24vw;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1250px) {
   .sidebar {
     display: none;
+  }
+  .body {
+    padding-left: 1vw;
+    width: 87vw;
+    justify-self: center;
   }
 }
 
@@ -41,7 +47,7 @@
 }
 
 .input {
-  width: 30%;
+  width: 30vw;
   font-size: medium;
   padding: 6px 0px 4px 8px;
 }
