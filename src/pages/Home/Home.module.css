@@ -7,15 +7,16 @@
 }
 
 .main {
-  padding-right: 150px;
+  padding-right: 13vw;
 }
 
 .heading {
-  justify-self: baseline;
+  justify-self: start;
+  padding-left: 6vw;
 }
 
 .userSearch {
-  margin-right: 60px;
+  margin-right: 40px;
   position: fixed;
   right: 0;
   max-height: 75%;
@@ -27,20 +28,14 @@
   min-width: fit-content;
 }
 
-@media screen and (max-width: 1300px) {
-  .userSearch {
-    display: none;
-  }
-  .heading {
-    justify-self: center;
-  }
-  .main {
-    padding-right: 0px;
-  }
-  .posts {
-    width: fit-content;
-    justify-self: center;
-  }
+.postsContainer {
+  padding-top: 100px;
+}
+
+.posts {
+  width: fit-content;
+  justify-self: center;
+  padding-right: 10vw;
 }
 
 .dashboard {
@@ -129,7 +124,7 @@
 }
 
 .patterns {
-  width: 65vw;
+  width: 55vw;
   display: flex;
   flex-wrap: wrap;
   align-self: center;
@@ -153,10 +148,23 @@
   position: absolute;
 }
 
-.postsContainer {
-  padding-top: 100px;
-}
-
-.posts {
-  width: fit-content;
+@media screen and (max-width: 1200px) {
+  .userSearch {
+    display: none;
+  }
+  .heading {
+    justify-self: center;
+    padding: 0vw;
+  }
+  .main {
+    padding: 0px;
+    width: 100%;
+  }
+  .posts {
+    min-width: max-content;
+    padding: 0vw;
+  }
+  .patterns {
+    width: 65vw;
+  }
 }
