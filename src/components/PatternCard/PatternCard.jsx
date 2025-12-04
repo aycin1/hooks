@@ -6,7 +6,7 @@ export default function PatternCard({ patternID, thumbnailOptions, hideName }) {
   const name = usePattern(patternID)?.name;
   const noName = hideName && { display: "none" };
   return (
-    <div style={{ margin: "0vh 0vw 3vh", overflow: "hidden" }}>
+    <div style={{ margin: "0vh 0vw 0vh", overflow: "hidden" }}>
       <p style={{ fontSize: "small", ...noName }}>{name}</p>
       <Link to={`/pattern/${patternID}`}>
         <Thumbnail patternID={patternID} thumbnailOptions={thumbnailOptions} />
