@@ -4,13 +4,16 @@ import styles from "./Dropdown.module.css";
 export default function DropdownOptions({ listForPattern, handleChange }) {
   const { lists } = useLists();
   let options = lists && Object.values(lists).map((list) => list.name);
+  const newOptions = [];
 
-  function handleOptions(list) {
-    if (list) {
-      const currentListIndex = options.indexOf(listForPattern);
-      options.splice(currentListIndex, 1);
-      options.push("remove");
-      return options;
+  function handleOptions(currList) {
+    if (currList) {
+      options.map((list) => {
+        list !== currList && newOptions.push(list);
+      });
+      const addRemove = newOptions.find((option) => option === "remove");
+      !addRemove && newOptions.push("remove");
+      return newOptions;
     } else {
       return options;
     }
