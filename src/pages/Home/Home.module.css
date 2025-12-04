@@ -34,7 +34,7 @@
 }
 
 .posts {
-  width: fit-content;
+  width: max-content;
   justify-self: center;
   padding-right: 10vw;
 }
