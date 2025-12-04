@@ -10,15 +10,13 @@ export default function Feed() {
 
   return (
     <div className={styles.feed}>
-      <div>
-        <CreatePost />
-        <div className={styles.sidebar}>
-          <UserSearch />
-          <Follows />
-        </div>
-        <div className={styles.posts}>
-          <Posts posts={posts} />
-        </div>
+      <CreatePost />
+      <div className={styles.sidebar}>
+        <UserSearch />
+        <Follows />
+      </div>
+      <div className={styles.posts}>
+        <Posts posts={posts} />
       </div>
     </div>
   );

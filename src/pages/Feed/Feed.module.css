@@ -1,13 +1,16 @@
 .feed {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2vh;
 }
 
 .posts {
-  padding: 0vh 200px 0px 0px;
+  padding: 2vh 22vw 0px 0px;
 }
 
 .sidebar {
-  margin-right: 4vw;
+  margin-right: 1vw;
   position: fixed;
   right: 0;
   max-height: 75%;
@@ -19,7 +22,7 @@
   width: fit-content;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .sidebar {
     display: none;
   }

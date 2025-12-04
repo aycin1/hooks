@@ -14,20 +14,21 @@ export default function Profile() {
 
   return (
     <div className={styles.profile}>
-      <div className={styles.banner}>
-        <h3 className={styles.username}>{username}</h3>
+      <div className={styles.body}>
+        <div className={styles.banner}>
+          <h3 className={styles.username}>{username}</h3>
 
-        {username === thisUser ? (
-          <CreatePost />
-        ) : (
-          <FollowButton
-            username={username}
-            style={{ padding: "0.4em 1.4em", fontSize: " 1.1em" }}
-          />
-        )}
+          {username === thisUser ? (
+            <CreatePost />
+          ) : (
+            <FollowButton
+              username={username}
+              style={{ padding: "0.4em 1.4em", fontSize: " 1.1em" }}
+            />
+          )}
+        </div>
+        <div className={styles.posts}>{posts && <Posts posts={posts} />}</div>
       </div>
-      <div className={styles.posts}>{posts && <Posts posts={posts} />}</div>
-
       <div className={styles.sidebar}>
         <UserSearch />
         <Follows />

@@ -5,12 +5,9 @@
   width: 100%;
 }
 
-.main {
-  padding-right: 90px;
-}
-
 .banner {
-  width: 30vw;
+  width: 35vw;
+  margin-left: 5vw;
   min-width: fit-content;
   display: flex;
   align-items: center;
@@ -28,10 +25,11 @@
 
 .posts {
   justify-content: center;
+  padding-right: 21vw;
 }
 
 .sidebar {
-  margin-right: 4vw;
+  margin-right: 1vw;
   position: fixed;
   right: 0;
   max-height: 75%;
@@ -43,12 +41,15 @@
   width: fit-content;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .sidebar {
     display: none;
   }
-  .main {
-    justify-content: center;
+  .banner {
+    justify-self: center;
+    margin: 0px;
+  }
+  .posts {
     padding: 0px;
   }
 }
