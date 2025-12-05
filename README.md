@@ -5,6 +5,7 @@ This project is a full-stack social media platform centered around one of my hob
 ### Links
 
 [Deployed website](https://fibre-fantasies.vercel.app/)
+(The deployed backend takes some time to start up after inactivity so initial delays are expected)
 
 [Deployed API](https://fibre-fantasies-backend.onrender.com)
 
@@ -24,7 +25,39 @@ The frontend is deployed with **Vercel** and the backend and database have been 
 
 # Usage
 
-<!-- // add screenshots of site flow and how website can be used -->
+Upon visiting the website, users will be prompted to log in or register if they have not already been authenticated.
+![Sign-in page](images/sign-in.png)
+
+Once authentication is complete, users are redirected to the homepage, which contains a dashboard of three lists users can add patterns to. Clicking any of these buttons will provide a link to the search page (whether it is populated or not). Users can also search for other users and view users they follow/are followed by in the Homepage, Feed, and Profile.
+![Homepage for new user](images/homepage.png)
+
+The search page will initially render an array of patterns returned by the third-party API (Ravelry). Users can refine their search by selecting any of the options in the sidebar, which automatically updates the results, and by utilising the search bar for specific queries. The search page currently returns the first 30 results, although I intend to implement pagination.
+Hovering over any pattern image will reveal a dropdown menu that allows users to add the pattern to a list (or change the list/remove if pattern has previously been added to a list). Clicking the pattern image redirects the user to the pattern page. These features are available anywhere the pattern image is seen, except during the process of creating a post.
+![Pattern search page](images/search.png)
+
+The pattern page contains relevant information on what users may need to recreate the item - as well as a link to the source where users can purchase or download the pattern.
+![Pattern page](images/pattern-page.mp4)
+
+Users can view the contents of all of their lists on the lists page. There will eventually be an option to create/delete custom lists as desired.
+![Lists page](images/lists.png)
+
+Creating a post is achievable via the Profile and Feed pages, where users must select a pattern and upload an image, and can optionally add a caption.
+![Create Post](images/create-post.png)
+
+The feed contains posts created by the user and everyone they follow, with the most recent displayed first.
+![Feed](images/feed.png)
+
+The profile contains posts created by the user, with the most recent displayed first.
+![User profile](images/profile.png)
+
+Users are able to edit the captions of or delete their own posts, as well as interact with posts. These features are available anywhere posts are visible (Profile, Feed, and Home).
+![Caption editing and post comments](images/caption-edit-and-comments.png)
+
+- For revisiting users, selecting a populated list will render them as such:
+  ![Homepage on list selection](images/home-list.png)
+
+- Furthermore, for revisiting users who are following others that have posted (or have posted themselves), the most recent two posts are visible on the homepage upon authentication.
+  ![Homepage for revisiting user who is following people who have previously posted or are following people who have posted](images/home-with-posts.png)
 
 ## Dependencies
 
@@ -42,11 +75,11 @@ The frontend is deployed with **Vercel** and the backend and database have been 
 
 # Improvements
 
-<!--ability to share patterns and instant message with friends -->
-
 - I intend to implement pagination within the Search component for faster loading of data on the frontend received from the third party API via the backend.
 
-- Currently, three custom lists are created upon user registration on the backend. I would like to establish the appropriate endpoints for users to be able to create, edit, and delete their own lists.
+- Currently, three default lists are created upon user registration on the backend. I would like to establish the appropriate endpoints for users to be able to create, edit the name of, and delete their own lists.
+
+- I would like to add some more features for the social aspect of the website, such as the ability to reply to comments, notifications for the latest post interactions and follows, and instant messaging between users, where they can share posts or patterns with each other.
 
 - I aim to add privacy features such as making your profile private and having the ability to approve or deny follow requests from other users, as well as the option to make any list public and therefore visible on the users profile.
 
@@ -62,4 +95,6 @@ The frontend is deployed with **Vercel** and the backend and database have been 
 
 - [ImageKit](https://imagekit.io/)
 
-<!-- **This project is purely for / purposes** -->
+## Disclaimer
+
+This project is purely for the purpose of presenting skills obtained from building my own full-stack site
