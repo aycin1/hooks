@@ -36,7 +36,7 @@ Hovering over any pattern image will reveal a dropdown menu that allows users to
 ![Pattern search page](images/search.png)
 
 The pattern page contains relevant information on what users may need to recreate the item - as well as a link to the source where users can purchase or download the pattern.
-[![Pattern page video](https://raw.githubusercontent.com/aycin1/fibre-fantasies-frontend/master/images/pattern-page.png)](https://raw.githubusercontent.com/aycin1/fibre-fantasies-frontend/master/images/pattern-page.mp4)
+[![Pattern page video](https://raw.githubusercontent.com/aycin1/fibre-fantasies-frontend/master/images/pattern-page.png)](https://raw.githubusercontent.com/aycin1/fibre-fantasies-frontend/master/images/pattern-page.mp4.bz2)
 
 Users can view the contents of all of their lists on the lists page. There will eventually be an option to create/delete custom lists as desired.
 ![Lists page](images/lists.png)
