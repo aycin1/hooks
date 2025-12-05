@@ -31,12 +31,12 @@ Upon visiting the website, users will be prompted to log in or register if they 
 Once authentication is complete, users are redirected to the homepage, which contains a dashboard of three lists users can add patterns to. Clicking any of these buttons will provide a link to the search page (whether it is populated or not). Users can also search for other users and view users they follow/are followed by in the Homepage, Feed, and Profile.
 ![Homepage for new user](images/homepage.png)
 
-The search page will initially render an array of patterns returned by the third-party API (Ravelry). Users can refine their search by selecting any of the options in the sidebar, which automatically updates the results, and by utilising the search bar for specific queries. The search page currently returns the first 30 results, although I intend to implement pagination.
+The search page will initially render an array of patterns returned by the third-party API (Ravelry). Users can refine their search by selecting any of the options in the sidebar, which automatically updates the results, and by utilising the search bar for specific queries. The search page currently returns the first 30 results, although I intend to implement pagination.  
 Hovering over any pattern image will reveal a dropdown menu that allows users to add the pattern to a list (or change the list/remove if pattern has previously been added to a list). Clicking the pattern image redirects the user to the pattern page. These features are available anywhere the pattern image is seen, except during the process of creating a post.
 ![Pattern search page](images/search.png)
 
 The pattern page contains relevant information on what users may need to recreate the item - as well as a link to the source where users can purchase or download the pattern.
-![Pattern page](images/pattern-page.mp4)
+[![Pattern page video](https://raw.githubusercontent.com/aycin1/fibre-fantasies-frontend/master/images/pattern-page.png)](https://raw.githubusercontent.com/aycin1/fibre-fantasies-frontend/master/images/pattern-page.mp4)
 
 Users can view the contents of all of their lists on the lists page. There will eventually be an option to create/delete custom lists as desired.
 ![Lists page](images/lists.png)
