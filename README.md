@@ -26,12 +26,18 @@ The frontend is deployed with **Vercel** and the backend and database have been 
 Upon visiting the website, users will be prompted to log in or register if they have not already been authenticated.
 ![Sign-in page](images/sign-in.png)
 
-Once authentication is complete, users are redirected to the homepage, which contains a dashboard of three lists users can add patterns to. Clicking any of these buttons will provide a link to the search page (whether it is populated or not). Users can also search for other users and view users they follow/are followed by in the Homepage, Feed, and Profile.
+After authentication, users are redirected to the homepage, which contains a dashboard of lists users can add patterns to. Clicking any of these buttons will provide a link to the search page (whether it is populated or not). Users can also search for other users and view users they follow/are followed by in the Home, Feed, and Profile pages.
 ![Homepage for new user](images/homepage.png)
 
+- &nbsp;&nbsp;&nbsp;&nbsp; For revisiting users, selecting a populated list will render them as such:
+  ![Homepage on list selection](images/home-list.png)
+
+- &nbsp;&nbsp;&nbsp;&nbsp;Furthermore, for revisiting users who are following others that have posted (or have posted themselves):
+  ![Homepage for revisiting user with populated feed](images/home-with-posts.png)
+
 The search page will initially render an array of patterns returned by the third-party API (Ravelry). Users can refine their search by selecting any of the options in the sidebar, which automatically updates the results, and by utilising the search bar for specific queries. The search page currently returns the first 30 results, although I intend to implement pagination.  
-Hovering over any pattern image will reveal a dropdown menu that allows users to add the pattern to a list (or change the list/remove if pattern has previously been added to a list). Clicking the pattern image redirects the user to the pattern page. These features are available anywhere the pattern image is seen, except during the process of creating a post.
 ![Pattern search page](images/search.png)
+Hovering over any pattern image will reveal a dropdown menu that allows users to add the pattern to a list (or change the list/remove if pattern has previously been added to a list). Clicking the pattern image redirects the user to the pattern page. These features are available anywhere the pattern image is seen, except during the process of creating a post.
 
 The pattern page contains relevant information on what users may need to recreate the item - as well as a link to the source where users can purchase or download the pattern.
 ![Pattern page video](https://raw.githubusercontent.com/aycin1/fibre-fantasies-frontend/master/images/pattern-page.gif)
@@ -50,12 +56,6 @@ The profile contains posts created by the user, with the most recent displayed f
 
 Users are able to edit the captions of or delete their own posts, as well as interact with posts. These features are available anywhere posts are visible (Profile, Feed, and Home).
 ![Caption editing and post comments](images/caption-edit-and-comments.png)
-
-&nbsp;&nbsp;&nbsp;&nbsp;For revisiting users, selecting a populated list will render them as such:
-&nbsp;&nbsp;&nbsp;&nbsp;![Homepage on list selection](images/home-list.png)
-
-&nbsp;&nbsp;&nbsp;&nbsp;Furthermore, for revisiting users who are following others that have posted (or have posted themselves):
-&nbsp;&nbsp;&nbsp;&nbsp;![Homepage for revisiting user with populated feed](images/home-with-posts.png)
 
 ## Dependencies
 
