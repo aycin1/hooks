@@ -2,18 +2,16 @@
 
 This project is a full-stack social media platform centered around one of my hobbies: crochet and knitting. It allows users to search for patterns (provided by the [Ravelry API](https://www.ravelry.com/api)), save them to a list, and share posts showcasing their own work. Users can follow one another, interact with posts, and discover and organise patterns.
 
-### Links
+## Links
 
-[Deployed website](https://fibre-fantasies.vercel.app/)
-(The deployed backend takes some time to start up after inactivity so initial delays are expected)
-
-[Deployed API](https://fibre-fantasies-backend.onrender.com)
-
-[Backend code](https://github.com/aycin1/fibre-fantasies-backend)
+- [Deployed website](https://fibre-fantasies.vercel.app/)
+  (The deployed API takes some time to start up after inactivity so initial delays are expected)
+- [Deployed API](https://fibre-fantasies-backend.onrender.com)
+- [Backend code](https://github.com/aycin1/fibre-fantasies-backend)
 
 ## How it's made
 
-The frontend is built with **React** and **Vite**, which provides fast development builds. Navigation is achieved using **React-Router** and the interface is composed of reusable components that communicate with the backend using RESTful API calls for CRUD operations.
+The frontend is built with **React** and **Vite**, which provides fast development builds. Navigation is achieved using **React-Router** and the app is composed of reusable components that communicate with the backend using RESTful API calls for CRUD operations.
 
 This project utilises **ImageKit**, which provides optimised image rendering. Images uploaded by users are returned as ImageKit URLs (from the backend) and are subsequently rendered on the frontend.
 
@@ -53,11 +51,11 @@ The profile contains posts created by the user, with the most recent displayed f
 Users are able to edit the captions of or delete their own posts, as well as interact with posts. These features are available anywhere posts are visible (Profile, Feed, and Home).
 ![Caption editing and post comments](images/caption-edit-and-comments.png)
 
-- For revisiting users, selecting a populated list will render them as such:
-  ![Homepage on list selection](images/home-list.png)
+&nbsp;&nbsp;&nbsp;&nbsp;For revisiting users, selecting a populated list will render them as such:
+&nbsp;&nbsp;&nbsp;&nbsp;![Homepage on list selection](images/home-list.png)
 
-- Furthermore, for revisiting users who are following others that have posted (or have posted themselves), the most recent two posts are visible on the homepage upon authentication.
-  ![Homepage for revisiting user who is following people who have previously posted or are following people who have posted](images/home-with-posts.png)
+&nbsp;&nbsp;&nbsp;&nbsp;Furthermore, for revisiting users who are following others that have posted (or have posted themselves):
+&nbsp;&nbsp;&nbsp;&nbsp;![Homepage for revisiting user with populated feed](images/home-with-posts.png)
 
 ## Dependencies
 
@@ -73,9 +71,9 @@ Users are able to edit the captions of or delete their own posts, as well as int
 - react-router 7.9.0
 - uuid 13.0.0
 
-# Improvements
+# Optimisations
 
-- I intend to implement pagination within the Search component for faster loading of data on the frontend received from the third party API via the backend.
+- I intend to implement pagination within the Search component for faster loading of data received from the third party API via the backend, and so more patterns are available if desired.
 
 - Currently, three default lists are created upon user registration on the backend. I would like to establish the appropriate endpoints for users to be able to create, edit the name of, and delete their own lists.
 
@@ -88,13 +86,6 @@ Users are able to edit the captions of or delete their own posts, as well as int
 # Acknowledgements
 
 - [Ravelry](https://www.ravelry.com/api)
-
 - [Dave Gray](https://github.com/gitdagray)
-
 - [Font Awesome](https://fontawesome.com/)
-
 - [ImageKit](https://imagekit.io/)
-
-## Disclaimer
-
-This project is purely for the purpose of presenting the skills I have obtained from building my own full-stack site
