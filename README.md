@@ -26,14 +26,15 @@ The frontend is deployed with **Vercel** and the backend and database have been 
 Upon visiting the website, users will be prompted to log in or register if they have not already been authenticated.
 ![Sign-in page](images/sign-in.png)
 
-After authentication, users are redirected to the homepage, which contains a dashboard of lists users can add patterns to. Clicking any of these buttons will provide a link to the search page (whether it is populated or not). Users can also search for other users and view users they follow/are followed by in the Home, Feed, and Profile pages.
+After authentication, users are redirected to the homepage, which contains a dashboard of lists users can add patterns to. Clicking any of these buttons will provide a link to the search page (whether it is populated or not).
 ![Homepage for new user](images/homepage.png)
+Users can also search for other users and view users they follow/are followed by in the Home, Feed, and Profile pages.
 
-- &nbsp;&nbsp;&nbsp;&nbsp; For revisiting users, selecting a populated list will render them as such:
+- For revisiting users, selecting a populated list will render them as such:
   ![Homepage on list selection](images/home-list.png)
 
-- &nbsp;&nbsp;&nbsp;&nbsp;Furthermore, for revisiting users who are following others that have posted (or have posted themselves):
-  ![Homepage for revisiting user with populated feed](images/home-with-posts.png)
+- Furthermore, for revisiting users with a populated feed, a snippet of their feed is displayed:
+  ![Homepage for user with populated feed](images/home-with-posts.png)
 
 The search page will initially render an array of patterns returned by the third-party API (Ravelry). Users can refine their search by selecting any of the options in the sidebar, which automatically updates the results, and by utilising the search bar for specific queries. The search page currently returns the first 30 results, although I intend to implement pagination.  
 ![Pattern search page](images/search.png)
