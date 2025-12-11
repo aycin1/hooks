@@ -70,7 +70,6 @@ This project was built to demonstrate my full-stack engineering skills while cre
 <details>
 
 <summary><h2>Usage</h2></summary>
---- 
 
 ### Authentication
 
