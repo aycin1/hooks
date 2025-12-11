@@ -4,18 +4,18 @@ This project is a full-stack social media platform for crochet and knitting enth
 
 This project was built to demonstrate my full-stack engineering skills while creating something connected to one of my hobbies.
 
-<details>
+<details open>
   <summary><h3>Table of Contents</h3></summary>
   <ol>
     <li><a href="#links">Links</a></li>
-    <li><a href="#features">Features/a></li>
+    <li><a href="#features">Features</a></li>
     <li><a href="#tech-stack">Tech Stack</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#running-locally">Running Locally</a></li>
     <li><a href="#how-its-made">How It's Made</a></li>
     <li><a href="#dependencies">Dependencies</a></li>
     <li><a href="#future-improvements">Future Improvements</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
