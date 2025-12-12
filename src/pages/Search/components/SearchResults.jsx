@@ -18,19 +18,25 @@ export default function SearchResults({ list }) {
 
   return (
     <div className={styles.searchResults}>
-      {list?.length
-        ? list.map((pattern) => (
-            <div className={styles.pattern} key={pattern.id}>
-              <PatternCard
-                patternID={pattern.id}
-                thumbnailOptions={thumbnailOptions}
-              />
-              <div className={styles.dropdown}>
-                <Dropdown patternID={pattern.id} />
-              </div>
+      {list?.length ? (
+        list.map((pattern) => (
+          <div className={styles.pattern} key={pattern.id}>
+            <PatternCard
+              patternID={pattern.id}
+              thumbnailOptions={thumbnailOptions}
+            />
+            <div className={styles.dropdown}>
+              <Dropdown patternID={pattern.id} />
             </div>
-          ))
-        : "No patterns found, please try again"}
+          </div>
+        ))
+      ) : (
+        <span>
+          No patterns found. Have you tried widening your search?
+          <br />
+          <p style={{ fontSize: "small" }}>(At the top of the sidebar)</p>
+        </span>
+      )}
     </div>
   );
 }

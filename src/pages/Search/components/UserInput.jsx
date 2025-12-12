@@ -16,7 +16,7 @@ export default function UserInput({ handleUserInput }) {
       <input
         aria-label="pattern search input field"
         className={styles.input}
-        placeholder="Looking for something specific?"
+        placeholder="looking for something specific?"
         value={searchField}
         onChange={(e) => setSearchField(e.target.value)}
       ></input>

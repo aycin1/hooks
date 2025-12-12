@@ -10,7 +10,7 @@ import styles from "./Search.module.css";
 export default function Search() {
   const [userInput, setUserInput] = useState();
   const [refineOptions, setRefineOptions] = useState({});
-  const [searchResults, setSearchResults] = useState();
+  const [searchResults, setSearchResults] = useState([]);
   const [toggle, setToggle] = useState(true);
   const style = { color: "#709c62ff" };
 
@@ -20,7 +20,7 @@ export default function Search() {
 
     function joinArrays(checkedArr) {
       if (checkedArr?.length > 1) {
-        return `${checkedArr.join(toggle ? "%2B" : "%7C")}`;
+        return `${checkedArr.join(toggle ? "%252B" : "%257C")}`;
       } else if (checkedArr?.length === 1) {
         return `${checkedArr[0]}`;
       } else {
